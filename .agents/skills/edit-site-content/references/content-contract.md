@@ -16,3 +16,5 @@ build (when routing or rendering changes)
 ```
 
 Sitemap and robots use the same validated document. Pages with `metadata.robots.index === false` are excluded from the sitemap; noindex is not converted into a robots disallow rule.
+
+Presentation belongs to each Section’s actual `view.tsx` and local children. Definition adapts data; `src/components/layout` owns the shell. Keep `current.json` as the content source instead of adding defaults to Views or shared components.

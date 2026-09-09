@@ -3,7 +3,7 @@ import type {
   SiteDocument,
 } from "@/site-schema/generated/types";
 import { toProduct } from "@/lib/catalog";
-import { resolveAction } from "@/lib/home-view-model";
+import { resolveAction } from "@/site-schema/runtime/resolve-link";
 import View from "./view";
 export const toProps = (section: MenuCatalogSection, site: SiteDocument) => ({
   id: section.id,

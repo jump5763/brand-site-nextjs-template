@@ -5,8 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowUpRight, Clock, MapPin, Menu } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Brand } from "@/components/site/brand";
-import { ctaClass } from "@/components/site/cta";
+import { Brand } from "@/components/layout/brand";
+import { ctaClass } from "@/components/shared/cta";
 import {
   Sheet,
   SheetContent,

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Leaf } from "lucide-react";
-import { ctaClass } from "@/components/site/cta";
+import { ctaClass } from "@/components/shared/cta";
 
 export default function NotFound() {
   return (

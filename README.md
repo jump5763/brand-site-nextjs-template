@@ -35,10 +35,21 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Site Schema
 
-This restaurant template follows the keke-brand-site Site Schema Site Schema. Keep `siteId`, `siteUrl`, `theme`, `layout`, and `pages` at the top level of `src/site-schema/current.json`; products, categories, locations, reviews, metadata, and media remain under the owning Page Section `content`. Do not add `resources` or `schemaVersion`.
+This template uses its own Site Schema; v45 is only a structural and protocol reference. Keep `siteId`, `siteUrl`, `theme`, `layout`, and `pages` at the top level of `src/site-schema/current.json`; products, categories, locations, reviews, and media remain under the owning Page Section `content`. Page metadata belongs to `pages[].metadata`; shell content belongs to `layout.header/footer`. Do not add `resources` or `schemaVersion`.
 
 All content pages use the single `src/app/[[...slug]]/page.tsx` route. The same validated document drives metadata, canonical URLs, `sitemap.xml`, and `robots.txt`. Select registered Section capabilities from `src/site-schema/generated/capabilities.json`.
 
-Run `pnpm schema:check` and `pnpm validate:site src/site-schema/current.json` after content changes. Run `pnpm typecheck` and `pnpm build` when code, routing, or rendering changes. Project workflows are documented in `.agents/skills/edit-site-content/SKILL.md` and `.agents/skills/compose-page/SKILL.md`.
+Run `pnpm schema:check` and `pnpm validate:site src/site-schema/current.json` after content changes. Run `pnpm typecheck`, `pnpm lint`, and `pnpm build` when code, routing, or rendering changes. Project workflows are documented in `.agents/skills/edit-site-content/SKILL.md` and `.agents/skills/compose-page/SKILL.md`.
 
 Default content belongs to this template’s original home page and Menu. v45 is only a structural/protocol reference, never the default business content. Reuse the original components and preserve their visuals, responsive layout, and interactions.
+
+## Source layout
+
+- `src/sections/<type>.<variant>/`: descriptor, Contract, Definition, actual View, and private components/models. Hero’s carousel and Menu’s filtering model stay with their respective Sections.
+- `src/components/ui/`: shared primitives.
+- `src/components/layout/`: Header, Footer, and their private presentation helpers.
+- `src/components/shared/`: established shared UI patterns, with direct imports and descriptive filenames.
+- `src/site-schema/runtime/`: validation, loaders, link/media adapters, and rendering orchestration.
+- `src/lib/`: cross-owner pure utilities.
+
+Start with local ownership. Before implementing UI, inspect related primitives and shared components. A new independent consumer prompts evaluation, not automatic extraction: share only matching responsibilities with natural props, common evolution, and no dependency on consumer-private code. See `AI_RULES.md` and `.agents/skills/create-section/references/section-format.md` for the workflow.

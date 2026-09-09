@@ -3,7 +3,8 @@ import type {
   SiteDocument,
 } from "@/site-schema/generated/types";
 import View from "./view";
-import { resolveAction, type OrderProps } from "@/lib/home-view-model";
+import type { OrderProps } from "./view";
+import { resolveAction } from "@/site-schema/runtime/resolve-link";
 export const toProps = (
   section: CtaBannerSection,
   site: SiteDocument,

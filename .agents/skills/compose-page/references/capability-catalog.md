@@ -22,3 +22,5 @@ Verification layers:
 - SEO: verify canonical URL, sitemap inclusion/noindex exclusion, and robots sitemap URL all use `siteUrl`.
 
 Schema and build checks validate structural and technical properties, not fulfillment of the design brief. Compare the final page against the original requirements, using browser evidence for layout and interaction when available. Keep unmet requirements, unavailable checks, and failed checks visible in the final report instead of reclassifying them as optional follow-up work.
+
+Implementation lives in each `src/sections/<type>.<variant>/view.tsx` and its private files. The shell lives in `src/components/layout`; primitives and shared UI live in `src/components/ui` and `src/components/shared`. Follow `create-section` for reuse discovery and extraction criteria instead of importing another Section’s private implementation.

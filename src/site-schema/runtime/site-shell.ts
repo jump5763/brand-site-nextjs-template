@@ -1,6 +1,5 @@
 import type { SiteDocument } from "../generated/types";
-import { resolveLinkTarget } from "./resolve-link";
-import { resolveAction } from "@/lib/home-view-model";
+import { resolveLinkTarget, resolveAction } from "./resolve-link";
 
 export function createSiteShellProps(site: SiteDocument) {
   const header = site.layout.header.content;

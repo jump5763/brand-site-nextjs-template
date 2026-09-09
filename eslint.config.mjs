@@ -8,10 +8,37 @@ const compat = new FlatCompat({ baseDirectory: directory });
 const eslintConfig = [
   ...compat.extends("next/core-web-vitals", "next/typescript"),
   {
-    ignores: [
-      ".next/**",
-      "node_modules/**",
+    ignores: [".next/**", "node_modules/**"],
+  },
+  {
+    files: [
+      "src/components/ui/**/*.{ts,tsx}",
+      "src/components/shared/**/*.{ts,tsx}",
     ],
+    rules: {
+      "no-restricted-imports": [
+        "error",
+        {
+          patterns: [
+            {
+              group: [
+                "@/sections/**",
+                "@/app/**",
+                "@/site-schema/runtime/**",
+                "@/site-schema/generated",
+              "@/site-schema/generated/index*",
+              "**/site-schema/generated/index*",
+                "**/sections/**",
+                "**/app/**",
+                "**/site-schema/runtime/**",
+              ],
+              message:
+                "Shared UI must not depend on Section, route, or runtime orchestration implementations. Pass data through props.",
+            },
+          ],
+        },
+      ],
+    },
   },
   {
     files: ["next-env.d.ts"],

@@ -19,6 +19,7 @@ Use this Skill for copy, media, metadata, links, products, categories, locations
 1. Inspect the target Page and Section and read [content-contract](references/content-contract.md).
    Inspect `src/site-schema/contracts/site-schema.schema.json` and the selected `src/sections/<type>.<variant>/contract.schema.json` for the data contract.
 2. Edit only the required `content` fields.
+   If presentation needs inspection, read that Section’s local `definition.tsx` and actual `view.tsx`; Header/Footer presentation lives in `src/components/layout`. Content-only edits do not move components or extract shared implementations.
 3. Run the controlled checks described in the reference.
 4. Report changed Page/Section IDs and evidence.
 

@@ -1,14 +1,16 @@
 import type { ExampleDefaultSection } from "@/site-schema/generated/types";
-import ExampleView from "./view";
+import ExampleView, { type ExampleProps } from "./view";
 
-export const definition = {
+export const toProps = (section: ExampleDefaultSection): ExampleProps => ({
+  id: section.id,
+  content: section.content,
+});
+export default {
   id: "example.default",
   type: "example",
   variant: "default",
-  toProps: (section: ExampleDefaultSection) => ({ content: section.content }),
+  toProps,
   render: (section: ExampleDefaultSection) => (
-    <ExampleView content={section.content} />
+    <ExampleView {...toProps(section)} />
   ),
 } as const;
-
-export default definition;

@@ -1,3 +1,4 @@
+import type { SiteAction, SiteDocument } from "../generated/types";
 import { linkTargetError } from "./link-policy.mjs";
 export interface PageIdentity {
   id: string;
@@ -109,4 +110,12 @@ export function resolveLinkTarget(
       `Unsupported href ${href}`,
     );
   }
+}
+
+export type ResolvedAction = { label: string; href: string };
+export function resolveAction(
+  action: SiteAction,
+  site: SiteDocument,
+): ResolvedAction {
+  return { label: action.label, href: resolveLinkTarget(action.target, site) };
 }

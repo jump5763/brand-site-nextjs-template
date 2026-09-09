@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 
+// Shared action styles without content, destinations, or Section-specific behavior.
 export type BtnVariant = "primary" | "outline" | "on-inverse" | "ink" | "sage";
 export type BtnSize = "sm" | "md" | "lg";
 

@@ -1,6 +1,6 @@
 import type { FeaturesIconGridSection } from "@/site-schema/generated/types";
 import View from "./view";
-import type { ValuesProps } from "@/lib/home-view-model";
+import type { ValuesProps } from "./view";
 export const toProps = (section: FeaturesIconGridSection): ValuesProps =>
   section.content;
 export default {

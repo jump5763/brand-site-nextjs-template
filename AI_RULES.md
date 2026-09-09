@@ -23,7 +23,7 @@ To ensure consistency and leverage the chosen stack effectively, please follow t
 
 1.  **UI Components**:
     *   **Primary Choice**: Always prioritize using components from the `src/components/ui/` directory (Shadcn/UI components).
-    *   **Custom Components**: If a required component is not available in Shadcn/UI, create a new component in `src/components/` following Shadcn/UI's composition patterns (i.e., building on Radix UI primitives and styled with Tailwind CSS).
+    *   **Custom Components**: If a required component is not available in Shadcn/UI, place the implementation beside its owning Section or layout, following Shadcn/UI's composition patterns (i.e., building on Radix UI primitives and styled with Tailwind CSS).
     *   **Avoid**: Introducing new, third-party UI component libraries without discussion.
 
 2.  **Styling**:
@@ -64,7 +64,7 @@ To ensure consistency and leverage the chosen stack effectively, please follow t
     *   Ensure functions are well-typed and serve a clear, reusable purpose.
 
 12. **Custom Hooks**:
-    *   Custom React hooks should be placed in the `src/hooks/` directory (e.g., `src/hooks/use-mobile.tsx`).
+    *   Keep Section-specific hooks beside that Section. Use `src/hooks/` only for hooks shared by independent owners (e.g., `src/hooks/use-mobile.tsx`).
 
 13. **TypeScript**:
     *   Write all new code in TypeScript.
@@ -74,11 +74,11 @@ By following these guidelines, we can build a more robust, maintainable, and con
 
 ## Site Schema contract
 
-This template uses the Site Schema Site Schema as its content contract. Preserve the top-level `siteId`, `siteUrl`, `theme`, `layout`, and `pages` keys in `src/site-schema/current.json`. Product, category, location, review, metadata, and Section data stay under the owning Page Section `content`; never add top-level `resources` or `schemaVersion`.
+This template uses its own Site Schema content contract. Preserve the top-level `siteId`, `siteUrl`, `theme`, `layout`, and `pages` keys in `src/site-schema/current.json`. Product, category, location, review, and Section data stay under the owning Page Section `content`; Page metadata belongs to `pages[].metadata` and shell content to `layout.header/footer`; never add top-level `resources` or `schemaVersion`.
 
 All content pages render through the single `src/app/[[...slug]]/page.tsx` route. The validated document also supplies Page metadata, canonical URLs, `src/app/sitemap.ts`, and `src/app/robots.ts`. Use registered `type.variant` capabilities from `src/site-schema/generated/capabilities.json`.
 
-Use only the controlled checks `schema:check`, `validate:site`, `typecheck`, and `build` when routing or rendering changes. Do not execute arbitrary shell from an Agent workflow or edit generated files by hand. Project workflows are documented in `.agents/skills/edit-site-content/SKILL.md` and `.agents/skills/compose-page/SKILL.md`.
+Use only the controlled checks `schema:check`, `validate:site`, `typecheck`, `lint`, and `build` when routing or rendering changes. Do not execute arbitrary shell from an Agent workflow or edit generated files by hand. Project workflows are documented in `.agents/skills/edit-site-content/SKILL.md` and `.agents/skills/compose-page/SKILL.md`.
 
 ## Section reuse and page acceptance
 
@@ -87,3 +87,14 @@ Reuse a Section only when its actual content structure, responsive layout, media
 Follow `.agents/skills/compose-page/SKILL.md` to match requirements to capabilities. When a capability is missing, follow `.agents/skills/create-section/SKILL.md` to extend it compatibly or register a new Section before composition. Do not simplify explicit requirements to fit the current catalog or defer them as optional enhancements. Preserve existing page behavior when extending shared capabilities.
 
 Before reporting completion, compare the page with the original requirements and attach relevant implementation and verification evidence. Valid JSON, successful rendering, or a completed tool call alone does not prove fulfillment. Report unmet requirements and failed or unavailable checks explicitly.
+
+## Source ownership and shared component discovery
+
+- `src/sections/<type>.<variant>/` owns the descriptor, Contract, Definition, actual `view.tsx`, and any private components, hooks, selectors, or props types. Use local imports inside the package. The View is an implementation, not a forwarding file to another business directory.
+- `src/components/layout/` owns Header, Footer, and their private presentation helpers. `src/app/layout.tsx` composes them.
+- `src/components/ui/` contains reusable primitives. `src/components/shared/` contains established UI patterns shared by independent owners, such as Reveal, section spacing, and action styles. Neither directory imports Section or route implementations.
+- `src/site-schema/runtime/` owns protocol validation, link/media resolution, loaders, and rendering orchestration. Resolve actions in Definition or the shell adapter; Views consume props. `src/lib/` contains cross-owner pure utilities, not aggregates of unrelated Section props.
+- Before implementing UI, inspect relevant files in `components/ui` and `components/shared`, then read candidate exports, props, implementation, and call sites. Use descriptive filenames and direct imports; do not create a second component registry or a catch-all export barrel.
+- Default to keeping code with its owner. A second independent consumer triggers evaluation, not mandatory extraction. Promote to the narrowest shared owner only when responsibilities match, props remain natural, consumers should evolve together, and the result has no dependency on their private code. Multiple pages using the same Section are still one capability owner.
+- Do not merge components merely because their JSX looks similar. Avoid a shared component with numerous caller-specific flags. If responsibilities diverge, allow implementations to become local again. When changing shared code, inspect and verify every affected consumer.
+- Preserve the existing DOM, classes, and state/event behavior during an ownership-only move. Create extra files only when they improve maintenance; an interactive Section may implement its View directly with `"use client"`.

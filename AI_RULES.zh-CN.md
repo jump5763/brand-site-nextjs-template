@@ -23,7 +23,7 @@
 
 1.  **UI 组件**：
     *   **首选方案**：始终优先使用 `src/components/ui/` 目录中的组件（Shadcn/UI 组件）。
-    *   **自定义组件**：如果 Shadcn/UI 中没有所需组件，请遵循 Shadcn/UI 的组合模式，在 `src/components/` 中创建新组件（即基于 Radix UI 原语构建，并使用 Tailwind CSS 设置样式）。
+    *   **自定义组件**：如果 Shadcn/UI 中没有所需组件，请遵循 Shadcn/UI 的组合模式，在所属 Section 或布局目录中创建组件（即基于 Radix UI 原语构建，并使用 Tailwind CSS 设置样式）。
     *   **避免事项**：未经讨论，不得引入新的第三方 UI 组件库。
 
 2.  **样式**：
@@ -64,7 +64,7 @@
     *   确保函数具有完善的类型定义，并具备清晰、可复用的用途。
 
 12. **自定义 Hook**：
-    *   自定义 React Hook 应放在 `src/hooks/` 目录中（例如 `src/hooks/use-mobile.tsx`）。
+    *   Section 专属 Hook 与该 Section 就近放置；`src/hooks/` 仅保存被独立使用方共享的 Hook（例如 `src/hooks/use-mobile.tsx`）。
 
 13. **TypeScript**：
     *   所有新增代码均使用 TypeScript 编写。
@@ -74,11 +74,11 @@
 
 ## Site Schema 项目规范
 
-本模板使用与 keke-brand-site 项目 Contract 定义的 Site Schema。编辑 `src/site-schema/current.json` 时必须保留顶层 `siteId`、`siteUrl`、`theme`、`layout`、`pages`，商品、分类、门店、评价、metadata 和 Section 数据都归属于对应 Page 的 Section `content`。禁止添加顶层 `resources` 或 `schemaVersion`。
+本模板使用自己的 Site Schema 内容契约。编辑 `src/site-schema/current.json` 时必须保留顶层 `siteId`、`siteUrl`、`theme`、`layout`、`pages`，商品、分类、门店、评价和 Section 数据归属于对应 Section `content`；页面 metadata 位于 `pages[].metadata`，页面外壳内容位于 `layout.header/footer`。禁止添加顶层 `resources` 或 `schemaVersion`。
 
 所有内容页面统一由唯一入口 `src/app/[[...slug]]/page.tsx` 渲染。同一份已校验文档驱动 Page metadata、canonical、`src/app/sitemap.ts` 和 `src/app/robots.ts`。编排页面只能使用 `src/site-schema/generated/capabilities.json` 中已登记的 `type.variant`。
 
-只使用受控入口 `schema:check`、`validate:site`；涉及路由或渲染时再运行 `typecheck` 和 `build`。禁止在 Agent 工作流中执行任意 Shell，禁止手工改 generated 文件。工作流见 `.agents/skills/edit-site-content/SKILL.md` 和 `.agents/skills/compose-page/SKILL.md`。
+只使用受控入口 `schema:check`、`validate:site`；涉及路由或渲染时再运行 `typecheck`、`lint` 和 `build`。禁止在 Agent 工作流中执行任意 Shell，禁止手工改 generated 文件。工作流见 `.agents/skills/edit-site-content/SKILL.md` 和 `.agents/skills/compose-page/SKILL.md`。
 
 ## Section 复用与页面验收
 
@@ -87,3 +87,14 @@
 依照 `.agents/skills/compose-page/SKILL.md` 将需求与能力逐项匹配。存在缺口时，依照 `.agents/skills/create-section/SKILL.md` 兼容扩展能力或登记新 Section，再编排页面。不得为适配现有能力目录简化明确要求，也不得将其推迟为可选增强。扩展共享能力时保留已有页面行为。
 
 报告完成前，对照原始需求检查页面，并提供相关实现与验证证据。JSON 合法、渲染成功或工具调用结束，都不能单独证明需求已完成。明确报告未满足的要求，以及失败或无法执行的检查。
+
+## 代码归属与共享组件发现
+
+- `src/sections/<type>.<variant>/` 拥有 descriptor、Contract、Definition、真实的 `view.tsx`，以及专属子组件、Hook、筛选函数和 props 类型。包内使用本地导入；View 不作为指向另一个业务目录的转发文件。
+- `src/components/layout/` 保存 Header、Footer 及其专属展示辅助，由 `src/app/layout.tsx` 组合。
+- `src/components/ui/` 保存通用基础组件；`src/components/shared/` 保存不同所有者已共同使用的 UI 模式，例如 Reveal、区块间距和行动按钮样式。这两个目录都不反向导入 Section 或路由实现。
+- `src/site-schema/runtime/` 保存协议校验、链接／媒体解析、loader 和渲染编排。链接适配在 Definition 或 Shell adapter 中完成，View 消费 props。`src/lib/` 保存跨所有者的纯工具，不聚合多个无关 Section 的 props。
+- 实现 UI 前，先检查 `components/ui` 和 `components/shared` 中相关文件，再读取候选导出、props、实现及调用位置。文件名直接表达用途，使用直接导入，不增加第二套组件 Registry 或全量导出入口。
+- 默认就近放置。出现第二个独立使用方时开始评估，不自动提取。只有职责相同、接口自然、使用方应一起变化，且提取后不依赖使用方私有代码时，才提升到最窄的共同归属。多个页面使用同一个 Section，仍只有一个能力所有者。
+- 不因 JSX 相似就合并组件，避免大量调用方专用开关。共同职责消失时允许拆回各自目录。修改共享代码时，检查并验证所有受影响的使用方。
+- 仅调整归属时，保留现有 DOM、class、状态和事件行为。按维护需要增加文件；完整交互 Section 可以直接在 `view.tsx` 中使用 `"use client"`。

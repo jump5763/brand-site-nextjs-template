@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 import { Toaster } from "sonner";
-import { Footer } from "@/components/site/footer";
-import { Header } from "@/components/site/header";
+import { Footer } from "@/components/layout/footer";
+import { Header } from "@/components/layout/header";
 import { loadSiteSchema } from "@/site-schema/runtime/load-site";
 import { createSiteShellProps } from "@/site-schema/runtime/site-shell";
 import { themeToCssVariables } from "@/site-schema/runtime/apply-theme";

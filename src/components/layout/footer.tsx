@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowUpRight, ArrowUp, Leaf, Mail, MapPin, Phone } from "lucide-react";
-import { BrandMark } from "@/components/site/brand";
-import { ctaClass } from "@/components/site/cta";
+import { BrandMark } from "@/components/layout/brand";
+import { ctaClass } from "@/components/shared/cta";
 
 import type { FooterProps } from "@/site-schema/runtime/site-shell";
 export function Footer({ locations, ...content }: FooterProps) {
