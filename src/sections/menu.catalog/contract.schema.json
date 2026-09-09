@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codeforma.local/sections/menu.catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["hero", "categories"],
+  "properties": {
+    "hero": {
+      "type": "object",
+      "required": ["title", "description", "action"],
+      "additionalProperties": true
+    },
+    "categories": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "label", "products"],
+        "properties": {
+          "id": { "type": "string" },
+          "label": { "type": "string" },
+          "products": { "type": "array" }
+        },
+        "additionalProperties": true
+      }
+    }
+  }
+}

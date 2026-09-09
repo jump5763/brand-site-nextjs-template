@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "cta.story-links",
+  "type": "cta",
+  "variant": "story-links",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Story links CTA",
+    "description": "A two-link closing call to action for menu and location discovery.",
+    "useWhen": ["A story page needs clear next steps"],
+    "avoidWhen": ["The page needs a single primary action"],
+    "rendering": "server"
+  }
+}

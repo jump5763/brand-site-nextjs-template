@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "menu.catalog",
+  "type": "menu",
+  "variant": "catalog",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Menu catalog",
+    "description": "Renders v45 menu categories and products with filtering, sorting and order state.",
+    "useWhen": ["Build the canonical /menu page"],
+    "avoidWhen": ["Show a small featured product rail"],
+    "rendering": "client-island"
+  }
+}

@@ -1,0 +1,588 @@
+{
+  "sections": [
+    {
+      "version": 1,
+      "id": "cta.story-links",
+      "type": "cta",
+      "variant": "story-links",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Story links CTA",
+        "description": "A two-link closing call to action for menu and location discovery.",
+        "useWhen": [
+          "A story page needs clear next steps"
+        ],
+        "avoidWhen": [
+          "The page needs a single primary action"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "CtaStoryLinksSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "actions",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "faq.default",
+      "type": "faq",
+      "variant": "default",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "FAQ",
+        "description": "Expandable answers for common Keke Food ordering and luwei questions.",
+        "useWhen": [
+          "A page needs a concise set of questions and answers"
+        ],
+        "avoidWhen": [
+          "Content is a long-form editorial story"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "FaqDefaultSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        },
+        {
+          "name": "defaultExpandedIds",
+          "required": false,
+          "type": "array"
+        },
+        {
+          "name": "action",
+          "required": false
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "features.device-showcase",
+      "type": "features",
+      "variant": "device-showcase",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Device showcase",
+        "description": "Shows a primary media asset with supporting feature items.",
+        "useWhen": [
+          "Explain a digital ordering or loyalty experience"
+        ],
+        "avoidWhen": [
+          "Use a restaurant story disclosure layout"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "FeaturesDeviceShowcaseSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "media",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "features.icon-grid",
+      "type": "features",
+      "variant": "icon-grid",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Feature icon grid",
+        "description": "Displays concise feature items with icon media.",
+        "useWhen": [
+          "Summarize services or benefits in a grid"
+        ],
+        "avoidWhen": [
+          "Show long editorial stories"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "FeaturesIconGridSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "features.media-grid",
+      "type": "features",
+      "variant": "media-grid",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Feature media grid",
+        "description": "Pairs feature copy with supporting media cards.",
+        "useWhen": [
+          "Show several visual service or brand features"
+        ],
+        "avoidWhen": [
+          "Display only text and icons"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "FeaturesMediaGridSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "features.story-disclosures",
+      "type": "features",
+      "variant": "story-disclosures",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Story disclosures",
+        "description": "Presents the three story disclosure cards used by the v45 story page.",
+        "useWhen": [
+          "Explain restaurant preparation or sourcing details"
+        ],
+        "avoidWhen": [
+          "Create a generic icon grid"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "FeaturesStoryDisclosuresSection",
+      "contentFields": [
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "hero.default",
+      "type": "hero",
+      "variant": "default",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Default hero",
+        "description": "A media-led hero with title, description and up to three actions.",
+        "useWhen": [
+          "The page needs a primary opening message",
+          "The hero has one or more images"
+        ],
+        "avoidWhen": [
+          "The page only needs an editorial introduction"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "HeroDefaultSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "textColor",
+          "required": false,
+          "type": "string"
+        },
+        {
+          "name": "media",
+          "required": true,
+          "type": "array"
+        },
+        {
+          "name": "primaryAction",
+          "required": false
+        },
+        {
+          "name": "secondaryAction",
+          "required": false
+        },
+        {
+          "name": "tertiaryAction",
+          "required": false
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "hero.intro",
+      "type": "hero",
+      "variant": "intro",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Intro hero",
+        "description": "A compact page introduction with an image or map media.",
+        "useWhen": [
+          "A secondary page needs a clear introduction"
+        ],
+        "avoidWhen": [
+          "The page needs multiple calls to action"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "HeroIntroSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "media",
+          "required": true
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "locations.featured-single",
+      "type": "locations",
+      "variant": "featured-single",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Featured location",
+        "description": "Features one restaurant location with services, storefront media and actions.",
+        "useWhen": [
+          "Give a single location a prominent content block"
+        ],
+        "avoidWhen": [
+          "List multiple locations"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "LocationsFeaturedSingleSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "location",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "name": "services",
+          "required": true,
+          "type": "array"
+        },
+        {
+          "name": "storefront",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "name": "actions",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "locations.map-list",
+      "type": "locations",
+      "variant": "map-list",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Location map list",
+        "description": "Shows one or more restaurant locations with address, hours and directions.",
+        "useWhen": [
+          "Present location details on a landing page"
+        ],
+        "avoidWhen": [
+          "Feature only one location with a storefront image"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "LocationsMapListSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "locations",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "menu.catalog",
+      "type": "menu",
+      "variant": "catalog",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Menu catalog",
+        "description": "Renders v45 menu categories and products with filtering, sorting and order state.",
+        "useWhen": [
+          "Build the canonical /menu page"
+        ],
+        "avoidWhen": [
+          "Show a small featured product rail"
+        ],
+        "rendering": "client-island"
+      },
+      "schemaKey": "MenuCatalogSection",
+      "contentFields": [
+        {
+          "name": "hero",
+          "required": true,
+          "type": "object"
+        },
+        {
+          "name": "categories",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "products.carousel",
+      "type": "products",
+      "variant": "carousel",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Product carousel",
+        "description": "Displays a curated set of products from a v45 Section content.products array.",
+        "useWhen": [
+          "Highlight featured menu items on a content page"
+        ],
+        "avoidWhen": [
+          "Render the complete menu catalog with category filters"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "ProductsCarouselSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "hasOrdering",
+          "required": false,
+          "type": "boolean"
+        },
+        {
+          "name": "products",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "reviews.carousel",
+      "type": "reviews",
+      "variant": "carousel",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Review carousel",
+        "description": "Shows guest reviews with a small client island for carousel navigation.",
+        "useWhen": [
+          "Add social proof from v45 content.reviews"
+        ],
+        "avoidWhen": [
+          "Display a static FAQ or feature list"
+        ],
+        "rendering": "client-island"
+      },
+      "schemaKey": "ReviewsCarouselSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "reviews",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "story.sequence",
+      "type": "story",
+      "variant": "sequence",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Story sequence",
+        "description": "A two-item editorial sequence for a brand story.",
+        "useWhen": [
+          "A story has two ordered chapters"
+        ],
+        "avoidWhen": [
+          "A single story image is sufficient"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "StorySequenceSection",
+      "contentFields": [
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "story.split",
+      "type": "story",
+      "variant": "split",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Split story",
+        "description": "Two-column editorial story with media and an optional page action.",
+        "useWhen": [
+          "A page needs a story beside one image"
+        ],
+        "avoidWhen": [
+          "The story requires a sequence of multiple items"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "StorySplitSection",
+      "contentFields": [
+        {
+          "name": "title",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "description",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "media",
+          "required": true
+        },
+        {
+          "name": "action",
+          "required": false
+        }
+      ]
+    }
+  ]
+}

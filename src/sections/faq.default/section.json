@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "faq.default",
+  "type": "faq",
+  "variant": "default",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "FAQ",
+    "description": "Expandable answers for common Keke Food ordering and luwei questions.",
+    "useWhen": ["A page needs a concise set of questions and answers"],
+    "avoidWhen": ["Content is a long-form editorial story"],
+    "rendering": "server"
+  }
+}

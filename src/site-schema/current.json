@@ -1,0 +1,1603 @@
+{
+  "layout": {
+    "footer": {
+      "content": {
+        "actions": [
+          {
+            "external": true,
+            "href": "https://order.peblla.com/kekefoodkkxl/order",
+            "label": "Order Online"
+          },
+          {
+            "external": true,
+            "href": "https://www.google.com/maps/dir/?api=1&destination=Keke+Food&destination_place_id=ChIJRTD3Ws5hwokRES78IFU7zW0",
+            "label": "Get Directions"
+          }
+        ],
+        "attribution": {
+          "external": true,
+          "href": "https://www.connexup.ai/",
+          "label": "Powered by Connexup"
+        },
+        "brandName": "Keke Food 可可小卤",
+        "businessHours": {
+          "label": "BUSINESS HOURS",
+          "text": "Flushing: Monday - Sunday 10:30 AM - 9:30 PM"
+        },
+        "contact": {
+          "href": "tel:+14156366688",
+          "label": "CONTACT",
+          "text": "(415)636-6688"
+        },
+        "copyright": "© 2026 Keke Food. All rights reserved.",
+        "legalLinks": [
+          {
+            "external": true,
+            "href": "https://www.connexup.ai/privacy-policy",
+            "label": "Privacy Policy"
+          },
+          {
+            "external": true,
+            "href": "https://www.connexup.ai/terms-of-service",
+            "label": "Terms"
+          }
+        ],
+        "location": {
+          "label": "LOCATION",
+          "text": "Low lever, 34-20 Linden Pl, Flushing, NY 11354"
+        },
+        "logoPath": "/media/footer-logo-2f6865ty.png",
+        "navigation": [
+          {
+            "external": false,
+            "href": "/menu",
+            "label": "Menu"
+          },
+          {
+            "external": false,
+            "href": "/our-story",
+            "label": "Our Story"
+          },
+          {
+            "external": false,
+            "href": "/location",
+            "label": "Location"
+          },
+          {
+            "external": false,
+            "href": "/faq",
+            "label": "FAQ"
+          }
+        ],
+        "tagline": "Chinese luwei, boldly braised in Flushing"
+      },
+      "variant": "default"
+    },
+    "header": {
+      "content": {
+        "brandName": "Keke Food 可可小卤",
+        "hasOrdering": true,
+        "logoPath": "/media/logo-as2889k1.png",
+        "navigation": [
+          {
+            "label": "Home",
+            "target": {
+              "kind": "page",
+              "pageId": "home"
+            }
+          },
+          {
+            "label": "Menu",
+            "target": {
+              "kind": "page",
+              "pageId": "menu"
+            }
+          },
+          {
+            "label": "Our Story",
+            "target": {
+              "kind": "page",
+              "pageId": "our-story"
+            }
+          },
+          {
+            "label": "Location",
+            "target": {
+              "kind": "page",
+              "pageId": "location"
+            }
+          }
+        ]
+      },
+      "variant": "compact"
+    }
+  },
+  "pages": [
+    {
+      "id": "home",
+      "metadata": {
+        "canonicalPath": "/",
+        "description": "Explore Chinese braised food and luwei at Keke Food in Flushing, including spicy duck neck, braised chicken, pork trotters, noodles, pickup, and delivery.",
+        "openGraph": {
+          "description": "Explore Chinese braised food and luwei at Keke Food in Flushing, including spicy duck neck, braised chicken, pork trotters, noodles, pickup, and delivery.",
+          "title": "Keke Food | Chinese Braised Food & Luwei in Flushing"
+        },
+        "robots": {
+          "follow": true,
+          "index": true
+        },
+        "structuredData": {
+          "@context": "https://schema.org",
+          "@id": "https://www.mrkeke.com/location#restaurant",
+          "@type": "Restaurant",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Flushing",
+            "addressRegion": "NY",
+            "postalCode": "11354",
+            "streetAddress": "Low lever, 34-20 Linden Pl"
+          },
+          "description": "Explore Chinese braised food and luwei at Keke Food in Flushing, including spicy duck neck, braised chicken, pork trotters, noodles, pickup, and delivery.",
+          "email": "3420mrkeke@gmail.com",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.7658211,
+            "longitude": -73.8315243
+          },
+          "hasMenu": "https://www.mrkeke.com/menu",
+          "image": [
+            "https://www.mrkeke.com/media/home-hero-f2e0da6a.webp",
+            "https://www.mrkeke.com/media/home-hero-ee808989.webp",
+            "https://www.mrkeke.com/media/home-hero-1dd8a653.webp"
+          ],
+          "logo": "https://www.mrkeke.com/media/logo-as2889k1.png",
+          "name": "Keke Food 可可小卤",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "closes": "21:30",
+              "dayOfWeek": [
+                "https://schema.org/Monday",
+                "https://schema.org/Tuesday",
+                "https://schema.org/Wednesday",
+                "https://schema.org/Thursday",
+                "https://schema.org/Friday",
+                "https://schema.org/Saturday",
+                "https://schema.org/Sunday"
+              ],
+              "opens": "10:30"
+            }
+          ],
+          "potentialAction": {
+            "@type": "OrderAction",
+            "deliveryMethod": [
+              "https://schema.org/OnSitePickup"
+            ],
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "description": "Delivery fee is $4.00 for 0–5 miles, $8.00 for 5–10 miles, and free for orders of $60.00 or more. Minimum order amount is $15.00.",
+              "eligibleQuantity": {
+                "@type": "QuantitativeValue",
+                "minValue": 15,
+                "unitText": "USD"
+              },
+              "eligibleTransactionVolume": {
+                "@type": "PriceSpecification",
+                "price": "15.00",
+                "priceCurrency": "USD"
+              },
+              "price": "4.00",
+              "priceCurrency": "USD"
+            },
+            "target": {
+              "@type": "EntryPoint",
+              "actionPlatform": [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/MobileWebPlatform"
+              ],
+              "inLanguage": "en",
+              "urlTemplate": "https://order.peblla.com/kekefoodkkxl/order"
+            }
+          },
+          "priceRange": "$10–20",
+          "sameAs": [
+            "https://www.google.com/maps/place/?q=place_id:ChIJRTD3Ws5hwokRES78IFU7zW0"
+          ],
+          "servesCuisine": "Chinese luwei",
+          "telephone": "+1 415-636-6688",
+          "url": "https://www.mrkeke.com/location"
+        },
+        "title": "Keke Food | Chinese Braised Food & Luwei in Flushing"
+      },
+      "path": "/",
+      "sections": [
+        {
+          "content": {
+            "description": "Explore spicy duck neck, five-spice braised chicken, pork trotters, beef, tofu, hot dry noodles, and more—available for pickup and delivery.",
+            "media": [
+              {
+                "alt": "Sliced braised beef served with noodles and vegetables",
+                "height": 930,
+                "kind": "image",
+                "path": "/media/home-hero-f2e0da6a.webp",
+                "width": 1920
+              },
+              {
+                "alt": "Keke Food dining room with sunlit tables",
+                "height": 1331,
+                "kind": "image",
+                "path": "/media/home-hero-ee808989.webp",
+                "width": 2000
+              },
+              {
+                "alt": "Keke Food table setting in warm sunlight",
+                "height": 1331,
+                "kind": "image",
+                "path": "/media/home-hero-1dd8a653.webp",
+                "width": 2000
+              }
+            ],
+            "primaryAction": {
+              "label": "Order Online",
+              "newTab": true,
+              "target": {
+                "href": "https://order.peblla.com/kekefoodkkxl/order",
+                "kind": "external"
+              }
+            },
+            "secondaryAction": {
+              "href": "/menu",
+              "label": "View Menu",
+              "newTab": false
+            },
+            "tertiaryAction": {
+              "label": "Get Directions",
+              "newTab": true,
+              "target": {
+                "href": "https://www.google.com/maps/dir/?api=1&destination=Keke+Food&destination_place_id=ChIJRTD3Ws5hwokRES78IFU7zW0",
+                "kind": "external"
+              }
+            },
+            "textColor": "#ffffff",
+            "title": "Chinese luwei, boldly braised in Flushing"
+          },
+          "id": "home-hero",
+          "type": "hero",
+          "variant": "default"
+        },
+        {
+          "content": {
+            "description": "Start with spicy duck neck, five-spices chicken, or spicy braised pork trotters.",
+            "hasOrdering": true,
+            "products": [
+              {
+                "id": "bfdb2f91-6938-49d3-b2cb-6a76bd3b8d6f"
+              },
+              {
+                "id": "a9146fdc-8059-4180-ba2f-466016fff658"
+              },
+              {
+                "id": "5500abf0-15c7-4306-bb08-c763c6ef20ad"
+              }
+            ],
+            "title": "Featured Chinese Braised Dishes"
+          },
+          "id": "recommended-dishes",
+          "type": "products",
+          "variant": "carousel"
+        },
+        {
+          "content": {
+            "action": {
+              "label": "Read Our Story",
+              "target": {
+                "kind": "page",
+                "pageId": "our-story"
+              }
+            },
+            "description": "Luwei is a Chinese braising tradition that layers meats, tofu, and vegetables with aromatic spices and deeply savory flavor. At Keke Food, that tradition takes the form of Chinese luwei dishes served in Flushing, Queens.\nChoose a quick snack, build a complete meal, or bring a mixed spread home to share. New to luwei? Start with a featured braised dish, then add hot dry noodles or a vegetable side.",
+            "media": {
+              "alt": "中式卤味拼盘，盘中摆放切片卤鸭颈并以香菜点缀",
+              "height": 1672,
+              "kind": "image",
+              "path": "/media/brand-story-0b813909.webp",
+              "width": 1210
+            },
+            "title": "What Is Luwei? A Chinese Braising Tradition"
+          },
+          "id": "brand-story",
+          "type": "story",
+          "variant": "split"
+        },
+        {
+          "content": {
+            "description": "Find Chinese braised dishes, duck neck, chicken, pork, beef, tofu, noodles, and cold sides at Low lever, 34-20 Linden Pl in Flushing. The official website lists daily hours of 10:30 AM–9:30 PM. Order pickup or view current delivery availability.",
+            "locations": [
+              {
+                "address": "Low lever, 34-20 Linden Pl, Flushing, NY 11354",
+                "businessHours": [
+                  {
+                    "days": [
+                      "MONDAY",
+                      "TUESDAY",
+                      "WEDNESDAY",
+                      "THURSDAY",
+                      "FRIDAY",
+                      "SATURDAY",
+                      "SUNDAY"
+                    ],
+                    "timePeriod": [
+                      {
+                        "endTime": "21:30:00",
+                        "startTime": "10:30:00"
+                      }
+                    ]
+                  }
+                ],
+                "email": "3420mrkeke@gmail.com",
+                "id": "keke-food-flushing",
+                "name": "Keke Food Flushing, NY",
+                "phone": "(415)636-6688",
+                "placeId": "ChIJRTD3Ws5hwokRES78IFU7zW0"
+              }
+            ],
+            "title": "Visit Keke Food in Flushing, Queens"
+          },
+          "id": "restaurant-locations",
+          "type": "locations",
+          "variant": "map-list"
+        },
+        {
+          "content": {
+            "action": {
+              "label": "View All FAQs",
+              "target": {
+                "kind": "page",
+                "pageId": "faq"
+              }
+            },
+            "description": "Questions About Keke Food and Luwei",
+            "items": [
+              {
+                "answer": "Luwei is a Chinese braising tradition used for meats, tofu, vegetables, and other ingredients. Aromatic spices and a seasoned braising liquid create layered, savory flavor. It can be enjoyed as a snack, side, or part of a complete meal.",
+                "id": "what-is-luwei",
+                "question": "What is Chinese luwei?"
+              },
+              {
+                "answer": "Chinese luwei is prepared by braising ingredients in a seasoned broth with aromatic spices, allowing the flavor to build throughout each bite. Keke Food offers duck, chicken, pork, beef, tofu, and vegetable selections in both spicy and five-spice styles.",
+                "id": "distinctive-luwei",
+                "question": "What makes Chinese luwei distinctive?"
+              },
+              {
+                "answer": "Not every luwei dish is spicy. Keke Food offers chili-forward options such as spicy duck neck and mala dishes, along with aromatic five-spice selections such as whole chicken, pork ears, and beef. Check each menu description when choosing your preferred flavor.",
+                "id": "luwei-spice-levels",
+                "question": "Is luwei spicy?"
+              },
+              {
+                "answer": "If you are new to luwei, start with spicy duck neck for a bold savory bite or five-spice whole chicken for a milder aromatic option. Add sweet chili braised tofu or Sichuan pickles to create a balanced mixed order.",
+                "id": "first-luwei-order",
+                "question": "What should I order if I am new to luwei?"
+              },
+              {
+                "answer": "Keke Food is located at Low lever, 34-20 Linden Pl, Flushing, NY 11354. Visit us for Chinese luwei and braised dishes in Flushing, Queens. Current hours and ordering options are listed on the Location page.",
+                "id": "flushing-location",
+                "question": "Where is Keke Food in Flushing?"
+              },
+              {
+                "answer": "Yes. Keke Food offers online ordering for pickup and delivery. Select your preferred option on the Order Online page to view the current menu and complete your order.",
+                "id": "pickup-delivery",
+                "question": "Can I order Chinese braised food for pickup or delivery?"
+              }
+            ],
+            "title": "FAQ"
+          },
+          "id": "home-faq",
+          "type": "faq",
+          "variant": "default"
+        },
+        {
+          "content": {
+            "description": "See what our guests are saying about us",
+            "reviews": [
+              {
+                "avatar": {
+                  "alt": "Meixin Chen",
+                  "height": 120,
+                  "kind": "image",
+                  "path": "https://lh3.googleusercontent.com/a-/ALV-UjXTAap1djfTsHqf_QCq34hCBSxsmbYr27i4AB6o61ic23XPuKB_=s120-c-rp-mo-ba12-br100",
+                  "width": 120
+                },
+                "comment": "味道不错态度很好",
+                "id": "AbFvOqlDwKUI0xdfJmS2sqdnbJ9SVbKfoB4JdX-8gnfDp8z5a0c-VrO3fFtBa_lsQvX2jjelOsxT",
+                "name": "Meixin Chen",
+                "stars": 5
+              },
+              {
+                "avatar": {
+                  "alt": "Mark",
+                  "height": 120,
+                  "kind": "image",
+                  "path": "https://lh3.googleusercontent.com/a-/ALV-UjXmBy4p_tymGKlvWsyVMhCd9BCSXN6Q_sbNzczgXWfm5_mZ9N8=s120-c-rp-mo-ba12-br100",
+                  "width": 120
+                },
+                "comment": "环境卫生，四菜一汤菜品也不错，我喜欢它家的卤味，希望多出一些新品，兔子肉卤味",
+                "id": "AbFvOqlACwYbZPEormM540B6H0L73XQvA9OoWBihHhl1Nqdr7y8xWc-KusZQoOBn1rgzo1cZ-Dch5g",
+                "name": "Mark",
+                "stars": 5
+              },
+              {
+                "avatar": {
+                  "alt": "Y J",
+                  "height": 120,
+                  "kind": "image",
+                  "path": "https://lh3.googleusercontent.com/a/ACg8ocKVX8eUK6CyOEvbor7mraE8VkbGCgOtoD3qsGFpR37fjy6Irg=s120-c-rp-mo-br100",
+                  "width": 120
+                },
+                "comment": "四菜一汤的盒饭，口味好，性价比高，干净卫生。下次还会去买",
+                "id": "AbFvOqlkskjgvboYcQdjVJPxMtvUGUBQHoH9M5ktDKAc5v8Aq29x9hDDocQUb27Ji8bIa-hB7Gwh",
+                "name": "Y J",
+                "stars": 5
+              },
+              {
+                "avatar": {
+                  "alt": "Lily王海铝",
+                  "height": 120,
+                  "kind": "image",
+                  "path": "https://lh3.googleusercontent.com/a-/ALV-UjXZobPDf1-OY_y_TH3gDAgNANGuthPuxaRpkcNHdBDpUo3tSjo=s120-c-rp-mo-ba12-br100",
+                  "width": 120
+                },
+                "comment": "今天买了卤全鸡、豬耳朵、海帶丝，咸淡适宜，食材新鮮，色香味俱全，卤鸡有点儿半熏半鹵，豬耳朵很糯很软的口感，胶原蛋白滿滿，海带丝有一点儿微酸，挺开胃。",
+                "id": "AbFvOqnqmrvaNGwuRHix9Hcxy0mksnMdgtVzQyq8K9X_FXC1oJ6VFUUXp5uCcJ9FsgKFvE0ZFW4OHw",
+                "name": "Lily王海铝",
+                "stars": 5
+              },
+              {
+                "avatar": {
+                  "alt": "汪艳",
+                  "height": 120,
+                  "kind": "image",
+                  "path": "https://lh3.googleusercontent.com/a-/ALV-UjU6P6BaBFF7w6ErKr6-Lq0mSjNfbIJ-1rJT1WL7utC831cyk8de=s120-c-rp-mo-ba12-br100",
+                  "width": 120
+                },
+                "comment": "第一次吃他们家的夫妻肺片味道在美国基本上吃不到这个味儿，太怀恋了。又来买第二次…鸭脖还有卤鸡好吃又划算😘😘",
+                "id": "AbFvOqnU_2yAdyoea3m8FdGlTWcYxHYhtgJVSIYpgX_asYAqsTa9kMyxMmaBJ8NE8FiG1s4Sq6kYMw",
+                "name": "汪艳",
+                "stars": 5
+              },
+              {
+                "avatar": {
+                  "alt": "DERIKE",
+                  "height": 120,
+                  "kind": "image",
+                  "path": "https://lh3.googleusercontent.com/a/ACg8ocIbENVXOOCsBcPi1iYxc7aoibwKIIjqt2zRn06HXStPwb-nmQ=s120-c-rp-mo-br100",
+                  "width": 120
+                },
+                "comment": "以前一直在Weee平台下单购买香辣卤鸡，几乎每周一次，我们全家人都爱吃！今天路过这家门店，进来看到热气腾腾的卤锅，新鲜出炉的卤鸡、猪耳、鸭脖、猪蹄，浓浓的卤香味扑鼻而来，我买了卤鸡、猪蹄、卤豆腐、四川泡菜，和新推出的夫妻肺片和椒麻鸡，在店里和2个朋友喝着冰可乐，好好享受了一顿正宗的家乡卤味。",
+                "id": "AbFvOqm6Bsw9Xoz6SN2qUnP7VciSYZiRySE09oEjbprzCX-qVKowRuauhLXM_nfLiHH8KHAT4nhk",
+                "name": "DERIKE",
+                "stars": 5
+              }
+            ],
+            "title": "What Our Customers Think"
+          },
+          "id": "guest-reviews",
+          "type": "reviews",
+          "variant": "carousel"
+        }
+      ]
+    },
+    {
+      "id": "our-story",
+      "metadata": {
+        "canonicalPath": "/our-story",
+        "description": "What is luwei? Learn about Chinese braised food and the story Keke Food is building in Flushing, Queens, then explore the current menu.",
+        "openGraph": {
+          "description": "What is luwei? Learn about Chinese braised food and the story Keke Food is building in Flushing, Queens, then explore the current menu.",
+          "title": "What Is Luwei? | Keke Food's Chinese Luwei Story"
+        },
+        "robots": {
+          "follow": true,
+          "index": true
+        },
+        "structuredData": {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "Our Chinese Luwei Story"
+        },
+        "title": "What Is Luwei? | Keke Food's Chinese Luwei Story"
+      },
+      "path": "/our-story",
+      "sections": [
+        {
+          "content": {
+            "description": "Keke Food was created to make Chinese braised food easier to enjoy in North America. Inspired by Chinese luwei, the brand brings braised meats, duck specialties, cold dishes, and noodles to Flushing, Queens—sharing a Chinese food tradition with a wider audience.",
+            "media": {
+              "alt": "A chef preparing a braised duck dish",
+              "height": 914,
+              "kind": "image",
+              "path": "/media/story-intro-4df126bd.webp",
+              "width": 631
+            },
+            "title": "Our Chinese Luwei Story"
+          },
+          "id": "story-intro",
+          "type": "hero",
+          "variant": "intro"
+        },
+        {
+          "content": {
+            "items": [
+              {
+                "description": "Luwei uses a seasoned braising liquid and aromatic spices to build flavor across a wide range of ingredients. The result can be enjoyed as a snack, a side, or part of a complete meal.",
+                "id": "luwei",
+                "media": {
+                  "alt": "Chinese luwei spices and seasonings",
+                  "height": 4096,
+                  "kind": "image",
+                  "path": "/media/story-disclosures-570e00b9.webp",
+                  "width": 2734
+                },
+                "title": "What Is Luwei?"
+              },
+              {
+                "description": "In Flushing, Queens, Keke Food brings together Chinese braised dishes, duck specialties, cold sides, and noodles in a menu made for pickup and delivery. Guests can start with a familiar favorite or build a mixed spread that introduces more of the variety found in Chinese luwei.",
+                "id": "flushing",
+                "media": {
+                  "alt": "Braised ducks hanging in the Keke Food kitchen",
+                  "height": 1000,
+                  "kind": "image",
+                  "path": "/media/story-disclosures-88444b86.webp",
+                  "width": 800
+                },
+                "title": "Keke Food in Flushing, Queens"
+              },
+              {
+                "description": "Keke Food’s stated approach combines traditional braising methods with standardized preparation and modern food-safety practices. From ingredient selection and spice blending to preparation, packaging, and delivery, the brand’s goal is to provide Chinese braised food with consistent quality and care.",
+                "id": "preparation",
+                "media": {
+                  "alt": "A Keke Food chef preparing food",
+                  "height": 1000,
+                  "kind": "image",
+                  "path": "/media/story-disclosures-33d5c242.webp",
+                  "width": 1500
+                },
+                "title": "How We Prepare and Serve"
+              }
+            ]
+          },
+          "id": "story-disclosures",
+          "type": "features",
+          "variant": "story-disclosures"
+        },
+        {
+          "content": {
+            "items": [
+              {
+                "description": "As Chinese communities have grown overseas and more diners have discovered Chinese food, Keke Food saw an opportunity to offer a broader range of Chinese deli favorites in one place. The menu brings together duck specialties, braised chicken and beef, pork selections, cold vegetable sides, and noodles so customers can explore Chinese luwei through familiar dishes or try something new.",
+                "id": "origin",
+                "media": {
+                  "alt": "A plated Chinese braised dish",
+                  "height": 468,
+                  "kind": "image",
+                  "path": "/media/editorial-sequence-865439e2.webp",
+                  "width": 468
+                },
+                "title": "Why Keke Food Began"
+              },
+              {
+                "description": "Keke Food’s current brand story begins with Chinese luwei traditions and a simple goal: make Chinese braised food more accessible to customers in North America. The brand aims to introduce the aroma, texture, and variety of Chinese prepared foods through a modern menu built for everyday ordering.",
+                "id": "north-america",
+                "media": {
+                  "alt": "Sliced Chinese braised food ready to serve",
+                  "height": 468,
+                  "kind": "image",
+                  "path": "/media/editorial-sequence-e01b6c4f.webp",
+                  "width": 462
+                },
+                "title": "Bringing Chinese Luwei to North America"
+              }
+            ]
+          },
+          "id": "editorial-sequence",
+          "type": "story",
+          "variant": "sequence"
+        },
+        {
+          "content": {
+            "actions": [
+              {
+                "href": "/menu",
+                "label": "Our Menu"
+              },
+              {
+                "href": "/location",
+                "label": "Our Location"
+              }
+            ],
+            "description": "Explore the current menu, visit Keke Food in Flushing, or use the approved Order Online link for pickup and delivery availability.",
+            "title": "Find Us or Order"
+          },
+          "id": "story-links",
+          "type": "cta",
+          "variant": "story-links"
+        }
+      ]
+    },
+    {
+      "id": "faq",
+      "metadata": {
+        "canonicalPath": "/faq",
+        "description": "Find answers about Chinese luwei, spice levels, allergen information, the Keke Food menu, hours, pickup, delivery, and visiting us in Flushing.",
+        "openGraph": {
+          "description": "Find answers about Chinese luwei, spice levels, allergen information, the Keke Food menu, hours, pickup, delivery, and visiting us in Flushing.",
+          "title": "Keke Food FAQ | Luwei, Allergens, Pickup & Delivery"
+        },
+        "structuredData": {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "inLanguage": "en"
+        },
+        "title": "Keke Food FAQ | Luwei, Allergens, Pickup & Delivery"
+      },
+      "path": "/faq",
+      "sections": [
+        {
+          "content": {
+            "description": "Luwei, Menu, Ordering and Location",
+            "items": [
+              {
+                "answer": "Luwei is a Chinese braising tradition used for meats, tofu, vegetables, and other ingredients. Aromatic spices and a seasoned braising liquid create layered, savory flavor. It can be enjoyed as a snack, side, or part of a complete meal.",
+                "dateCreated": "2026-09-02",
+                "id": "what-is-luwei",
+                "question": "What is Chinese luwei?"
+              },
+              {
+                "answer": "Chinese luwei is prepared by braising ingredients in a seasoned broth with aromatic spices, allowing the flavor to build throughout each bite. Keke Food offers duck, chicken, pork, beef, tofu, and vegetable selections in both spicy and five-spice styles.",
+                "dateCreated": "2026-09-02",
+                "id": "distinctive-luwei",
+                "question": "What makes Chinese luwei distinctive?"
+              },
+              {
+                "answer": "Not every luwei dish is spicy. Keke Food offers chili-forward options such as spicy duck neck and mala dishes, along with aromatic five-spice selections such as whole chicken, pork ears, and beef. Check each menu description when choosing your preferred flavor.",
+                "dateCreated": "2026-09-02",
+                "id": "luwei-spice-levels",
+                "question": "Is luwei spicy?"
+              },
+              {
+                "answer": "If you are new to luwei, start with spicy duck neck for a bold savory bite or five-spice whole chicken for a milder aromatic option. Add sweet chili braised tofu or Sichuan pickles to create a balanced mixed order.",
+                "dateCreated": "2026-09-02",
+                "id": "first-luwei-order",
+                "question": "What should I order if I am new to luwei?"
+              },
+              {
+                "answer": "Keke Food is located at Low lever, 34-20 Linden Pl, Flushing, NY 11354. Visit us for Chinese luwei and braised dishes in Flushing, Queens. Current hours and ordering options are listed on the Location page.",
+                "dateCreated": "2026-09-02",
+                "id": "flushing-location",
+                "question": "Where is Keke Food in Flushing?"
+              },
+              {
+                "answer": "Yes. Keke Food offers online ordering for pickup and delivery. Select your preferred option on the Order Online page to view the current menu and complete your order.",
+                "dateCreated": "2026-09-02",
+                "id": "pickup-delivery",
+                "question": "Can I order Chinese braised food for pickup or delivery?"
+              },
+              {
+                "answer": "Keke Food’s Flushing location is open daily from 10:30 AM to 9:30 PM.",
+                "dateCreated": "2026-09-02",
+                "id": "current-hours",
+                "question": "What are Keke Food’s current hours?"
+              },
+              {
+                "answer": "Yes. The official Keke Food online ordering menu lists item prices and portion sizes for selected dishes.",
+                "dateCreated": "2026-09-02",
+                "id": "online-prices-portions",
+                "question": "Does Keke Food list prices and portions online?"
+              },
+              {
+                "answer": "The current online ordering menu does not provide detailed allergen information. If you have food allergies or dietary restrictions, please contact Keke Food before ordering to confirm ingredients and preparation. Do not rely on menu names alone when making an allergy-related decision.",
+                "dateCreated": "2026-09-02",
+                "id": "allergen-information",
+                "question": "Does Keke Food provide allergen information?"
+              },
+              {
+                "answer": "Yes. Keke Food classifies its tofu and vegetable dishes as vegetarian dishes. Guests with vegan requirements, allergies or other dietary restrictions should contact the restaurant before ordering.",
+                "dateCreated": "2026-09-02",
+                "id": "vegetarian-dishes",
+                "question": "Are tofu and vegetable dishes vegetarian?"
+              },
+              {
+                "answer": "Yes. The current online ordering menu displays dish names in both English and Chinese.",
+                "dateCreated": "2026-09-02",
+                "id": "bilingual-menu",
+                "question": "Can I view the Keke Food menu in both English and Chinese?"
+              }
+            ],
+            "title": "Keke Food FAQ"
+          },
+          "id": "faq-main",
+          "type": "faq",
+          "variant": "default"
+        }
+      ]
+    },
+    {
+      "id": "location",
+      "metadata": {
+        "canonicalPath": "/location",
+        "description": "Find Keke Food on Linden Place in Flushing for Chinese braised food and luwei. View current hours and order pickup or delivery.",
+        "openGraph": {
+          "description": "Find Keke Food on Linden Place in Flushing for Chinese braised food and luwei. View current hours and order pickup or delivery.",
+          "title": "Keke Food Flushing | Chinese Braised Food on Linden Place"
+        },
+        "robots": {
+          "follow": true,
+          "index": true
+        },
+        "structuredData": {
+          "@context": "https://schema.org",
+          "@id": "https://www.mrkeke.com/location#restaurant",
+          "@type": "Restaurant",
+          "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US",
+            "addressLocality": "Flushing",
+            "addressRegion": "NY",
+            "postalCode": "11354",
+            "streetAddress": "Low lever, 34-20 Linden Pl"
+          },
+          "email": "3420mrkeke@gmail.com",
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 40.7658211,
+            "longitude": -73.8315243
+          },
+          "hasMenu": "https://www.mrkeke.com/menu",
+          "image": [
+            "https://www.mrkeke.com/media/location-featured-3bffafd0.webp"
+          ],
+          "logo": "https://www.mrkeke.com/media/logo-as2889k1.png",
+          "name": "Keke Food 可可小卤",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "closes": "21:30",
+              "dayOfWeek": [
+                "https://schema.org/Monday",
+                "https://schema.org/Tuesday",
+                "https://schema.org/Wednesday",
+                "https://schema.org/Thursday",
+                "https://schema.org/Friday",
+                "https://schema.org/Saturday",
+                "https://schema.org/Sunday"
+              ],
+              "opens": "10:30"
+            }
+          ],
+          "priceRange": "$10–20",
+          "sameAs": [
+            "https://www.google.com/maps/place/?q=place_id:ChIJRTD3Ws5hwokRES78IFU7zW0"
+          ],
+          "servesCuisine": "Chinese luwei",
+          "telephone": "+1 415-636-6688",
+          "url": "https://www.mrkeke.com/location"
+        },
+        "title": "Keke Food Flushing | Chinese Braised Food on Linden Place"
+      },
+      "path": "/location",
+      "sections": [
+        {
+          "content": {
+            "description": "Visit Keke Food at Low lever, 34-20 Linden Pl in Flushing, Queens for Chinese braised food, spicy duck neck, five-spice chicken, pork and beef selections, tofu, noodles, and cold sides. Stop in for a quick luwei snack, build a complete meal, or bring a mixed spread home.",
+            "media": {
+              "accessibleTitle": "Interactive map for Keke Food Flushing, NY",
+              "kind": "google-map",
+              "placeId": "ChIJRTD3Ws5hwokRES78IFU7zW0"
+            },
+            "title": "Chinese Braised Food in Flushing, Queens"
+          },
+          "id": "location-intro",
+          "type": "hero",
+          "variant": "intro"
+        },
+        {
+          "content": {
+            "actions": [
+              {
+                "href": "https://www.google.com/maps/dir/?api=1&destination=Keke+Food&destination_place_id=ChIJRTD3Ws5hwokRES78IFU7zW0",
+                "label": "Get Directions"
+              },
+              {
+                "href": "https://order.peblla.com/kekefoodkkxl/order",
+                "label": "Order Online"
+              }
+            ],
+            "description": "Find a store near you",
+            "location": {
+              "address": "Low lever, 34-20 Linden Pl, Flushing, NY 11354",
+              "businessHoursLabel": "Monday - Sunday",
+              "businessHoursValue": "10:30 AM - 9:30 PM",
+              "email": "3420mrkeke@gmail.com",
+              "name": "Keke Food Flushing, NY",
+              "phone": "(415)636-6688"
+            },
+            "services": [
+              "Pickup",
+              "Delivery",
+              "Dine-in"
+            ],
+            "storefront": {
+              "alt": "Keke Food storefront at Low lever, 34-20 Linden Place in Flushing",
+              "height": 1664,
+              "kind": "image",
+              "path": "/media/location-featured-3bffafd0.webp",
+              "width": 2368
+            },
+            "title": "Our Location"
+          },
+          "id": "location-featured",
+          "type": "locations",
+          "variant": "featured-single"
+        },
+        {
+          "content": {
+            "description": "Start with spicy duck neck, five-spices chicken, or spicy braised pork trotters.",
+            "hasOrdering": true,
+            "products": [
+              {
+                "id": "bfdb2f91-6938-49d3-b2cb-6a76bd3b8d6f"
+              },
+              {
+                "id": "a9146fdc-8059-4180-ba2f-466016fff658"
+              },
+              {
+                "id": "5500abf0-15c7-4306-bb08-c763c6ef20ad"
+              }
+            ],
+            "title": "Featured at This Location"
+          },
+          "id": "location-featured-products",
+          "type": "products",
+          "variant": "carousel"
+        }
+      ]
+    },
+    {
+      "id": "menu",
+      "metadata": {
+        "canonicalPath": "/menu",
+        "description": "Browse Keke Food's current GBP menu of Chinese luwei and braised duck, chicken, pork, beef, tofu, and vegetable dishes in Flushing, Queens.",
+        "openGraph": {
+          "description": "Browse Keke Food's current GBP menu of Chinese luwei and braised duck, chicken, pork, beef, tofu, and vegetable dishes in Flushing, Queens.",
+          "title": "Keke Food Menu | Chinese Luwei & Braised Dishes"
+        },
+        "robots": {
+          "follow": true,
+          "index": true
+        },
+        "structuredData": {
+          "@context": "https://schema.org",
+          "@id": "https://www.mrkeke.com/menu#menu",
+          "@type": "Menu",
+          "description": "Browse Keke Food's current GBP menu of Chinese luwei and braised duck, chicken, pork, beef, tofu, and vegetable dishes in Flushing, Queens.",
+          "inLanguage": [
+            "en",
+            "zh-Hans"
+          ],
+          "name": "Keke Food Menu: Chinese Luwei & Braised Dishes",
+          "url": "https://www.mrkeke.com/menu"
+        },
+        "title": "Keke Food Menu | Chinese Luwei & Braised Dishes"
+      },
+      "path": "/menu",
+      "sections": [
+        {
+          "content": {
+            "categories": [
+              {
+                "id": "signature-whole-chicken",
+                "label": "Signature Whole Chicken",
+                "products": [
+                  {
+                    "amount": "1499",
+                    "description": "Whole chicken braised with chili and aromatic spices, a signature Chinese luwei dish. 1 pc.",
+                    "id": "2bc91e5a-eba4-48d8-9ac4-db7a3076b9c6",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY BRAISED CHICKEN at Keke Food",
+                      "height": 2721,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/6i4hvTJykoKbTRXlK_E9gPBiROrhXoeLPhVNJ5FyTgmtyyeiq0mKsK9DxFYyoyffd6LNWLXlSQ7qurrr0Q=s0",
+                      "width": 2787
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "This whole chicken brings Keke Food's spicy braising style to the center of the table. Chili and aromatic spices give the savory chicken a bold finish while keeping it versatile enough to share with rice and vegetable sides. It is a signature Chinese luwei choice for a family meal or group order in Flushing, Queens.",
+                    "suitableForDiet": [],
+                    "title": "SPICY BRAISED CHICKEN 香辣卤鸡（整只）"
+                  },
+                  {
+                    "amount": "1399",
+                    "description": "Whole chicken braised with a fragrant five-spice blend for a savory Chinese luwei flavor. 1 pc.",
+                    "id": "a9146fdc-8059-4180-ba2f-466016fff658",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "FIVE SPICES CHICKEN at Keke Food",
+                      "height": 1254,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/wm7xpsudqqgRm3mzLWaCwJsrxiQU45wXVYA414_D-WVZ4SG-aA0YsAUyXQJihhXPfQlkp3Zdvy4iZ-OFDQ=s0",
+                      "width": 1254
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Fragrant five-spice seasoning gives this whole braised chicken its savory, aromatic character. The generous format makes it an easy centerpiece for sharing, with enough flavor to pair naturally with rice, pickles, tofu, or other Chinese luwei favorites. Choose it for a warming, relaxed group meal from Keke Food in Flushing, Queens, with family or friends.",
+                    "suitableForDiet": [],
+                    "title": "FIVE SPICES CHICKEN 五香卤鸡（整只）"
+                  }
+                ]
+              },
+              {
+                "id": "duck-and-chicken-braises",
+                "label": "Duck & Chicken Braises",
+                "products": [
+                  {
+                    "amount": "899",
+                    "description": "Duck neck braised with chili and aromatic spices for a savory, spicy Chinese luwei bite. 300 g.",
+                    "id": "bfdb2f91-6938-49d3-b2cb-6a76bd3b8d6f",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY DUCK NECK at Keke Food",
+                      "height": 800,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/umAoS8D0m7Rkn9uLB7Qanqh4q831WoyFlH2-ezOVMCBkcts0n476m4CVMSvsmoySqJG_0JcFU2appWFa=s0",
+                      "width": 800
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Spicy duck neck is one of the most recognizable ways to enjoy Chinese luwei. Each piece carries savory braising spices and a lively chili finish, making it well suited to slow snacking or sharing alongside other duck cuts. Add this Chinese braised food favorite to a mixed local spread from Keke Food in Flushing, Queens.",
+                    "suitableForDiet": [],
+                    "title": "SPICY DUCK NECK 香辣鸭脖"
+                  },
+                  {
+                    "amount": "1199",
+                    "description": "Two duck legs braised Jingwu-style with chili and aromatic spices. 2 pc.",
+                    "id": "a3c257fe-30a7-4427-bbd2-fbbb794001ac",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "JINGWU SPICY DUCK LEGS at Keke Food",
+                      "height": 1004,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/2-G2pvf8syCREP3ajCmCJ2g3YZdhXoSm38RHvxYu7lJBt3g6o21quq3QU-2WtzOcpZfqm6hkqwMM8FJx=s0",
+                      "width": 1242
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Jingwu-style duck legs combine a substantial cut with the deep flavor of chili and aromatic braising spices. The two-piece serving works as a focused duck dish or as part of a larger Chinese luwei spread with wings, neck, and vegetable sides. It is a bold choice for customers exploring Chinese braised food in Flushing today.",
+                    "suitableForDiet": [],
+                    "title": "JINGWU SPICY DUCK LEGS 精武香辣鸭腿"
+                  },
+                  {
+                    "amount": "1299",
+                    "description": "Duck tongue seasoned with sweet chili and aromatic braising spices. 100 g.",
+                    "id": "01d7ca21-0ba9-4698-9e97-84a6cb2607f3",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SWEET AND SPICY DUCK TONGUE at Keke Food",
+                      "height": 678,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/P3KE3HI-bUj1WB-hSHl-22APCVKiqT0dtWZnGNHUKMC6_Gq2I7z47uhunSqlSjP33mSDh3XXDo6QQcfw=s0",
+                      "width": 842
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Sweet and spicy duck tongue offers a distinctive small-bite experience with a balance of chili warmth and aromatic braising spice. Its compact serving makes it easy to add contrast to a shared selection of braised duck dishes. Try it with savory five-spice items or cool vegetable sides as part of a balanced Keke Food spread in Flushing, Queens.",
+                    "suitableForDiet": [],
+                    "title": "SWEET AND SPICY DUCK TONGUE 甜辣鸭舌"
+                  },
+                  {
+                    "amount": "699",
+                    "description": "Chicken feet braised with chili and aromatic spices for a bold, savory flavor. 10 pc.",
+                    "id": "73de1edc-070b-4dda-a190-a14ede51fa04",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY CHICKEN FEET at Keke Food",
+                      "height": 789,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/aJlwaOBwf1xHa_3MOIXOwrCphbOWS7JvPxE4SrvfnxLGi8YFWLm-EsRZ3HNMTQQJ6b-ybglmjILgRr_-=s0",
+                      "width": 1080
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Braised chicken feet absorb chili and aromatic spices in every bite, creating a bold savory profile with the texture this cut is known for. The ten-piece serving is convenient for sharing or adding to a mixed Chinese luwei order. Pair it with duck neck, tofu, or pickled vegetables for a varied Keke Food spread together.",
+                    "suitableForDiet": [],
+                    "title": "SPICY CHICKEN FEET 香辣鸡爪"
+                  },
+                  {
+                    "amount": "499",
+                    "description": "One large chicken leg braised with chili and aromatic spices. 1 pc.",
+                    "id": "6070cad2-b703-46cc-90c7-746afcdf6dac",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY BIG CHICKEN LEG at Keke Food",
+                      "height": 962,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/AHxRL-ZEKvNz5IbEb2BUhi4TelBkJEHP_SpP1q7lo7vUrv7JSYuSLFBBQjzmUPVVKdvrd-IyTfIIO8mv=s0",
+                      "width": 1444
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "A large chicken leg makes this spicy braised dish a simple, satisfying choice for one. Chili and aromatic spices bring a savory finish that works equally well as a snack, a side, or a companion to rice. It is an approachable introduction to the local Chinese luwei selection at Keke Food in Flushing, Queens, today.",
+                    "suitableForDiet": [],
+                    "title": "SPICY BIG CHICKEN LEG 香辣大鸡腿"
+                  },
+                  {
+                    "amount": "699",
+                    "description": "Duck wings braised with chili and aromatic spices for a savory, spicy bite. 6 pc.",
+                    "id": "7c3396e0-15b4-4572-b66e-b2a713a70e4e",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY DUCK WINGS at Keke Food",
+                      "height": 714,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/jVx6rVzP7IieV7GawKFOMp60_gEVU9BgRVytEzhFDTnKZ8ofgq1UjtAb7J90_sKJImSjZ3odWf5B8hks=s0",
+                      "width": 1080
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "These spicy braised duck wings bring together a familiar cut and the savory depth of Chinese luwei seasoning. Chili and aromatic spices give the six-piece serving a bold finish that fits naturally into a shared duck platter. Combine them with duck neck, duck feet, or a refreshing cold side for more variety at the table.",
+                    "suitableForDiet": [],
+                    "title": "SPICY DUCK WINGS 香辣鸭翅"
+                  },
+                  {
+                    "amount": "699",
+                    "description": "Duck feet braised Jingwu-style with chili and aromatic spices. 10 pc.",
+                    "id": "6e67911e-eeda-47c7-8fa8-782e5bf254b1",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY JINGWU DUCK FEET at Keke Food",
+                      "height": 765,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/b7gmYaIWPYNaRwSTwypHJkwFeYw8stXfOu0CggxWtMsq6WBdd4HqNo4QTWw0GgEWBAh5V0tUCmWqkD-P=s0",
+                      "width": 1080
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Jingwu-style duck feet are braised with chili and aromatic spices for a savory, spicy bite with a distinctive texture. The ten-piece portion makes them easy to share and ideal for building a broader Chinese braised food selection. Add duck wings, neck, or tongue to compare several classic cuts in one Keke Food order with friends.",
+                    "suitableForDiet": [],
+                    "title": "SPICY JINGWU DUCK FEET 精武香辣鸭掌"
+                  }
+                ]
+              },
+              {
+                "id": "pork-and-offal-braises",
+                "label": "Pork & Offal Braises",
+                "products": [
+                  {
+                    "amount": "799",
+                    "description": "Pork intestine braised with chili and aromatic spices for a rich, spicy flavor. 200 g.",
+                    "id": "4826c2b9-cbb6-4d4f-a6b1-4036a6fc9549",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY FAT SAUSAGE at Keke Food",
+                      "height": 2589,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/tUbIEVPQobifW63yAcgUKZwys4gxsOqdopVoG5bZe_et8kD8eaAXD7qCA7DFhjuDeBzHZ48NCHi_FY5-=s0",
+                      "width": 4008
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Pork intestine takes on a rich, savory character when braised with chili and aromatic spices. This spicy Chinese braised dish offers a more robust choice for diners who enjoy offal and bold flavors. Pair it with rice or crisp vegetable sides, or include it in a mixed Chinese luwei spread from Keke Food in Flushing.",
+                    "suitableForDiet": [],
+                    "title": "SPICY FAT SAUSAGE 香辣肥肠"
+                  },
+                  {
+                    "amount": "899",
+                    "description": "Pork ears braised with a fragrant five-spice blend and sliced for serving. 300 g.",
+                    "id": "58c6f8f9-080b-4f69-a25a-28fb000255bf",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICED PORK EARS at Keke Food",
+                      "height": 2382,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/VydIDZKzjXftEM38iB9r_2HHX-Yx9iFrPxaL3jdf5zzFcLvkpZr8LW2Bu2V3xdSGYjJw0CSoSe-4OnHg=s0",
+                      "width": 2743
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Five-spice braised pork ears are sliced for serving, highlighting the crisp, pleasantly chewy texture of the cut. Their fragrant savory seasoning offers a milder counterpoint to mala and chili-forward dishes. Add them to a Chinese luwei platter with beef shank, duck wings, or pickled vegetables for a well-balanced, satisfying shared mix of flavors and textures.",
+                    "suitableForDiet": [],
+                    "title": "SPICED PORK EARS 五香卤猪耳"
+                  },
+                  {
+                    "amount": "699",
+                    "description": "Pork stomach braised with aromatic five-spice seasoning for a savory Chinese luwei flavor. 200 g.",
+                    "id": "60c368de-8a37-4d50-a643-e7716cf96d87",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICED PORK BELLY at Keke Food",
+                      "height": 1280,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/_OE-y-NW83icsOtzerZeMIqhYja1PGmlL-TSUhQamRrBJEbb4uqJyn-gFwv51gtUrh9O0Gnfy5nrBM-t=s0",
+                      "width": 1707
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "This dish features pork stomach, not pork belly, braised with aromatic five-spice seasoning. The savory Chinese luwei flavor and distinctive texture make it a natural companion to sliced beef, duck specialties, and refreshing cold sides. It is a useful choice for diners exploring a wider range of braised cuts on the Keke Food menu in Flushing.",
+                    "suitableForDiet": [],
+                    "title": "SPICED PORK BELLY 五香猪肚"
+                  },
+                  {
+                    "amount": "699",
+                    "description": "Pork trotters braised with chili and Sichuan peppercorn for a bold mala flavor. 350 g.",
+                    "id": "5500abf0-15c7-4306-bb08-c763c6ef20ad",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY BRAISED PORK TROTTERS at Keke Food",
+                      "height": 658,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/Kb_zlxs0Xy9k04fa0aTlZaETI1ai0oi1z2262DGjkBGsUN3qlYwRW2y4OhoBDGpEjk2Jb10at7V57rnx=s0",
+                      "width": 1080
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Mala braised pork trotters combine a rich cut with chili and Sichuan peppercorn for a bold, numbing-spicy finish. The dish adds depth and contrast to a shared meal, especially beside rice and tangy vegetable sides. Choose it as a hearty Chinese braised specialty for family-style dining from Keke Food in Flushing, Queens, at the table.",
+                    "suitableForDiet": [],
+                    "title": "SPICY BRAISED PORK TROTTERS 麻辣猪蹄"
+                  },
+                  {
+                    "amount": "999",
+                    "description": "Pork intestine stir-fried with tangy pickled mustard greens and chili. 300 g.",
+                    "id": "2964957e-93d3-49ab-9d43-add0c9df7173",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SAUERKRAUT FRIED FATTY INTESTINE at Keke Food",
+                      "height": 1280,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/gu-sxp29HOu-apHvZkv0xwj2YDfuRyIWG7M68NMgKqJtp4N77pnW3_oN3fsRJQdhcWAbp4mjpcVxV25wZg=s0",
+                      "width": 1707
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "This hot dish pairs pork intestine with tangy pickled mustard greens and chili, creating a lively balance of rich, sour, and spicy flavors. Unlike Keke Food's braised intestine, this version is stir-fried for a different style of meal. Serve it with rice and a cool vegetable side to round out the shared table in Flushing.",
+                    "suitableForDiet": [],
+                    "title": "SAUERKRAUT FRIED FATTY INTESTINE 酸菜爆炒肥肠"
+                  },
+                  {
+                    "amount": "999",
+                    "description": "Beef tripe braised with aromatic five-spice seasoning for a savory Chinese luwei flavor. 200 g.",
+                    "id": "dcccd92e-d6fe-4d23-a034-e717b6e89c7e",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICED TRIPE at Keke Food",
+                      "height": 3626,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/LOHsXRsXDYHBqnYFSEJ7p1ZAUS3ZefZm_pcOQNzYNCRExXqCTd56RnlQO798WC17FRhMxhlmUjp1ZI7S=s0",
+                      "width": 5616
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Beef tripe is braised with aromatic five-spice seasoning for a savory Chinese luwei dish with a distinctive, pleasantly chewy texture. Its balanced spice profile makes it easy to pair with stronger mala selections or lighter vegetable sides. Add it to a mixed braised platter from Keke Food in Flushing, Queens, for shared dining with friends.",
+                    "suitableForDiet": [],
+                    "title": "SPICED TRIPE 五香牛肚"
+                  }
+                ]
+              },
+              {
+                "id": "beef-braises-and-cold-plates",
+                "label": "Beef Braises & Cold Plates",
+                "products": [
+                  {
+                    "amount": "1099",
+                    "description": "Sliced beef and tripe tossed in chili oil with Sichuan peppercorn for a numbing-spicy mala flavor. 350 g.",
+                    "id": "4bfa4787-d6dc-4688-adbf-ab50b1df5cd1",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY BEEF AND TRIPE SALAD at Keke Food",
+                      "height": 186,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/hn_vr0rnMQt0ECf9KBG9RTBa_8INU2-TwiFqKisyeQwhHBRm5SOnZBDXrJ0mRpYwvb48EJJ7G3OhaR0L=s0",
+                      "width": 271
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Sliced beef and tripe are tossed in chili oil with Sichuan peppercorn, bringing savory depth and the signature numbing heat of mala flavor. Served as a cold dish, it creates a refreshing contrast beside warm braised chicken or rice. This Sichuan-style favorite is a bold addition to a shared Keke Food meal in Flushing, Queens.",
+                    "suitableForDiet": [],
+                    "title": "SPICY BEEF AND TRIPE SALAD 麻辣夫妻肺片"
+                  },
+                  {
+                    "amount": "899",
+                    "description": "Beef tendon braised with aromatic five-spice seasoning for a rich, savory flavor. 200 g.",
+                    "id": "60312313-8fdf-49b4-bccf-d180c7083458",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "BRAISED BEEF TENDON at Keke Food",
+                      "height": 1280,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/cJfKyTcG6g5ugPt_oQURNGncHCvEe7mM8KUFCC6B5tQJyuuqbUo8q-Jnku5AKfFq1Bjdc0dC_-e6uUz0=s0",
+                      "width": 1707
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Braised beef tendon develops a rich, savory flavor from aromatic five-spice seasoning while keeping the resilient texture that defines this cut. It works well as a focused Chinese luwei choice or as part of a platter with beef shank and tripe. Pair it with pickles or shredded kelp for a bright, refreshing contrast at the table.",
+                    "suitableForDiet": [],
+                    "title": "BRAISED BEEF TENDON 卤牛筋"
+                  },
+                  {
+                    "amount": "999",
+                    "description": "Beef shank braised with a fragrant five-spice blend and sliced for serving. 300 g.",
+                    "id": "daa97da9-6b3e-4364-aee2-affa6a12cb21",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICED BEEF at Keke Food",
+                      "height": 1000,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/vmGesmCVPYUbBasG4yQZVJCTOnaZJNwR7w_LCt7OE7OFtl2bAbCZD1XZyTeXd13jtSqSqGow2kQGsP3z=s0",
+                      "width": 750
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Beef shank is braised with a fragrant five-spice blend and sliced for easy serving. The savory flavor and substantial texture make it a versatile Chinese braised dish for sharing, snacking, or pairing with rice. Order it with tendon and tripe to explore several beef specialties from Keke Food during a relaxed shared Flushing, Queens meal.",
+                    "suitableForDiet": [],
+                    "title": "SPICED BEEF 卤牛腱肉"
+                  }
+                ]
+              },
+              {
+                "id": "hot-dishes-and-rice",
+                "label": "Hot Dishes & Rice",
+                "products": [
+                  {
+                    "amount": "699",
+                    "description": "Chicken seasoned with chili and Sichuan peppercorn for a bold, numbing-spicy mala flavor. 300 g.",
+                    "id": "9a69f163-cb1b-4b18-838d-e8e17e39cbfd",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "MALA SPICY CHICKEN at Keke Food",
+                      "height": 468,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/HeKQ_KuNYEk-4sg67KtDPaJl9zA8g-9lqVqszrQo5uIHCrWQZFihOq_NMImzKqJhaXhGgI3kI0mxgFvL=s0",
+                      "width": 624
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Mala spicy chicken layers chili heat with the citrus-like tingle of Sichuan peppercorn. The bold, numbing-spicy flavor brings energy to a shared meal and pairs especially well with rice or cool vegetable sides. Choose this peppercorn chicken when you want a lively, savory hot dish from Keke Food in Flushing, Queens, for lunch or dinner.",
+                    "suitableForDiet": [],
+                    "title": "MALA SPICY CHICKEN 麻辣椒麻鸡"
+                  },
+                  {
+                    "amount": "1500",
+                    "description": "Fish head topped with chopped chili peppers for a savory, spicy Hunan-style dish. 1 order.",
+                    "id": "f6ee0a9d-7051-442b-950c-8d0e4761c502",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "CHOP BELL PEPPER FISH HEAD at Keke Food",
+                      "height": 629,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/6EYCxPA0AQ66hQyGW9ZtHwDahbgW5_BdrMOOwDRUJGp3PlHUH-Ofk2Ey_-wrWHwu5iFE2NLXVi-PaXLo=s0",
+                      "width": 959
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Fish head topped with chopped chili peppers brings savory heat to a Hunan-style centerpiece. The full order is designed to anchor a meal, making rice and refreshing cold sides useful companions. Choose it when your group wants a substantial hot dish alongside Keke Food's Chinese luwei and braised specialties in Flushing, Queens, with family or friends.",
+                    "suitableForDiet": [],
+                    "title": "CHOP BELL PEPPER FISH HEAD 剁椒鱼头"
+                  },
+                  {
+                    "amount": "1000",
+                    "description": "Longjiang-style braised pork trotter served with rice for a savory, satisfying meal. 1 order.",
+                    "id": "b3328882-d542-4f5c-b196-17eaa898d91f",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "LONGJIANG PIG FEET RICE at Keke Food",
+                      "height": 1280,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/7SynIk2cWvc-u-xloswg7RYow7owzQwF2iXwS5FnTqlBFgIwqYNfyPiO5bFzGvScyUhPFbJ4eMv1zhnf=s0",
+                      "width": 1707
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Longjiang-style pork trotter and rice bring a savory braised specialty together in one convenient meal. The rice provides a simple base for the rich pork flavor, making this a practical choice when you want more than a snack or side. Enjoy it on its own or add pickled vegetables for extra tangy contrast on busy days.",
+                    "suitableForDiet": [],
+                    "title": "LONGJIANG PIG FEET RICE 隆江猪脚饭"
+                  },
+                  {
+                    "amount": "1200",
+                    "description": "Rabbit seasoned with chili and Sichuan peppercorn for a bold mala flavor. 1 order.",
+                    "id": "0da3ddc9-bdaa-428d-a1ea-66082b5599a1",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY RABBIT MEAT at Keke Food",
+                      "height": 1122,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/3p6eRJnDOrpUU7KjrLhNqOoVey0NG2lNyAx6laXEXtrRITAl9dGATk7W5hVR7PqAV7D1z0tqmvQH1zwG=s0",
+                      "width": 1402
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Mala rabbit is seasoned with chili and Sichuan peppercorn for a bold, numbing-spicy flavor. This distinctive hot dish offers an alternative to the chicken, pork, and beef selections on the Keke Food menu. Pair it with rice and a tangy cold side to balance the heat in a shared Flushing, Queens meal with family or friends.",
+                    "suitableForDiet": [],
+                    "title": "SPICY RABBIT MEAT 麻辣兔"
+                  },
+                  {
+                    "amount": "1200",
+                    "description": "Bullfrog seasoned with chili and Sichuan peppercorn for a bold mala flavor. 1 order.",
+                    "id": "66c87b96-5a97-40d3-a2e3-10982bc3c808",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY BULLFROG at Keke Food",
+                      "height": 1122,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/2PIU55kAUwo44xQJndC6Ji5Wt-j0JfmYC2qC8SRh2mh-CmRrbtAYOIfECtTLf6Lx2t4D2XAjT_gLAyey=s0",
+                      "width": 1402
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Spicy bullfrog combines chili and Sichuan peppercorn in a savory mala preparation with a lively numbing finish. It is a distinctive choice for diners looking beyond familiar braised meats and poultry. Add rice and a refreshing vegetable side to build a balanced hot meal from Keke Food in Flushing, Queens, for a relaxed dinner with friends.",
+                    "suitableForDiet": [],
+                    "title": "SPICY BULLFROG 麻辣牛蛙"
+                  },
+                  {
+                    "amount": "1000",
+                    "description": "Sliced pork stir-fried with chili peppers in a savory Hunan-style dish. 1 order.",
+                    "id": "4ddee40f-f0a8-4c9e-8d05-3ed0b07c858f",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "STIR-FRIED PORK WITH CHILI PEPPERS at Keke Food",
+                      "height": 1028,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/-eSjZ6_mCr25aEsWmF8nN_h4ftK5FDVU5parPZcIVQM8DCF8f2bQF-n16Ka_1O-I_Njn17g6NHsCgYs7=s0",
+                      "width": 1547
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Sliced pork and chili peppers come together in a savory Hunan-style stir-fry with direct, satisfying heat. This hot dish is a natural match for rice and offers a different experience from the slower, spice-infused character of Chinese luwei. Add a cold vegetable side for contrast and a more complete Keke Food meal in Flushing today.",
+                    "suitableForDiet": [],
+                    "title": "STIR-FRIED PORK WITH CHILI PEPPERS 辣椒炒肉"
+                  },
+                  {
+                    "amount": "1300",
+                    "description": "Sliced beef stir-fried with chili peppers and aromatics, Hunan-style. 1 order.",
+                    "id": "e7cbebd9-7b9e-46e6-bb2a-19dd1d98d854",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "STIR-FRIED YELLOW BEEF at Keke Food",
+                      "height": 1279,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/3IknSt197c3UbsKfXYif7qLxJoc62NXK3Tv4pA8LbcBQRGN7OYAXGptZuk264F4Gl1xsgsFqxS1M3Vg9=s0",
+                      "width": 1706
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Thinly sliced beef is stir-fried with chili peppers and aromatics in a savory Hunan-style dish. The combination delivers bold flavor in a format that pairs naturally with rice and lighter vegetable sides. Choose it when you want a hot beef entree alongside Keke Food's chilled and braised selections in Flushing, Queens, for lunch or dinner.",
+                    "suitableForDiet": [],
+                    "title": "STIR-FRIED YELLOW BEEF 小炒黄牛肉"
+                  }
+                ]
+              },
+              {
+                "id": "vegetable-sides",
+                "label": "Vegetable Sides",
+                "products": [
+                  {
+                    "amount": "599",
+                    "description": "Vegetables pickled Sichuan-style for a tangy, lightly spicy cold side. 400 g.",
+                    "id": "ab880ac0-bb51-4331-961b-1f786e5dacfc",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SICHUAN PICKLES at Keke Food",
+                      "height": 3024,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/-Er1kOdL0l7gEe4BmDztj8JjUXkvaBVaqUWGz6-S1QC11cgBhFzuOYYI7Gkdjwdr7i_pTDGt7MEVdllB=s0",
+                      "width": 4032
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Sichuan-style pickled vegetables bring tangy flavor and gentle heat to the table. Their cool, crisp character helps balance richer Chinese luwei, mala dishes, and hearty rice plates without competing with the main course. Add this cold vegetable side to a shared Keke Food order for an easy, refreshing change of pace between savory bites today.",
+                    "suitableForDiet": [],
+                    "title": "SICHUAN PICKLES 四川泡菜"
+                  },
+                  {
+                    "amount": "599",
+                    "description": "Tofu braised in a sweet-and-spicy sauce for a savory Chinese side dish. 12 pc.",
+                    "id": "8f9a1c2c-7c60-4115-8ec9-1bd378a89991",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SWEET CHILI BRAISED TOFU at Keke Food",
+                      "height": 839,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/CHYFC9VCrWZkRt-fkUIo5oLQn9JpM14SPv30umZCDO82ZpQ5e_5uY57hlhZjqVY63g4Qmvnx43hvmmJG=s0",
+                      "width": 1179
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Tofu braised in a sweet-and-spicy sauce offers a savory meat-free side with a gentle balance of warmth and sweetness. Its twelve-piece serving is easy to share and pairs naturally with rice, braised meats, or chilled vegetables. Include it in a Keke Food spread when you want another satisfying texture beside richer Chinese luwei dishes at dinner.",
+                    "suitableForDiet": [],
+                    "title": "SWEET CHILI BRAISED TOFU 甜辣卤豆腐"
+                  },
+                  {
+                    "amount": "699",
+                    "description": "Gongcai tossed in a savory, lightly spicy dressing for a refreshing Chinese cold side. 260 g.",
+                    "id": "073de14a-043f-4a03-8eac-c106ddf82c42",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "COLD TOSSED GONGSUN VEGETABLE at Keke Food",
+                      "height": 1328,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/LS9G6vneAvn7YHQvMnysvWE8cr7I4bXZLaFde1gXhfDep8q6LRumtZVY67TJohKxc7K0BnekStF5E9DM=s0",
+                      "width": 1280
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Cold tossed gongcai brings a refreshing texture and a savory, lightly spicy dressing to the table. This chilled Chinese vegetable side is especially useful beside rich braised meats, mala specialties, or a warm rice dish. Add it to a group order from Keke Food in Flushing for a crisp, refreshing counterpoint to deeper flavors at the table.",
+                    "suitableForDiet": [],
+                    "title": "COLD TOSSED GONGSUN VEGETABLE 凉拌贡菜"
+                  },
+                  {
+                    "amount": "499",
+                    "description": "Shredded kelp tossed in a tangy, spicy dressing for a refreshing Chinese cold side. 300 g.",
+                    "id": "ad7a6e61-9434-4911-85b5-3b4d1f9b5ec3",
+                    "ingredients": [],
+                    "media": {
+                      "alt": "SPICY & SOUR SHREDDED KELP at Keke Food",
+                      "height": 2000,
+                      "kind": "image",
+                      "path": "https://lh3.googleusercontent.com/If0n0N_PmL2BHeIKbLYM35IAEOqdRMPdxVOvy74c5kf8WXT7TpFvpHH0duV8ZlgDlEjYZHGE-YdTubxl=s0",
+                      "width": 3000
+                    },
+                    "nutrition": [],
+                    "orderTarget": {
+                      "href": "https://order.peblla.com/kekefoodkkxl/order",
+                      "kind": "external"
+                    },
+                    "story": "Shredded kelp is tossed in a tangy, spicy dressing for a refreshing cold side with a clean savory finish. Its bright flavor makes a useful contrast to five-spice braised meats, mala dishes, and rice plates. Add it to a Keke Food order when a shared meal needs a distinctly lighter texture between richer bites at the table.",
+                    "suitableForDiet": [],
+                    "title": "SPICY & SOUR SHREDDED KELP 酸辣海带丝"
+                  }
+                ]
+              }
+            ],
+            "hero": {
+              "action": {
+                "label": "Order Online",
+                "target": {
+                  "href": "https://order.peblla.com/kekefoodkkxl/order",
+                  "kind": "external"
+                }
+              },
+              "description": "Explore the current Keke Food menu from Google Business Profile, with prices, descriptions, and dish photos for pickup and delivery.",
+              "title": "Keke Food Menu: Chinese Luwei & Braised Dishes"
+            }
+          },
+          "id": "menu-catalog",
+          "type": "menu",
+          "variant": "catalog"
+        }
+      ]
+    }
+  ],
+  "siteId": "keke-brand-site",
+  "siteUrl": "https://www.mrkeke.com",
+  "theme": {
+    "colors": {
+      "background": "#FFFFFF",
+      "black100": "#F5F5F7",
+      "black200": "#E5E5E7",
+      "black300": "#D2D2D7",
+      "black400": "#A1A1A6",
+      "black500": "#86868B",
+      "black600": "#6E6E73",
+      "black700": "#424245",
+      "black800": "#2D2D30",
+      "black900": "#1D1D1F",
+      "primary100": "#FFF2D6",
+      "primary200": "#FFE7AA",
+      "primary300": "#FFDC7E",
+      "primary400": "#FFD252",
+      "primary50": "#FFFBED",
+      "primary500": "#FFC826",
+      "primary600": "#E4B114",
+      "primary700": "#C49509",
+      "primary800": "#9A7403",
+      "primary900": "#6F5300",
+      "secondary100": "#FDE2CF",
+      "secondary200": "#FBC49E",
+      "secondary300": "#F8A56F",
+      "secondary400": "#F58742",
+      "secondary50": "#FEF2E8",
+      "secondary500": "#F26814",
+      "secondary600": "#DE5B10",
+      "secondary700": "#BC4C0C",
+      "secondary800": "#933A07",
+      "secondary900": "#6A2803",
+      "white": "#FFFFFF"
+    },
+    "fonts": {
+      "heading": "Cormorant Garamond",
+      "typography": "Inter"
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "products.carousel",
+  "type": "products",
+  "variant": "carousel",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Product carousel",
+    "description": "Displays a curated set of products from a v45 Section content.products array.",
+    "useWhen": ["Highlight featured menu items on a content page"],
+    "avoidWhen": ["Render the complete menu catalog with category filters"],
+    "rendering": "server"
+  }
+}

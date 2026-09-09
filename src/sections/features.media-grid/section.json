@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "features.media-grid",
+  "type": "features",
+  "variant": "media-grid",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Feature media grid",
+    "description": "Pairs feature copy with supporting media cards.",
+    "useWhen": ["Show several visual service or brand features"],
+    "avoidWhen": ["Display only text and icons"],
+    "rendering": "server"
+  }
+}

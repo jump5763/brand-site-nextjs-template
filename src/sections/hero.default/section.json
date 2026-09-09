@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "id": "hero.default",
+  "type": "hero",
+  "variant": "default",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Default hero",
+    "description": "A media-led hero with title, description and up to three actions.",
+    "useWhen": [
+      "The page needs a primary opening message",
+      "The hero has one or more images"
+    ],
+    "avoidWhen": ["The page only needs an editorial introduction"],
+    "rendering": "server"
+  }
+}

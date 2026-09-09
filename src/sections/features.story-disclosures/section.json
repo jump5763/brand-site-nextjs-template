@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "features.story-disclosures",
+  "type": "features",
+  "variant": "story-disclosures",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Story disclosures",
+    "description": "Presents the three story disclosure cards used by the v45 story page.",
+    "useWhen": ["Explain restaurant preparation or sourcing details"],
+    "avoidWhen": ["Create a generic icon grid"],
+    "rendering": "server"
+  }
+}

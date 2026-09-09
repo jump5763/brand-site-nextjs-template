@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codeforma.local/sections/features.device-showcase",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["title", "description", "media", "items"],
+  "properties": {
+    "title": { "type": "string" },
+    "description": { "type": "string" },
+    "media": { "type": "object" },
+    "items": { "type": "array", "items": { "type": "object" } }
+  }
+}

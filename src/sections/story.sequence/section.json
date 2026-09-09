@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "story.sequence",
+  "type": "story",
+  "variant": "sequence",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Story sequence",
+    "description": "A two-item editorial sequence for a brand story.",
+    "useWhen": ["A story has two ordered chapters"],
+    "avoidWhen": ["A single story image is sufficient"],
+    "rendering": "server"
+  }
+}

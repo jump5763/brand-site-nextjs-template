@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "locations.featured-single",
+  "type": "locations",
+  "variant": "featured-single",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Featured location",
+    "description": "Features one restaurant location with services, storefront media and actions.",
+    "useWhen": ["Give a single location a prominent content block"],
+    "avoidWhen": ["List multiple locations"],
+    "rendering": "server"
+  }
+}

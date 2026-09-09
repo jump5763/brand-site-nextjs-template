@@ -1,0 +1,496 @@
+[
+  {
+    "id": "cta.story-links",
+    "type": "cta",
+    "variant": "story-links",
+    "title": "Story links CTA",
+    "description": "A two-link closing call to action for menu and location discovery.",
+    "useWhen": [
+      "A story page needs clear next steps"
+    ],
+    "avoidWhen": [
+      "The page needs a single primary action"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "actions",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "faq.default",
+    "type": "faq",
+    "variant": "default",
+    "title": "FAQ",
+    "description": "Expandable answers for common Keke Food ordering and luwei questions.",
+    "useWhen": [
+      "A page needs a concise set of questions and answers"
+    ],
+    "avoidWhen": [
+      "Content is a long-form editorial story"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "items",
+        "required": true,
+        "type": "array"
+      },
+      {
+        "name": "defaultExpandedIds",
+        "required": false,
+        "type": "array"
+      },
+      {
+        "name": "action",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "features.device-showcase",
+    "type": "features",
+    "variant": "device-showcase",
+    "title": "Device showcase",
+    "description": "Shows a primary media asset with supporting feature items.",
+    "useWhen": [
+      "Explain a digital ordering or loyalty experience"
+    ],
+    "avoidWhen": [
+      "Use a restaurant story disclosure layout"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "media",
+        "required": true,
+        "type": "object"
+      },
+      {
+        "name": "items",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "features.icon-grid",
+    "type": "features",
+    "variant": "icon-grid",
+    "title": "Feature icon grid",
+    "description": "Displays concise feature items with icon media.",
+    "useWhen": [
+      "Summarize services or benefits in a grid"
+    ],
+    "avoidWhen": [
+      "Show long editorial stories"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "items",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "features.media-grid",
+    "type": "features",
+    "variant": "media-grid",
+    "title": "Feature media grid",
+    "description": "Pairs feature copy with supporting media cards.",
+    "useWhen": [
+      "Show several visual service or brand features"
+    ],
+    "avoidWhen": [
+      "Display only text and icons"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "items",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "features.story-disclosures",
+    "type": "features",
+    "variant": "story-disclosures",
+    "title": "Story disclosures",
+    "description": "Presents the three story disclosure cards used by the v45 story page.",
+    "useWhen": [
+      "Explain restaurant preparation or sourcing details"
+    ],
+    "avoidWhen": [
+      "Create a generic icon grid"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "items",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "hero.default",
+    "type": "hero",
+    "variant": "default",
+    "title": "Default hero",
+    "description": "A media-led hero with title, description and up to three actions.",
+    "useWhen": [
+      "The page needs a primary opening message",
+      "The hero has one or more images"
+    ],
+    "avoidWhen": [
+      "The page only needs an editorial introduction"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "textColor",
+        "required": false,
+        "type": "string"
+      },
+      {
+        "name": "media",
+        "required": true,
+        "type": "array"
+      },
+      {
+        "name": "primaryAction",
+        "required": false
+      },
+      {
+        "name": "secondaryAction",
+        "required": false
+      },
+      {
+        "name": "tertiaryAction",
+        "required": false
+      }
+    ]
+  },
+  {
+    "id": "hero.intro",
+    "type": "hero",
+    "variant": "intro",
+    "title": "Intro hero",
+    "description": "A compact page introduction with an image or map media.",
+    "useWhen": [
+      "A secondary page needs a clear introduction"
+    ],
+    "avoidWhen": [
+      "The page needs multiple calls to action"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "media",
+        "required": true
+      }
+    ]
+  },
+  {
+    "id": "locations.featured-single",
+    "type": "locations",
+    "variant": "featured-single",
+    "title": "Featured location",
+    "description": "Features one restaurant location with services, storefront media and actions.",
+    "useWhen": [
+      "Give a single location a prominent content block"
+    ],
+    "avoidWhen": [
+      "List multiple locations"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "location",
+        "required": true,
+        "type": "object"
+      },
+      {
+        "name": "services",
+        "required": true,
+        "type": "array"
+      },
+      {
+        "name": "storefront",
+        "required": true,
+        "type": "object"
+      },
+      {
+        "name": "actions",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "locations.map-list",
+    "type": "locations",
+    "variant": "map-list",
+    "title": "Location map list",
+    "description": "Shows one or more restaurant locations with address, hours and directions.",
+    "useWhen": [
+      "Present location details on a landing page"
+    ],
+    "avoidWhen": [
+      "Feature only one location with a storefront image"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "locations",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "menu.catalog",
+    "type": "menu",
+    "variant": "catalog",
+    "title": "Menu catalog",
+    "description": "Renders v45 menu categories and products with filtering, sorting and order state.",
+    "useWhen": [
+      "Build the canonical /menu page"
+    ],
+    "avoidWhen": [
+      "Show a small featured product rail"
+    ],
+    "rendering": "client-island",
+    "contentFields": [
+      {
+        "name": "hero",
+        "required": true,
+        "type": "object"
+      },
+      {
+        "name": "categories",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "products.carousel",
+    "type": "products",
+    "variant": "carousel",
+    "title": "Product carousel",
+    "description": "Displays a curated set of products from a v45 Section content.products array.",
+    "useWhen": [
+      "Highlight featured menu items on a content page"
+    ],
+    "avoidWhen": [
+      "Render the complete menu catalog with category filters"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "hasOrdering",
+        "required": false,
+        "type": "boolean"
+      },
+      {
+        "name": "products",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "reviews.carousel",
+    "type": "reviews",
+    "variant": "carousel",
+    "title": "Review carousel",
+    "description": "Shows guest reviews with a small client island for carousel navigation.",
+    "useWhen": [
+      "Add social proof from v45 content.reviews"
+    ],
+    "avoidWhen": [
+      "Display a static FAQ or feature list"
+    ],
+    "rendering": "client-island",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "reviews",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "story.sequence",
+    "type": "story",
+    "variant": "sequence",
+    "title": "Story sequence",
+    "description": "A two-item editorial sequence for a brand story.",
+    "useWhen": [
+      "A story has two ordered chapters"
+    ],
+    "avoidWhen": [
+      "A single story image is sufficient"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "items",
+        "required": true,
+        "type": "array"
+      }
+    ]
+  },
+  {
+    "id": "story.split",
+    "type": "story",
+    "variant": "split",
+    "title": "Split story",
+    "description": "Two-column editorial story with media and an optional page action.",
+    "useWhen": [
+      "A page needs a story beside one image"
+    ],
+    "avoidWhen": [
+      "The story requires a sequence of multiple items"
+    ],
+    "rendering": "server",
+    "contentFields": [
+      {
+        "name": "title",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "required": true,
+        "type": "string"
+      },
+      {
+        "name": "media",
+        "required": true
+      },
+      {
+        "name": "action",
+        "required": false
+      }
+    ]
+  }
+]
