@@ -3,7 +3,8 @@ import type { ResolvedAction } from "@/site-schema/runtime/resolve-link";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { contentIcons as icons } from "@/components/shared/content-icons";
-import { Section, Eyebrow } from "@/components/shared/section";
+import { Section } from "@/components/shared/section";
+import { SectionHeader } from "@/components/shared/section-header";
 import { Reveal } from "@/components/shared/reveal";
 import { ctaClass } from "@/components/shared/cta";
 
@@ -16,7 +17,7 @@ export default function OrderBannerView({
   ...content
 }: OrderProps & { id: string }) {
   return (
-    <Section id={id}>
+    <Section id={id} aria-labelledby={`${id}-heading`}>
       <Reveal>
         <div className="relative overflow-hidden rounded-[28px] border border-border bg-card px-[22px] py-[56px] tablet:px-[48px] tablet:py-[72px] desktop:px-[80px]">
           <span
@@ -26,13 +27,14 @@ export default function OrderBannerView({
             {content.monogram}
           </span>
           <div className="relative grid items-end gap-[36px] desktop:grid-cols-[1.3fr_0.7fr] desktop:gap-[64px]">
-            <div>
-              <Eyebrow>{content.eyebrow}</Eyebrow>
-              <h2 className="t-h2 mt-[14px] text-balance">{content.title}</h2>
-              <p className="mt-[16px] max-w-[560px] text-[15px] leading-[1.7] text-muted-foreground">
-                {content.description}
-              </p>
-            </div>
+            <SectionHeader
+              headingId={`${id}-heading`}
+              eyebrow={content.eyebrow}
+              title={content.title}
+              description={content.description}
+              headingClassName="text-balance"
+              descriptionClassName="max-w-[560px]"
+            />
             <div className="flex flex-col items-start gap-[20px] desktop:items-end">
               <Link
                 href={content.action.href}

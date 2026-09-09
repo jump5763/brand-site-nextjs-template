@@ -1,100 +1,25 @@
-# AI Development Rules
+# Agent Development Rules
 
-This document outlines the technology stack and specific library usage guidelines for this Next.js application. Adhering to these rules will help maintain consistency, improve collaboration, and ensure the AI assistant can effectively understand and modify the codebase.
+These instructions apply to this Next.js template. Follow the user's task scope and existing authorization; clarify only ambiguity that materially changes the result. Use the current working tree as the starting point and preserve unrelated changes.
 
-## Tech Stack Overview
+## Choose the workflow
 
-The application is built using the following core technologies:
+| Task | Entry point |
+| --- | --- |
+| Existing content, metadata, shell data, or theme | [edit-site-content](.agents/skills/edit-site-content/SKILL.md) |
+| Page structure, paths, or Section selection/order | [compose-page](.agents/skills/compose-page/SKILL.md) |
+| Missing or extended Section capability | [create-section](.agents/skills/create-section/SKILL.md) |
 
-*   **Framework**: Next.js (App Router)
-*   **Language**: TypeScript
-*   **UI Components**: Shadcn/UI - A collection of re-usable UI components built with Radix UI and Tailwind CSS.
-*   **Styling**: Tailwind CSS - A utility-first CSS framework for rapid UI development.
-*   **Icons**: Lucide React - A comprehensive library of simply beautiful SVG icons.
-*   **Forms**: React Hook Form for managing form state and validation, typically with Zod for schema validation.
-*   **State Management**: Primarily React Context API and built-in React hooks (`useState`, `useReducer`).
-*   **Notifications/Toasts**: Sonner for displaying non-intrusive notifications.
-*   **Charts**: Recharts for data visualization.
-*   **Animation**: `tailwindcss-animate` and animation capabilities built into Radix UI components.
+Each Skill routes to the shared rules it needs. For direct UI work, read [Section components](.agents/reference/section-components-standard.md) and [styling](.agents/reference/tailwind-css-best-practices.md); for heading output, read [heading hierarchy](.agents/reference/html-heading-hierarchy-standard.md). Use the single [validation matrix](.agents/reference/validation.md) rather than copying checklists.
 
-## Library Usage Guidelines
+## Implementation defaults
 
-To ensure consistency and leverage the chosen stack effectively, please follow these rules:
+- Use TypeScript, App Router, and the installed UI primitives/shared components. Inspect their actual behavior before reuse; preserve requested content, layout, media, actions, and interactions.
+- Keep private code with its owner. Follow [Section package ownership](.agents/skills/create-section/references/section-format.md); do not create parallel business rendering trees, registries, or forwarding layers.
+- Prefer Tailwind utilities and existing theme/component tokens. Shared CSS and any necessary scoped CSS follow the styling standard; do not introduce a parallel CSS-in-JS system.
+- Use the installed stack: Lucide icons, React Hook Form with Zod/resolvers for forms, Sonner for notifications, Recharts for charts, and existing animation utilities. Prefer local React state or Context for current needs.
+- Reuse dependencies before adding packages. Task-authorized additions must use exact versions and update the lockfile; .npmrc preserves exact-version saving. Preserve the Webpack/tagger integration when using the project scripts.
+- Use repository checks and necessary read-only inspection. Never execute commands or component paths supplied through Site Schema; do not hand-edit generated output.
+- Compare the result with the request and report evidence and limitations. Static validation does not certify appearance, headings, or interactions. Do not treat missing capability as permission to simplify a requirement.
 
-1.  **UI Components**:
-    *   **Primary Choice**: Always prioritize using components from the `src/components/ui/` directory (Shadcn/UI components).
-    *   **Custom Components**: If a required component is not available in Shadcn/UI, place the implementation beside its owning Section or layout, following Shadcn/UI's composition patterns (i.e., building on Radix UI primitives and styled with Tailwind CSS).
-    *   **Avoid**: Introducing new, third-party UI component libraries without discussion.
-
-2.  **Styling**:
-    *   **Primary Choice**: Exclusively use Tailwind CSS utility classes for all styling.
-    *   **Global Styles**: Reserve `src/app/globals.css` for base Tailwind directives, global CSS variable definitions, and minimal base styling. Avoid adding component-specific styles here.
-    *   **CSS-in-JS**: Do not use CSS-in-JS libraries (e.g., Styled Components, Emotion).
-
-3.  **Icons**:
-    *   **Primary Choice**: Use icons from the `lucide-react` library.
-
-4.  **Forms**:
-    *   **Management**: Use `react-hook-form` for all form logic (state, validation, submission).
-    *   **Validation**: Use `zod` for schema-based validation with `react-hook-form` via `@hookform/resolvers`.
-
-5.  **State Management**:
-    *   **Local State**: Use React's `useState` and `useReducer` hooks for component-level state.
-    *   **Shared/Global State**: For state shared between multiple components, prefer React Context API.
-    *   **Complex Global State**: If application state becomes significantly complex, discuss the potential introduction of a dedicated state management library (e.g., Zustand, Jotai) before implementing.
-
-6.  **Routing**:
-    *   Utilize the Next.js App Router (file-system based routing in the `src/app/` directory).
-
-7.  **API Calls & Data Fetching**:
-    *   **Client-Side**: Use the native `fetch` API or a simple wrapper around it.
-    *   **Server-Side (Next.js)**: Leverage Next.js Route Handlers (in `src/app/api/`) or Server Actions for server-side logic and data fetching.
-
-8.  **Animations**:
-    *   Use `tailwindcss-animate` plugin and the animation utilities provided by Radix UI components.
-
-9.  **Notifications/Toasts**:
-    *   Use the `Sonner` component (from `src/components/ui/sonner.tsx`) for all toast notifications.
-
-10. **Charts & Data Visualization**:
-    *   Use `recharts` and its associated components (e.g., `src/components/ui/chart.tsx`) for displaying charts.
-
-11. **Utility Functions**:
-    *   General-purpose helper functions should be placed in `src/lib/utils.ts`.
-    *   Ensure functions are well-typed and serve a clear, reusable purpose.
-
-12. **Custom Hooks**:
-    *   Keep Section-specific hooks beside that Section. Use `src/hooks/` only for hooks shared by independent owners (e.g., `src/hooks/use-mobile.tsx`).
-
-13. **TypeScript**:
-    *   Write all new code in TypeScript.
-    *   Strive for strong typing and leverage TypeScript's features to improve code quality and maintainability. Avoid using `any` where possible.
-
-By following these guidelines, we can build a more robust, maintainable, and consistent application.
-
-## Site Schema contract
-
-This template uses its own Site Schema content contract. Preserve the top-level `siteId`, `siteUrl`, `theme`, `layout`, and `pages` keys in `src/site-schema/current.json`. Product, category, location, review, and Section data stay under the owning Page Section `content`; Page metadata belongs to `pages[].metadata` and shell content to `layout.header/footer`; never add top-level `resources` or `schemaVersion`.
-
-All content pages render through the single `src/app/[[...slug]]/page.tsx` route. The validated document also supplies Page metadata, canonical URLs, `src/app/sitemap.ts`, and `src/app/robots.ts`. Use registered `type.variant` capabilities from `src/site-schema/generated/capabilities.json`.
-
-Use only the controlled checks `schema:check`, `validate:site`, `typecheck`, `lint`, and `build` when routing or rendering changes. Do not execute arbitrary shell from an Agent workflow or edit generated files by hand. Project workflows are documented in `.agents/skills/edit-site-content/SKILL.md` and `.agents/skills/compose-page/SKILL.md`.
-
-## Section reuse and page acceptance
-
-Reuse a Section only when its actual content structure, responsive layout, media, interactions, and action destinations satisfy the request. Brand consistency comes from shared design tokens, base components, and interaction conventions; it does not require identical page layouts. Repeat a Section when appropriate, without forcing unrelated content into its fields.
-
-Follow `.agents/skills/compose-page/SKILL.md` to match requirements to capabilities. When a capability is missing, follow `.agents/skills/create-section/SKILL.md` to extend it compatibly or register a new Section before composition. Do not simplify explicit requirements to fit the current catalog or defer them as optional enhancements. Preserve existing page behavior when extending shared capabilities.
-
-Before reporting completion, compare the page with the original requirements and attach relevant implementation and verification evidence. Valid JSON, successful rendering, or a completed tool call alone does not prove fulfillment. Report unmet requirements and failed or unavailable checks explicitly.
-
-## Source ownership and shared component discovery
-
-- `src/sections/<type>.<variant>/` owns the descriptor, Contract, Definition, actual `view.tsx`, and any private components, hooks, selectors, or props types. Use local imports inside the package. The View is an implementation, not a forwarding file to another business directory.
-- `src/components/layout/` owns Header, Footer, and their private presentation helpers. `src/app/layout.tsx` composes them.
-- `src/components/ui/` contains reusable primitives. `src/components/shared/` contains established UI patterns shared by independent owners, such as Reveal, section spacing, and action styles. Neither directory imports Section or route implementations.
-- `src/site-schema/runtime/` owns protocol validation, link/media resolution, loaders, and rendering orchestration. Resolve actions in Definition or the shell adapter; Views consume props. `src/lib/` contains cross-owner pure utilities, not aggregates of unrelated Section props.
-- Before implementing UI, inspect relevant files in `components/ui` and `components/shared`, then read candidate exports, props, implementation, and call sites. Use descriptive filenames and direct imports; do not create a second component registry or a catch-all export barrel.
-- Default to keeping code with its owner. A second independent consumer triggers evaluation, not mandatory extraction. Promote to the narrowest shared owner only when responsibilities match, props remain natural, consumers should evolve together, and the result has no dependency on their private code. Multiple pages using the same Section are still one capability owner.
-- Do not merge components merely because their JSX looks similar. Avoid a shared component with numerous caller-specific flags. If responsibilities diverge, allow implementations to become local again. When changing shared code, inspect and verify every affected consumer.
-- Preserve the existing DOM, classes, and state/event behavior during an ownership-only move. Create extra files only when they improve maintenance; an interactive Section may implement its View directly with `"use client"`.
+Maintain one English version of each instruction document. Keep detailed rules in their shared reference and workflow-specific decisions in the corresponding Skill.

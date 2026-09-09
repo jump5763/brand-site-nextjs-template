@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { SiteContainer } from "@/components/shared/site-container";
 import { ArrowUpRight, ArrowUp, Leaf, Mail, MapPin, Phone } from "lucide-react";
 import { BrandMark } from "@/components/layout/brand";
 import { ctaClass } from "@/components/shared/cta";
@@ -10,7 +11,7 @@ export function Footer({ locations, ...content }: FooterProps) {
       id={content.anchorId}
       className="bg-background pb-[20px] pt-[16px] tablet:pb-[28px]"
     >
-      <div className="container-site">
+      <SiteContainer>
         <div className="overflow-hidden rounded-[28px] bg-inverse text-inverse-foreground">
           {/* Contact header strip */}
           <div className="grid gap-[36px] px-[20px] pb-[44px] pt-[52px] tablet:px-[44px] desktop:grid-cols-[1.4fr_1fr] desktop:gap-[80px] desktop:px-[64px]">
@@ -192,7 +193,7 @@ export function Footer({ locations, ...content }: FooterProps) {
             </div>
           </div>
         </div>
-      </div>
+      </SiteContainer>
     </footer>
   );
 }

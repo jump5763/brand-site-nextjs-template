@@ -12,6 +12,8 @@ import {
   SheetContent,
   SheetTrigger,
   SheetClose,
+  SheetTitle,
+  SheetDescription,
 } from "@/components/ui/sheet";
 
 import type { HeaderProps } from "@/site-schema/runtime/site-shell";
@@ -77,6 +79,10 @@ export function Header({
               side="right"
               className="w-full max-w-[420px] border-l border-border bg-card p-0"
             >
+              <SheetTitle className="sr-only">Navigation menu</SheetTitle>
+              <SheetDescription className="sr-only">
+                Explore our menu, locations, and story.
+              </SheetDescription>
               <div className="flex h-full flex-col overflow-y-auto px-[24px] pb-[28px] pt-[28px]">
                 <div className="flex items-center justify-between pr-[28px]">
                   <Brand name={brandName} href={homeHref} />

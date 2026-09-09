@@ -2,6 +2,7 @@
 
 import { useMemo, useState } from "react";
 import Link from "next/link";
+import { SiteContainer } from "@/components/shared/site-container";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -296,7 +297,7 @@ export default function MenuClient({
     <div id={id} className="pb-[140px]">
       {/* Page intro */}
       <section className="pt-[40px] tablet:pt-[72px]">
-        <div className="container-site">
+        <SiteContainer>
           <div className="flex flex-col gap-[32px] desktop:flex-row desktop:items-end desktop:justify-between">
             <div className="max-w-[680px]">
               <p
@@ -334,7 +335,7 @@ export default function MenuClient({
               </p>
             </div>
           </div>
-        </div>
+        </SiteContainer>
       </section>
 
       {/* Sticky filter bar */}
@@ -342,7 +343,7 @@ export default function MenuClient({
         className="sticky top-[var(--header-h)] z-30 bg-background"
         style={{ paddingTop: 12, paddingBottom: 12 }}
       >
-        <div className="container-site">
+        <SiteContainer>
           <div className="flex flex-col gap-[12px] desktop:flex-row desktop:items-center">
             {/* Category chips */}
             <div
@@ -422,11 +423,11 @@ export default function MenuClient({
               </div>
             </div>
           </div>
-        </div>
+        </SiteContainer>
       </div>
 
       {/* Groups */}
-      <div className="container-site mt-[24px] tablet:mt-[40px]">
+      <SiteContainer className="mt-[24px] tablet:mt-[40px]">
         <p aria-live="polite" className="text-[13px] text-muted-foreground">
           Showing {results.length} item{results.length === 1 ? "" : "s"}
           {cat !== "all" || diet !== "all" ? (
@@ -490,7 +491,7 @@ export default function MenuClient({
           lists and nutrition info are available at the counter or on request —
           just ask the team.
         </div>
-      </div>
+      </SiteContainer>
 
       {/* Order bag */}
       {itemCount > 0 && (

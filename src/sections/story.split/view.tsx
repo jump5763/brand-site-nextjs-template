@@ -2,7 +2,8 @@ import type { StorySplitSection } from "@/site-schema/generated/types";
 import type { ResolvedAction } from "@/site-schema/runtime/resolve-link";
 import Link from "next/link";
 import { ArrowRight, Check } from "lucide-react";
-import { Section, Eyebrow } from "@/components/shared/section";
+import { Section } from "@/components/shared/section";
+import { SectionHeader } from "@/components/shared/section-header";
 import { Reveal } from "@/components/shared/reveal";
 import { ctaClass } from "@/components/shared/cta";
 
@@ -15,7 +16,7 @@ export default function StorySplitView({
   ...content
 }: FarmProps & { id: string }) {
   return (
-    <Section id={id}>
+    <Section id={id} aria-labelledby={`${id}-heading`}>
       <div className="grid items-center gap-[44px] desktop:grid-cols-2 desktop:gap-[96px]">
         <Reveal className="order-2 desktop:order-1">
           <div className="relative">
@@ -47,11 +48,14 @@ export default function StorySplitView({
         </Reveal>
 
         <Reveal delay={140} className="order-1 desktop:order-2">
-          <Eyebrow>{content.eyebrow}</Eyebrow>
-          <h2 className="t-h2 mt-[14px] text-balance">{content.title}</h2>
-          <p className="mt-[20px] text-[15px] leading-[1.75] text-muted-foreground">
-            {content.description}
-          </p>
+          <SectionHeader
+            headingId={`${id}-heading`}
+            eyebrow={content.eyebrow}
+            title={content.title}
+            description={content.description}
+            headingClassName="text-balance"
+            descriptionClassName="mt-[20px]"
+          />
           <ul className="mt-[28px] space-y-[16px]">
             {content.promises.map((promise) => (
               <li key={promise} className="flex items-start gap-[12px]">

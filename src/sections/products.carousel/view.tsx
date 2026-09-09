@@ -2,7 +2,8 @@ import type { ProductsCarouselSection } from "@/site-schema/generated/types";
 import type { ResolvedAction } from "@/site-schema/runtime/resolve-link";
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
-import { Section, Eyebrow } from "@/components/shared/section";
+import { Section } from "@/components/shared/section";
+import { SectionHeader } from "@/components/shared/section-header";
 import { Reveal } from "@/components/shared/reveal";
 import { money, type Product } from "@/lib/catalog";
 import { cn } from "@/lib/utils";
@@ -80,15 +81,15 @@ export default function ProductsCarouselView({
   ...content
 }: SeasonalProps & { id: string }) {
   return (
-    <Section id={id} className="!py-[72px] tablet:!py-[104px]">
+    <Section id={id} spacing="spacious" aria-labelledby={`${id}-heading`}>
       <Reveal className="flex flex-col gap-[24px] tablet:flex-row tablet:items-end tablet:justify-between">
-        <div>
-          <Eyebrow>{content.eyebrow}</Eyebrow>
-          <h2 className="t-h2 mt-[14px]">{content.title}</h2>
-          <p className="mt-[14px] max-w-[460px] text-[15px] leading-[1.7] text-muted-foreground">
-            {content.description}
-          </p>
-        </div>
+        <SectionHeader
+          headingId={`${id}-heading`}
+          eyebrow={content.eyebrow}
+          title={content.title}
+          description={content.description}
+          descriptionClassName="mt-[14px] max-w-[460px]"
+        />
         <Link
           href={content.action.href}
           className="group inline-flex w-fit shrink-0 items-center gap-[8px] rounded-full px-[14px] py-[12px] text-[14px] font-semibold text-foreground"

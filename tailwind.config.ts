@@ -1,6 +1,17 @@
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme";
 
+// Both aliases follow the typography font selected by the Site Schema theme.
+const bodyFontFamily = [
+  "var(--font-typography, var(--font-inter))",
+  "Inter",
+  "-apple-system",
+  "BlinkMacSystemFont",
+  "Segoe UI",
+  "Arial",
+  "sans-serif",
+];
+
 /**
  * Keke design system — px-first.
  * Every explicit spatial or typographic length resolves to px values.
@@ -51,15 +62,8 @@ export default {
       spacing,
       fontSize,
       fontFamily: {
-        sans: [
-          "var(--font-typography, var(--font-inter))",
-          "Inter",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Arial",
-          "sans-serif",
-        ],
+        sans: bodyFontFamily,
+        body: bodyFontFamily,
         display: [
           "var(--font-heading, var(--font-cormorant))",
           "Cormorant Garamond",

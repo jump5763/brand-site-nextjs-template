@@ -2,7 +2,8 @@ import type { LocationsMapListSection } from "@/site-schema/generated/types";
 import type { ResolvedAction } from "@/site-schema/runtime/resolve-link";
 import Link from "next/link";
 import { ArrowUpRight, MapPin, Phone } from "lucide-react";
-import { Section, Eyebrow } from "@/components/shared/section";
+import { Section } from "@/components/shared/section";
+import { SectionHeader } from "@/components/shared/section-header";
 import { Reveal } from "@/components/shared/reveal";
 import { ctaClass } from "@/components/shared/cta";
 
@@ -17,13 +18,15 @@ export default function LocationsMapListView({
   ...content
 }: LocationsProps & { id: string }) {
   return (
-    <Section id={id}>
+    <Section id={id} aria-labelledby={`${id}-heading`}>
       <Reveal className="max-w-[720px]">
-        <Eyebrow>{content.eyebrow}</Eyebrow>
-        <h2 className="t-h2 mt-[14px] text-balance">{content.title}</h2>
-        <p className="mt-[16px] text-[15px] leading-[1.7] text-muted-foreground">
-          {content.description}
-        </p>
+        <SectionHeader
+          headingId={`${id}-heading`}
+          eyebrow={content.eyebrow}
+          title={content.title}
+          description={content.description}
+          headingClassName="text-balance"
+        />
       </Reveal>
 
       <div className="mt-[44px] grid gap-[16px] tablet:grid-cols-2 desktop:grid-cols-3">

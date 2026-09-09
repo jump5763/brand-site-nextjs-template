@@ -1,107 +1,48 @@
-# HTML Heading Hierarchy Standard
+# HTML Heading Hierarchy
 
-Status: normative
+Required for Page composition and heading-affecting edits. The single-h1, main-first, and no-downward-skip rules are project conventions, not universal HTML syntax restrictions.
 
-This document defines how Agents and humans must author and validate HTML heading hierarchy in rendered web pages and reusable UI components.
+## Page outline
 
-The words **MUST**, **MUST NOT**, **SHOULD**, and **MAY** are normative.
+- In normal reading state, `main#main-content` has exactly one meaningfully named native h1, first among its headings in DOM reading order.
+- Metadata, JSON field names, component names, and font sizes do not establish heading semantics. Inspect actual Definition/View output.
+- Page-level groups use h2; nested groups advance one level, through h6. Returning upward may skip levels, e.g. h4 to h2. Equal ranks must represent equal responsibilities, not merely pass a numeric sequence check.
+- Section/SiteContainer and native section/article wrappers do not choose or reset heading levels. Nesting wrappers does not demote h1.
+- Headings introduce content groups. Prices, authors, ratings, descriptions, labels, and control text do not become headings just to look prominent.
 
-## Purpose
+## Composition and reuse
 
-`h1` through `h6` communicate document hierarchy. Their level must describe the relationship between a page, its sections, and nested sections. Font size, weight, spacing, color, and visual prominence are separate presentation concerns.
+Record the Page path, h1 provider, Section root levels, and children in existing composition notes; no extra artifact or approval step is required. Verify these current facts against selected Views:
 
-## Page hierarchy
+- Hero and Menu Catalog each emit fixed h1. Combining them unchanged or repeating Hero on one Page duplicates h1. Current `/` and `/about` use Hero; `/menu` uses Catalog.
+- Products, Locations, Story, Reviews, and CTA use SectionHeader's default h2. Products/Locations also have h3 items; adapting nesting requires checking both root and children.
+- Features uses non-heading labels. It cannot supply a missing h1 or a parent for later h3 content. Section and SiteContainer emit no headings.
+- Display always renders h1. Heading separates `level` from `variant`; SectionHeader separates `headingLevel` from `headingClassName`. Body defaults to a paragraph.
 
-- The primary content of each rendered page MUST contain exactly one non-empty `h1`.
-- The first heading in the primary content MUST be that `h1`.
-- A top-level section below the page title MUST use `h2`. A nested section MUST use the next heading level relative to its parent section.
-- Heading levels MUST NOT increase by more than one between consecutive headings in document order. Moving from a deeper level back to an ancestor level MAY skip levels.
-- Content excluded from the accessibility tree MUST NOT contribute headings to the accessible page hierarchy.
-- A heading MUST name the page or introduce a content section. Content that does not introduce a page or section MUST use an appropriate non-heading element.
-- A page or section title MUST use a native heading element. A visually styled neutral element MUST NOT replace a native heading solely to avoid choosing the correct level.
+The composition layer owns the outline; Definition/View passes typed context to components reused at multiple depths. Do not infer levels from pathname, content, index, or visual style. JSON has no generic headingLevel/titleLevel field: adapt a supported capability first.
 
-## Semantic level and visual style
+If an optional parent heading disappears, determine children from the remaining ancestor. A parent with heading children cannot accept level 6; reorganize rather than generate h7 or clamp levels. Keep styling independent of semantics. Native headings may remain when shared presets do not fit; do not substitute neutral nodes or role=heading to avoid native semantics.
 
-- Heading level MUST be selected from document hierarchy, never from the desired appearance.
-- Visual style MUST be controlled independently from heading level.
-- Changing a heading level MUST NOT implicitly change its visual style.
-- Changing a visual style MUST NOT change the rendered heading element.
-- Shared typography APIs that render headings MUST expose semantic level and visual style as separate inputs.
+## Names and IDs
 
-```tsx
-<Heading level={2} variant="display-md">
-  Section title
-</Heading>
-```
+- Exposed headings need non-empty accessible names; whitespace/placeholders do not count. Do not hide the real Page title to fix duplicate h1 output.
+- Derive IDs from instances, e.g. `${id}-heading` or `${id}-${item.id}-heading`, never a repeated capability ID such as `story.split-heading`.
+- SectionHeader requires headingId; the caller supplies matching aria-labelledby to the owning Section. Check unique IDs and update associations when conditional headings disappear.
+- aria-label may name a region but does not replace a required content heading. DOM heading IDs are not automatically [Schema fragments](content-contract.md).
+- Concrete component usage follows the [Section standard](section-components-standard.md).
 
-The example renders an `h2`; `display-md` controls presentation only.
+## Shell and accessible states
 
-## Reusable component responsibility
+- Header/Footer cannot supply or duplicate the Page h1. Check their grouping outside the main sequence; current Footer contact content uses h2.
+- Inspect Dialog/Sheet portals separately, usually rooted in DialogTitle/SheetTitle h2. Check normal Page and open-modal states; a modal hiding its background does not mean the Page lost its h1.
+- Determine exposure from the accessibility tree and ancestor state. hidden/display:none/visibility:hidden/aria-hidden/inert content excluded from that tree is not in the exposed outline.
+- `.sr-only` usually remains accessible. Opacity-zero Reveal content and off-screen carousel items are not automatically hidden from assistive technology. Screenshots, dimensions, or offsetParent alone cannot decide this.
+- Responsive alternatives and decorative clones must not expose duplicate hierarchy. Preserve real content. Check relevant optional-title, filter/empty, and overlay states; error-page headings belong to their actual fallback state.
 
-- The composition layer that knows a component's position in the page hierarchy MUST select the component's root heading level.
-- A reusable component used at more than one hierarchy depth MUST receive its root heading level through an explicit, typed input. It MUST NOT infer that level from a route, pathname, visual variant, or content value.
-- A component MAY derive nested heading levels from its root level when the relationship is structurally fixed.
-- A nested heading MUST advance exactly one level from a rendered parent heading.
-- When an optional parent heading is not rendered, its child headings MUST NOT advance as though that parent existed.
-- A component that does not introduce a page or section MUST NOT emit a heading element.
+## Acceptance
 
-```tsx
-type ParentHeadingLevel = 1 | 2 | 3 | 4 | 5;
+With browser tools, inspect each affected route and relevant viewport/state for the correct h1, meaningful nesting, names, unique IDs, associations, accessible exposure, and intended typography/layout. Record the h1 provider and a representative outline using the [validation matrix](validation.md).
 
-type ContentGroupProps = {
-  title?: string;
-  titleLevel: ParentHeadingLevel;
-};
+Schema/type/lint/build success does not prove DOM hierarchy. Browser heading counts are an initial check, not complete semantic/accessibility evidence. Fix violations within scope; label unavailable runtime checks unverified.
 
-function nextHeadingLevel(level: ParentHeadingLevel): HeadingLevel {
-  return (level + 1) as HeadingLevel;
-}
-
-function ContentGroup({title, titleLevel}: ContentGroupProps) {
-  const itemTitleLevel = title
-    ? nextHeadingLevel(titleLevel)
-    : titleLevel;
-
-  return (
-    <section>
-      {title ? (
-        <Heading level={titleLevel} variant="display-md">
-          {title}
-        </Heading>
-      ) : null}
-      <Heading level={itemTitleLevel} variant="title-sm">
-        Nested section title
-      </Heading>
-    </section>
-  );
-}
-```
-
-## Validation requirements
-
-Component-level validation SHOULD prove that:
-
-- semantic level selects the rendered `h1` through `h6` element;
-- visual style can change without changing that element;
-- semantic level can change without changing the selected visual style; and
-- reusable components produce the expected parent and child levels for every supported nesting context.
-
-Route-level browser validation SHOULD inspect the final rendered primary content and prove that:
-
-- exactly one non-empty `h1` exists;
-- the first heading is `h1`;
-- every heading contains an accessible name;
-- no downward heading-level jump exceeds one; and
-- hidden or duplicated presentation content does not pollute the accessible hierarchy.
-
-Changes to shared heading primitives or reusable components SHOULD validate every affected route and supported viewport. Visual verification SHOULD confirm that semantic corrections do not unintentionally change presentation.
-
-## Review checklist
-
-- Does every heading introduce the page or a section?
-- Is each level determined by document hierarchy rather than appearance?
-- Does the page contain exactly one `h1`?
-- Are semantic level and visual style independent?
-- Does the composition layer provide reusable components with enough hierarchy context?
-- Do optional headings preserve a valid hierarchy when omitted?
-- Do component and route tests verify the final rendered elements?
+References: [WAI headings](https://www.w3.org/WAI/tutorials/page-structure/headings/), [G141](https://www.w3.org/WAI/WCAG22/Techniques/general/G141.html), [HTML sections](https://html.spec.whatwg.org/dev/sections.html).

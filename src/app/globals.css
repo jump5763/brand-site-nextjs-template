@@ -40,6 +40,9 @@
 
     --header-h: 96px;
 
+    --section-space-y: 64px;
+    --section-space-y-spacious: 72px;
+
     --chart-1: 45 100% 57%;
     --chart-2: 88 24% 40%;
     --chart-3: 20 90% 55%;
@@ -54,6 +57,13 @@
     --sidebar-accent-foreground: 88 22% 26%;
     --sidebar-border: 42 20% 85%;
     --sidebar-ring: 88 24% 34%;
+  }
+
+  @media (min-width: 769px) {
+    :root {
+      --section-space-y: 96px;
+      --section-space-y-spacious: 104px;
+    }
   }
 }
 

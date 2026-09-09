@@ -43,7 +43,7 @@ export default async function RootLayout({
   const site = await loadSiteSchema();
   const shell = createSiteShellProps(site);
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" data-scroll-behavior="smooth" suppressHydrationWarning>
       <body
         style={themeToCssVariables(site.theme)}
         className={`${inter.variable} ${cormorant.variable} bg-background font-sans text-foreground antialiased`}

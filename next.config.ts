@@ -4,6 +4,7 @@ import type { NextConfig } from "next";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 const nextConfig = (phase: string): NextConfig => ({
+  allowedDevOrigins: ["127.0.0.1"],
   images: {
     remotePatterns: remoteMediaHosts.map((hostname) => ({
       protocol: "https" as const,

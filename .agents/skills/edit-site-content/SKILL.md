@@ -1,30 +1,17 @@
 ---
 name: edit-site-content
-description: Edit existing Site Schema Page and Section content while preserving identity, ownership, and controlled validation boundaries.
+description: Edit supported Site Schema content, Page metadata, shared shell data, or theme values while preserving identities and ownership.
 ---
 
-# Edit site content
+# Edit Site Content
 
-Use this Skill for copy, media, metadata, links, products, categories, locations, reviews, or other data owned by an existing Page Section.
+For existing copy, media, links, products/categories, locations/reviews, metadata, shell, or theme data. Structure/path changes use [compose-page](../compose-page/SKILL.md); missing capabilities use [create-section](../create-section/SKILL.md).
 
-## Contract
+Read [content rules](../../reference/content-contract.md) and [validation](../../reference/validation.md). Read [headings](../../reference/html-heading-hierarchy-standard.md) for displayed titles or conditional heading output. Presentation tasks use their UI/styling references; do not broaden a content-only edit.
 
-- Preserve the Site Schema top-level `siteId`, `siteUrl`, `theme`, `layout`, and `pages` keys in `src/site-schema/current.json`.
-- Keep each value under its owning Page Section `content`. Do not add top-level `resources` or `schemaVersion`.
-- Preserve Page `id`/`path` and Section `id`/`type`/`variant` unless the task explicitly changes composition.
-- Content pages render through `src/app/[[...slug]]/page.tsx`; do not create a fixed route for a content edit.
+1. Locate the owner in current.json and its core/local contract. Infer clear targets from context; clarify material ambiguity only.
+2. Edit the correct declared fields: metadata, Section content, shell, or theme. Preserve identity unless the requested task changes it. Check repeated product copies and dependent links.
+3. Inspect Definition/View or shell code only as needed. Do not add routes, duplicate defaults, restructure components, or serialize undeclared presentation props for a data edit.
+4. Apply relevant validation, including media/links/headings/conditional states. Report changed owners/paths and passed, failed, or unavailable checks.
 
-## Workflow
-
-1. Inspect the target Page and Section and read [content-contract](references/content-contract.md).
-   Inspect `src/site-schema/contracts/site-schema.schema.json` and the selected `src/sections/<type>.<variant>/contract.schema.json` for the data contract.
-2. Edit only the required `content` fields.
-   If presentation needs inspection, read that Section’s local `definition.tsx` and actual `view.tsx`; Header/Footer presentation lives in `src/components/layout`. Content-only edits do not move components or extract shared implementations.
-3. Run the controlled checks described in the reference.
-4. Report changed Page/Section IDs and evidence.
-
-The controlled entry points are `schema:check`, `validate:site`, `typecheck`, and `build` when routing or rendering changes.
-
-Do not execute arbitrary shell commands, modify generated files by hand, or change client state such as filters and shopping-bag quantities through Site Schema.
-
-Default content belongs to this template’s original home page and Menu. v45 is only a structural/protocol reference, never the default business content. Reuse the original components and preserve their visuals, responsive layout, and interactions.
+Runtime filters and shopping-bag quantities do not belong in Schema. Start from existing content; do not invent business facts or fill gaps from unrelated examples.
