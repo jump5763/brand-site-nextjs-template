@@ -17,18 +17,24 @@ import { HeroCarousel } from "@/components/site/hero-carousel";
 import { ReviewsBandClient } from "@/components/site/home/reviews-band-client";
 import { Reveal } from "@/components/site/motion";
 import {
-  featuredIds,
-  locations,
   money,
-  productById,
-  products,
+  type Product,
+  type HeroProps,
+  type ValuesProps,
+  type SeasonalProps,
+  type FarmProps,
+  type ReviewsProps,
+  type OrderProps,
+  type LocationsProps,
 } from "@/lib/home-view-model";
-import type { Review } from "@/lib/home-view-model";
 
-const farmImage = "photo-1518843875459-f738682238a6";
-
-const imageUrl = (id: string, w = 1800) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+const icons = {
+  store: Store,
+  leaf: Leaf,
+  clock: Clock,
+  sprout: Sprout,
+  bike: Bike,
+};
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="t-eyebrow text-sage-700">{children}</p>;
@@ -56,9 +62,12 @@ const heroDelay = (ms: number) => ({ animationDelay: `${ms}ms` });
 /* Hero                                                                */
 /* ------------------------------------------------------------------ */
 
-export function HeroHome() {
+export function HeroHome({ id, ...content }: HeroProps & { id: string }) {
   return (
-    <section className="overflow-hidden pb-[16px] pt-[20px] tablet:pt-[44px]">
+    <section
+      id={id}
+      className="overflow-hidden pb-[16px] pt-[20px] tablet:pt-[44px]"
+    >
       <div className="container-site">
         <div className="grid items-center gap-[48px] desktop:grid-cols-[1.05fr_0.95fr] desktop:gap-[56px]">
           <div className="max-w-[640px] pb-[8px]">
@@ -70,35 +79,36 @@ export function HeroHome() {
                 className="h-[16px] w-[16px] text-sage-600"
                 strokeWidth={2.2}
               />
-              Farm-direct · seasonal menu
+              {content.eyebrow}
             </p>
             <h1
               className="a-hero t-display mt-[28px] text-balance text-primary"
               style={heroDelay(90)}
             >
-              Real food, from the ground up.
+              {content.title}
             </h1>
             <p
               className="a-hero t-lead mt-[24px] max-w-[540px] text-muted-foreground"
               style={heroDelay(190)}
             >
-              Crisp salads and warm grain bowls made every morning from produce
-              our partner farms picked this week — built to order, never made in
-              advance.
+              {content.description}
             </p>
             <div
               className="a-hero mt-[36px] flex flex-wrap items-center gap-[14px]"
               style={heroDelay(290)}
             >
-              <Link href="/menu" className={ctaClass("primary", "lg")}>
-                Order online
+              <Link
+                href={content.primaryAction.href}
+                className={ctaClass("primary", "lg")}
+              >
+                {content.primaryAction.label}
                 <ArrowRight className="h-[18px] w-[18px]" strokeWidth={2.2} />
               </Link>
               <Link
-                href="/#about"
+                href={content.secondaryAction.href}
                 className="group inline-flex items-center gap-[8px] rounded-full px-[18px] py-[14px] text-[15px] font-semibold text-foreground"
               >
-                Our story
+                {content.secondaryAction.label}
                 <ArrowRight
                   className="h-[16px] w-[16px] transition-transform group-hover:translate-x-[3px]"
                   strokeWidth={2.2}
@@ -109,34 +119,34 @@ export function HeroHome() {
               className="a-hero mt-[40px] flex flex-wrap gap-x-[26px] gap-y-[12px] text-[13px] text-muted-foreground"
               style={heroDelay(400)}
             >
-              <li className="flex items-center gap-[8px]">
-                <Leaf
-                  className="h-[15px] w-[15px] text-sage-600"
-                  strokeWidth={2}
-                />
-                Vegan & gluten-free friendly
-              </li>
-              <li className="flex items-center gap-[8px]">
-                <Clock
-                  className="h-[15px] w-[15px] text-sage-600"
-                  strokeWidth={2}
-                />
-                Made to order, in minutes
-              </li>
-              <li className="flex items-center gap-[8px]">
-                <Sprout
-                  className="h-[15px] w-[15px] text-sage-600"
-                  strokeWidth={2}
-                />
-                New menu every week
-              </li>
+              {content.benefits.map((benefit) => {
+                const Icon = icons[benefit.icon];
+                return (
+                  <li
+                    key={benefit.label}
+                    className="flex items-center gap-[8px]"
+                  >
+                    <Icon
+                      className="h-[15px] w-[15px] text-sage-600"
+                      strokeWidth={2}
+                    />
+                    {benefit.label}
+                  </li>
+                );
+              })}
             </ul>
           </div>
 
           <div className="a-hero" style={heroDelay(150)}>
             {/* Gentle float on the whole hero media area */}
             <div className="a-float h-[420px] tablet:h-[560px] desktop:h-[640px]">
-              <HeroCarousel />
+              <HeroCarousel
+                slides={content.media.map((media) => ({
+                  src: media.path,
+                  alt: media.alt,
+                }))}
+                {...content.carousel}
+              />
             </div>
           </div>
         </div>
@@ -149,48 +159,34 @@ export function HeroHome() {
 /* Values strip                                                        */
 /* ------------------------------------------------------------------ */
 
-export function ValuesStrip() {
-  const items = [
-    {
-      icon: Store,
-      title: "Neighborhood roots",
-      text: "Three kitchens, one short supply chain.",
-    },
-    {
-      icon: Leaf,
-      title: "Plant-forward",
-      text: "Half the menu is vegan or vegetarian.",
-    },
-    {
-      icon: Clock,
-      title: "Honest fast",
-      text: "Cooked to order — never sitting under a heat lamp.",
-    },
-  ];
+export function ValuesStrip({ id, items }: ValuesProps & { id: string }) {
   return (
-    <section className="pb-[16px] tablet:pb-[24px]">
+    <section id={id} className="pb-[16px] tablet:pb-[24px]">
       <div className="container-site">
         <div className="grid divide-y divide-border rounded-[24px] border border-border bg-card tablet:grid-cols-3 tablet:divide-x tablet:divide-y-0">
-          {items.map((item, index) => (
-            <Reveal key={item.title} delay={index * 110} className="h-full">
-              <div className="flex h-full items-start gap-[16px] px-[24px] py-[22px]">
-                <span className="mt-[2px] flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-sage-100">
-                  <item.icon
-                    className="h-[19px] w-[19px] text-sage-700"
-                    strokeWidth={2}
-                  />
-                </span>
-                <span>
-                  <span className="block text-[15px] font-semibold text-foreground">
-                    {item.title}
+          {items.map((item, index) => {
+            const Icon = icons[item.icon];
+            return (
+              <Reveal key={item.title} delay={index * 110} className="h-full">
+                <div className="flex h-full items-start gap-[16px] px-[24px] py-[22px]">
+                  <span className="mt-[2px] flex h-[40px] w-[40px] shrink-0 items-center justify-center rounded-full bg-sage-100">
+                    <Icon
+                      className="h-[19px] w-[19px] text-sage-700"
+                      strokeWidth={2}
+                    />
                   </span>
-                  <span className="mt-[4px] block text-[13px] leading-[1.6] text-muted-foreground">
-                    {item.text}
+                  <span>
+                    <span className="block text-[15px] font-semibold text-foreground">
+                      {item.title}
+                    </span>
+                    <span className="mt-[4px] block text-[13px] leading-[1.6] text-muted-foreground">
+                      {item.text}
+                    </span>
                   </span>
-                </span>
-              </div>
-            </Reveal>
-          ))}
+                </div>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -208,12 +204,16 @@ const badgeClass: Record<string, string> = {
   Bestseller: "bg-inverse text-white",
 };
 
-function CompactProductCard({ id }: { id: string }) {
-  const product = productById(id);
-  if (!product) return null;
+function CompactProductCard({
+  product,
+  actionLabel,
+}: {
+  product: Product & { href: string };
+  actionLabel: string;
+}) {
   return (
     <Link
-      href={`/menu#${product.category}`}
+      href={product.href}
       className="group block h-full overflow-hidden rounded-[20px] border border-border bg-card transition-all duration-300 hover:-translate-y-[3px] hover:shadow-lift"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-sage-100">
@@ -248,7 +248,7 @@ function CompactProductCard({ id }: { id: string }) {
           {product.description}
         </p>
         <span className="mt-[16px] inline-flex items-center gap-[8px] text-[13px] font-semibold text-sage-700">
-          Order on the menu
+          {actionLabel}
           <ArrowUpRight
             className="h-[15px] w-[15px] transition-transform duration-200 group-hover:-translate-y-[1px] group-hover:translate-x-[1px]"
             strokeWidth={2.2}
@@ -259,23 +259,26 @@ function CompactProductCard({ id }: { id: string }) {
   );
 }
 
-export function SeasonalRail() {
+export function SeasonalRail({
+  id,
+  products,
+  ...content
+}: SeasonalProps & { id: string }) {
   return (
-    <Section id="new" className="!py-[72px] tablet:!py-[104px]">
+    <Section id={id} className="!py-[72px] tablet:!py-[104px]">
       <Reveal className="flex flex-col gap-[24px] tablet:flex-row tablet:items-end tablet:justify-between">
         <div>
-          <Eyebrow>Fresh this season</Eyebrow>
-          <h2 className="t-h2 mt-[14px]">Just hit the menu.</h2>
+          <Eyebrow>{content.eyebrow}</Eyebrow>
+          <h2 className="t-h2 mt-[14px]">{content.title}</h2>
           <p className="mt-[14px] max-w-[460px] text-[15px] leading-[1.7] text-muted-foreground">
-            A rotating lineup driven by what&rsquo;s ripening on local farms
-            right now. When it&rsquo;s gone, it&rsquo;s gone until next year.
+            {content.description}
           </p>
         </div>
         <Link
-          href="/menu"
+          href={content.action.href}
           className="group inline-flex w-fit shrink-0 items-center gap-[8px] rounded-full px-[14px] py-[12px] text-[14px] font-semibold text-foreground"
         >
-          View the full menu
+          {content.action.label}
           <ArrowRight
             className="h-[16px] w-[16px] transition-transform group-hover:translate-x-[3px]"
             strokeWidth={2.2}
@@ -284,13 +287,16 @@ export function SeasonalRail() {
       </Reveal>
 
       <div className="no-scrollbar -mx-[16px] mt-[36px] flex snap-x gap-[14px] overflow-x-auto px-[16px] pb-[10px] tablet:mx-0 tablet:px-0">
-        {featuredIds.map((id, index) => (
+        {products.map((product, index) => (
           <Reveal
-            key={id}
+            key={product.id}
             delay={index * 100}
             className="w-[300px] shrink-0 snap-start tablet:w-[380px]"
           >
-            <CompactProductCard id={id} />
+            <CompactProductCard
+              product={product}
+              actionLabel={content.productActionLabel}
+            />
           </Reveal>
         ))}
       </div>
@@ -302,22 +308,16 @@ export function SeasonalRail() {
 /* Farm / ingredients                                                  */
 /* ------------------------------------------------------------------ */
 
-const farmPromises = [
-  "Produce from partner farms within a day's drive",
-  "Cooked and chopped in our kitchens every morning",
-  "No seed oils, no fryers, no ultra-processed shortcuts",
-];
-
-export function FarmSection() {
+export function FarmSection({ id, ...content }: FarmProps & { id: string }) {
   return (
-    <Section id="about">
+    <Section id={id}>
       <div className="grid items-center gap-[44px] desktop:grid-cols-2 desktop:gap-[96px]">
         <Reveal className="order-2 desktop:order-1">
           <div className="relative">
             <div className="aspect-[4/3] overflow-hidden rounded-[24px] border border-border bg-sage-100 desktop:aspect-[7/6] desktop:rounded-[28px]">
               <img
-                src={imageUrl(farmImage, 1400)}
-                alt="Whole vegetables and greens from partner farms"
+                src={content.media.path}
+                alt={content.media.alt}
                 loading="lazy"
                 decoding="async"
                 className="h-full w-full object-cover"
@@ -325,37 +325,30 @@ export function FarmSection() {
             </div>
             <div className="absolute -right-[12px] top-[22px] hidden rounded-[18px] border border-border bg-card p-[16px] shadow-lift tablet:block desktop:-right-[28px]">
               <p className="t-eyebrow text-[10px] text-sage-700">
-                In every bowl
+                {content.ingredientsLabel}
               </p>
               <div className="mt-[10px] flex max-w-[220px] flex-wrap gap-[6px]">
-                {["Kale", "Quinoa", "Avocado", "Citrus", "Herbs"].map(
-                  (item) => (
-                    <span
-                      key={item}
-                      className="rounded-full bg-sage-100 px-[10px] py-[5px] text-[11px] font-medium text-sage-800"
-                    >
-                      {item}
-                    </span>
-                  ),
-                )}
+                {content.ingredients.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-full bg-sage-100 px-[10px] py-[5px] text-[11px] font-medium text-sage-800"
+                  >
+                    {item}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </Reveal>
 
         <Reveal delay={140} className="order-1 desktop:order-2">
-          <Eyebrow>Goodness starts at the farm</Eyebrow>
-          <h2 className="t-h2 mt-[14px] text-balance">
-            Good food starts with good dirt.
-          </h2>
+          <Eyebrow>{content.eyebrow}</Eyebrow>
+          <h2 className="t-h2 mt-[14px] text-balance">{content.title}</h2>
           <p className="mt-[20px] text-[15px] leading-[1.75] text-muted-foreground">
-            We work with a short list of farms we can visit by bike. When they
-            tell us a crop is perfect, we build the menu around it — not the
-            other way around. That&rsquo;s why our greens actually taste like
-            something.
+            {content.description}
           </p>
           <ul className="mt-[28px] space-y-[16px]">
-            {farmPromises.map((promise) => (
+            {content.promises.map((promise) => (
               <li key={promise} className="flex items-start gap-[12px]">
                 <span className="mt-[2px] flex h-[24px] w-[24px] shrink-0 items-center justify-center rounded-full bg-sage-100">
                   <Check
@@ -371,10 +364,10 @@ export function FarmSection() {
           </ul>
           <div className="mt-[36px]">
             <Link
-              href="/#locations"
+              href={content.action.href}
               className={ctaClass("outline", "md", "shadow-none")}
             >
-              Visit a store
+              {content.action.label}
               <ArrowRight className="h-[16px] w-[16px]" strokeWidth={2.2} />
             </Link>
           </div>
@@ -388,59 +381,57 @@ export function FarmSection() {
 /* Reviews                                                             */
 /* ------------------------------------------------------------------ */
 
-export function ReviewsBand({ reviews }: { reviews?: Review[] } = {}) {
-  return <ReviewsBandClient reviews={reviews} />;
+export function ReviewsBand(props: ReviewsProps & { id: string }) {
+  return <ReviewsBandClient {...props} />;
 }
 
 /* ------------------------------------------------------------------ */
 /* Order CTA                                                           */
 /* ------------------------------------------------------------------ */
 
-export function OrderCta() {
-  const perks = [
-    { icon: Store, label: "Pickup" },
-    { icon: Bike, label: "Delivery" },
-    { icon: Leaf, label: "Catering" },
-  ];
+export function OrderCta({ id, ...content }: OrderProps & { id: string }) {
   return (
-    <Section>
+    <Section id={id}>
       <Reveal>
         <div className="relative overflow-hidden rounded-[28px] border border-border bg-card px-[22px] py-[56px] tablet:px-[48px] tablet:py-[72px] desktop:px-[80px]">
           <span
             aria-hidden="true"
             className="a-float pointer-events-none absolute -right-[36px] -top-[64px] select-none font-display text-[220px] font-bold leading-none text-sage-100 tablet:text-[300px]"
           >
-            k
+            {content.monogram}
           </span>
           <div className="relative grid items-end gap-[36px] desktop:grid-cols-[1.3fr_0.7fr] desktop:gap-[64px]">
             <div>
-              <Eyebrow>Skip the line</Eyebrow>
-              <h2 className="t-h2 mt-[14px] text-balance">
-                Hungry? Your bowl is already half made.
-              </h2>
+              <Eyebrow>{content.eyebrow}</Eyebrow>
+              <h2 className="t-h2 mt-[14px] text-balance">{content.title}</h2>
               <p className="mt-[16px] max-w-[560px] text-[15px] leading-[1.7] text-muted-foreground">
-                Order ahead from any of our three stores and your salad or bowl
-                will be waiting at the counter when you walk in.
+                {content.description}
               </p>
             </div>
             <div className="flex flex-col items-start gap-[20px] desktop:items-end">
-              <Link href="/menu" className={ctaClass("primary", "lg")}>
-                Order online
+              <Link
+                href={content.action.href}
+                className={ctaClass("primary", "lg")}
+              >
+                {content.action.label}
                 <ArrowRight className="h-[18px] w-[18px]" strokeWidth={2.2} />
               </Link>
               <ul className="flex flex-wrap gap-[10px]">
-                {perks.map((perk) => (
-                  <li
-                    key={perk.label}
-                    className="inline-flex items-center gap-[8px] rounded-full border border-border bg-background px-[14px] py-[8px] text-[12px] font-medium text-foreground"
-                  >
-                    <perk.icon
-                      className="h-[14px] w-[14px] text-sage-600"
-                      strokeWidth={2}
-                    />
-                    {perk.label}
-                  </li>
-                ))}
+                {content.perks.map((perk) => {
+                  const Icon = icons[perk.icon];
+                  return (
+                    <li
+                      key={perk.label}
+                      className="inline-flex items-center gap-[8px] rounded-full border border-border bg-background px-[14px] py-[8px] text-[12px] font-medium text-foreground"
+                    >
+                      <Icon
+                        className="h-[14px] w-[14px] text-sage-600"
+                        strokeWidth={2}
+                      />
+                      {perk.label}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
@@ -454,17 +445,18 @@ export function OrderCta() {
 /* Locations                                                           */
 /* ------------------------------------------------------------------ */
 
-export function LocationsHome() {
+export function LocationsHome({
+  id,
+  locations,
+  ...content
+}: LocationsProps & { id: string }) {
   return (
-    <Section id="locations">
+    <Section id={id}>
       <Reveal className="max-w-[720px]">
-        <Eyebrow>Find us</Eyebrow>
-        <h2 className="t-h2 mt-[14px] text-balance">
-          Three stores, one standard.
-        </h2>
+        <Eyebrow>{content.eyebrow}</Eyebrow>
+        <h2 className="t-h2 mt-[14px] text-balance">{content.title}</h2>
         <p className="mt-[16px] text-[15px] leading-[1.7] text-muted-foreground">
-          Every keke kitchen runs on the same morning prep list — same farms,
-          same recipes, same no-shortcuts rule.
+          {content.description}
         </p>
       </Reveal>
 
@@ -527,17 +519,17 @@ export function LocationsHome() {
                     rel="noreferrer"
                     className="inline-flex items-center gap-[8px] rounded-full border border-border px-[16px] py-[10px] text-[13px] font-semibold text-foreground transition-colors hover:border-sage-400 hover:bg-sage-50"
                   >
-                    Get directions
+                    {content.directionsLabel}
                     <ArrowUpRight
                       className="h-[14px] w-[14px]"
                       strokeWidth={2.2}
                     />
                   </a>
                   <Link
-                    href="/menu"
+                    href={content.action.href}
                     className={ctaClass("primary", "sm", "shadow-none")}
                   >
-                    Order pickup
+                    {content.action.label}
                   </Link>
                 </div>
               </article>
@@ -548,6 +540,3 @@ export function LocationsHome() {
     </Section>
   );
 }
-
-/* Sanity export: the full seasonal lineup used by sections above. */
-export const homeProducts = products;

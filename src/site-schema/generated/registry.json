@@ -2,24 +2,29 @@
   "sections": [
     {
       "version": 1,
-      "id": "cta.story-links",
+      "id": "cta.banner",
       "type": "cta",
-      "variant": "story-links",
+      "variant": "banner",
       "contract": "./contract.schema.json",
       "definition": "./definition.tsx",
       "capability": {
-        "title": "Story links CTA",
-        "description": "A two-link closing call to action for menu and location discovery.",
+        "title": "Order banner",
+        "description": "Original template order-ahead banner with one main action and service badges.",
         "useWhen": [
-          "A story page needs clear next steps"
+          "Promote pickup, delivery or catering with one main call to action"
         ],
         "avoidWhen": [
-          "The page needs a single primary action"
+          "The page needs a list of independent story links"
         ],
         "rendering": "server"
       },
-      "schemaKey": "CtaStoryLinksSection",
+      "schemaKey": "CtaBannerSection",
       "contentFields": [
+        {
+          "name": "eyebrow",
+          "required": true,
+          "type": "string"
+        },
         {
           "name": "title",
           "required": true,
@@ -29,99 +34,20 @@
           "name": "description",
           "required": true,
           "type": "string"
-        },
-        {
-          "name": "actions",
-          "required": true,
-          "type": "array"
-        }
-      ]
-    },
-    {
-      "version": 1,
-      "id": "faq.default",
-      "type": "faq",
-      "variant": "default",
-      "contract": "./contract.schema.json",
-      "definition": "./definition.tsx",
-      "capability": {
-        "title": "FAQ",
-        "description": "Expandable answers for common Keke Food ordering and luwei questions.",
-        "useWhen": [
-          "A page needs a concise set of questions and answers"
-        ],
-        "avoidWhen": [
-          "Content is a long-form editorial story"
-        ],
-        "rendering": "server"
-      },
-      "schemaKey": "FaqDefaultSection",
-      "contentFields": [
-        {
-          "name": "title",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "items",
-          "required": true,
-          "type": "array"
-        },
-        {
-          "name": "defaultExpandedIds",
-          "required": false,
-          "type": "array"
         },
         {
           "name": "action",
-          "required": false
-        }
-      ]
-    },
-    {
-      "version": 1,
-      "id": "features.device-showcase",
-      "type": "features",
-      "variant": "device-showcase",
-      "contract": "./contract.schema.json",
-      "definition": "./definition.tsx",
-      "capability": {
-        "title": "Device showcase",
-        "description": "Shows a primary media asset with supporting feature items.",
-        "useWhen": [
-          "Explain a digital ordering or loyalty experience"
-        ],
-        "avoidWhen": [
-          "Use a restaurant story disclosure layout"
-        ],
-        "rendering": "server"
-      },
-      "schemaKey": "FeaturesDeviceShowcaseSection",
-      "contentFields": [
-        {
-          "name": "title",
-          "required": true,
-          "type": "string"
+          "required": true
         },
         {
-          "name": "description",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "media",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "name": "items",
+          "name": "perks",
           "required": true,
           "type": "array"
+        },
+        {
+          "name": "monogram",
+          "required": true,
+          "type": "string"
         }
       ]
     },
@@ -144,80 +70,6 @@
         "rendering": "server"
       },
       "schemaKey": "FeaturesIconGridSection",
-      "contentFields": [
-        {
-          "name": "title",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "items",
-          "required": true,
-          "type": "array"
-        }
-      ]
-    },
-    {
-      "version": 1,
-      "id": "features.media-grid",
-      "type": "features",
-      "variant": "media-grid",
-      "contract": "./contract.schema.json",
-      "definition": "./definition.tsx",
-      "capability": {
-        "title": "Feature media grid",
-        "description": "Pairs feature copy with supporting media cards.",
-        "useWhen": [
-          "Show several visual service or brand features"
-        ],
-        "avoidWhen": [
-          "Display only text and icons"
-        ],
-        "rendering": "server"
-      },
-      "schemaKey": "FeaturesMediaGridSection",
-      "contentFields": [
-        {
-          "name": "title",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "items",
-          "required": true,
-          "type": "array"
-        }
-      ]
-    },
-    {
-      "version": 1,
-      "id": "features.story-disclosures",
-      "type": "features",
-      "variant": "story-disclosures",
-      "contract": "./contract.schema.json",
-      "definition": "./definition.tsx",
-      "capability": {
-        "title": "Story disclosures",
-        "description": "Presents the three story disclosure cards used by the v45 story page.",
-        "useWhen": [
-          "Explain restaurant preparation or sourcing details"
-        ],
-        "avoidWhen": [
-          "Create a generic icon grid"
-        ],
-        "rendering": "server"
-      },
-      "schemaKey": "FeaturesStoryDisclosuresSection",
       "contentFields": [
         {
           "name": "items",
@@ -248,6 +100,11 @@
       "schemaKey": "HeroDefaultSection",
       "contentFields": [
         {
+          "name": "eyebrow",
+          "required": true,
+          "type": "string"
+        },
+        {
           "name": "title",
           "required": true,
           "type": "string"
@@ -256,116 +113,29 @@
           "name": "description",
           "required": true,
           "type": "string"
-        },
-        {
-          "name": "textColor",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "name": "media",
-          "required": true,
-          "type": "array"
         },
         {
           "name": "primaryAction",
-          "required": false
+          "required": true
         },
         {
           "name": "secondaryAction",
-          "required": false
+          "required": true
         },
         {
-          "name": "tertiaryAction",
-          "required": false
-        }
-      ]
-    },
-    {
-      "version": 1,
-      "id": "hero.intro",
-      "type": "hero",
-      "variant": "intro",
-      "contract": "./contract.schema.json",
-      "definition": "./definition.tsx",
-      "capability": {
-        "title": "Intro hero",
-        "description": "A compact page introduction with an image or map media.",
-        "useWhen": [
-          "A secondary page needs a clear introduction"
-        ],
-        "avoidWhen": [
-          "The page needs multiple calls to action"
-        ],
-        "rendering": "server"
-      },
-      "schemaKey": "HeroIntroSection",
-      "contentFields": [
-        {
-          "name": "title",
+          "name": "benefits",
           "required": true,
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "required": true,
-          "type": "string"
+          "type": "array"
         },
         {
           "name": "media",
-          "required": true
-        }
-      ]
-    },
-    {
-      "version": 1,
-      "id": "locations.featured-single",
-      "type": "locations",
-      "variant": "featured-single",
-      "contract": "./contract.schema.json",
-      "definition": "./definition.tsx",
-      "capability": {
-        "title": "Featured location",
-        "description": "Features one restaurant location with services, storefront media and actions.",
-        "useWhen": [
-          "Give a single location a prominent content block"
-        ],
-        "avoidWhen": [
-          "List multiple locations"
-        ],
-        "rendering": "server"
-      },
-      "schemaKey": "LocationsFeaturedSingleSection",
-      "contentFields": [
-        {
-          "name": "title",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "description",
-          "required": true,
-          "type": "string"
-        },
-        {
-          "name": "location",
-          "required": true,
-          "type": "object"
-        },
-        {
-          "name": "services",
           "required": true,
           "type": "array"
         },
         {
-          "name": "storefront",
+          "name": "carousel",
           "required": true,
           "type": "object"
-        },
-        {
-          "name": "actions",
-          "required": true,
-          "type": "array"
         }
       ]
     },
@@ -390,6 +160,11 @@
       "schemaKey": "LocationsMapListSection",
       "contentFields": [
         {
+          "name": "eyebrow",
+          "required": true,
+          "type": "string"
+        },
+        {
           "name": "title",
           "required": true,
           "type": "string"
@@ -403,6 +178,15 @@
           "name": "locations",
           "required": true,
           "type": "array"
+        },
+        {
+          "name": "directionsLabel",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "action",
+          "required": true
         }
       ]
     },
@@ -435,6 +219,15 @@
           "name": "categories",
           "required": true,
           "type": "array"
+        },
+        {
+          "name": "limitedDescription",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "currency",
+          "required": true
         }
       ]
     },
@@ -459,6 +252,11 @@
       "schemaKey": "ProductsCarouselSection",
       "contentFields": [
         {
+          "name": "eyebrow",
+          "required": true,
+          "type": "string"
+        },
+        {
           "name": "title",
           "required": true,
           "type": "string"
@@ -469,9 +267,13 @@
           "type": "string"
         },
         {
-          "name": "hasOrdering",
-          "required": false,
-          "type": "boolean"
+          "name": "action",
+          "required": true
+        },
+        {
+          "name": "productActionLabel",
+          "required": true,
+          "type": "string"
         },
         {
           "name": "products",
@@ -501,44 +303,17 @@
       "schemaKey": "ReviewsCarouselSection",
       "contentFields": [
         {
+          "name": "eyebrow",
+          "required": true,
+          "type": "string"
+        },
+        {
           "name": "title",
           "required": true,
           "type": "string"
         },
         {
-          "name": "description",
-          "required": true,
-          "type": "string"
-        },
-        {
           "name": "reviews",
-          "required": true,
-          "type": "array"
-        }
-      ]
-    },
-    {
-      "version": 1,
-      "id": "story.sequence",
-      "type": "story",
-      "variant": "sequence",
-      "contract": "./contract.schema.json",
-      "definition": "./definition.tsx",
-      "capability": {
-        "title": "Story sequence",
-        "description": "A two-item editorial sequence for a brand story.",
-        "useWhen": [
-          "A story has two ordered chapters"
-        ],
-        "avoidWhen": [
-          "A single story image is sufficient"
-        ],
-        "rendering": "server"
-      },
-      "schemaKey": "StorySequenceSection",
-      "contentFields": [
-        {
-          "name": "items",
           "required": true,
           "type": "array"
         }
@@ -565,6 +340,11 @@
       "schemaKey": "StorySplitSection",
       "contentFields": [
         {
+          "name": "eyebrow",
+          "required": true,
+          "type": "string"
+        },
+        {
           "name": "title",
           "required": true,
           "type": "string"
@@ -579,8 +359,23 @@
           "required": true
         },
         {
+          "name": "ingredientsLabel",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "ingredients",
+          "required": true,
+          "type": "array"
+        },
+        {
+          "name": "promises",
+          "required": true,
+          "type": "array"
+        },
+        {
           "name": "action",
-          "required": false
+          "required": true
         }
       ]
     }

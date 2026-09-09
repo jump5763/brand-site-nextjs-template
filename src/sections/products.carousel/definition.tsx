@@ -1,23 +1,27 @@
-import type { ProductsCarouselSection } from "@/site-schema/generated/types";
-import { ProductsCarouselView, type ProductCarouselProps } from "./view";
-
+import type {
+  ProductsCarouselSection,
+  SiteDocument,
+} from "@/site-schema/generated/types";
+import View from "./view";
+import {
+  resolveAction,
+  seasonalProducts,
+  type SeasonalProps,
+} from "@/lib/home-view-model";
 export const toProps = (
   section: ProductsCarouselSection,
-): ProductCarouselProps => ({
-  title: section.content.title,
-  description: section.content.description,
-  products: section.content
-    .products as unknown as ProductCarouselProps["products"],
+  site: SiteDocument,
+): SeasonalProps => ({
+  ...section.content,
+  action: resolveAction(section.content.action, site),
+  products: seasonalProducts(section.content, site),
 });
-
-const definition = {
-  id: "products.carousel" as const,
-  type: "products" as const,
-  variant: "carousel" as const,
+export default {
+  id: "products.carousel",
+  type: "products",
+  variant: "carousel",
   toProps,
-  render: (section: ProductsCarouselSection) => (
-    <ProductsCarouselView {...toProps(section)} />
+  render: (section: ProductsCarouselSection, site: SiteDocument) => (
+    <View id={section.id} {...toProps(section, site)} />
   ),
-};
-
-export default definition;
+} as const;

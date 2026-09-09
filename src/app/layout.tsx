@@ -5,6 +5,7 @@ import { Footer } from "@/components/site/footer";
 import { Header } from "@/components/site/header";
 import { loadSiteSchema } from "@/site-schema/runtime/load-site";
 import { createSiteShellProps } from "@/site-schema/runtime/site-shell";
+import { themeToCssVariables } from "@/site-schema/runtime/apply-theme";
 import "./globals.css";
 
 const inter = Inter({
@@ -21,40 +22,30 @@ const cormorant = Cormorant_Garamond({
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  metadataBase: new URL("https://keke.example.com"),
-  title: {
-    default: "keke — real food, made simple",
-    template: "%s · keke",
-  },
-  description:
-    "Seasonal salads and warm grain bowls, made from scratch every morning from produce grown by nearby farms. Pickup and delivery in San Francisco, Los Angeles and Palo Alto.",
-  keywords: [
-    "healthy salads",
-    "grain bowls",
-    "farm to table",
-    "seasonal food",
-    "keke",
-  ],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: "keke",
-    title: "keke — real food, made simple",
-    description:
-      "Seasonal salads and warm grain bowls from nearby farms — made to order, ready in minutes.",
-  },
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const site = await loadSiteSchema();
+  const home = site.pages.find((page) => page.id === "home")!;
+  return {
+    metadataBase: new URL(site.siteUrl),
+    title: {
+      default: home.metadata.title,
+      template: `%s · ${site.layout.header.content.brandName}`,
+    },
+    description: home.metadata.description,
+  };
+}
 
 export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const shell = createSiteShellProps(await loadSiteSchema());
+  const site = await loadSiteSchema();
+  const shell = createSiteShellProps(site);
   return (
     <html lang="en" suppressHydrationWarning>
       <body
+        style={themeToCssVariables(site.theme)}
         className={`${inter.variable} ${cormorant.variable} bg-background font-sans text-foreground antialiased`}
       >
         <span id="top" aria-hidden="true" className="absolute" />
@@ -69,9 +60,9 @@ export default async function RootLayout({
         >
           Skip to content
         </a>
-        <Header navLinks={shell.navLinks} storeCount={shell.storeCount} />
+        <Header {...shell.header} />
         <main id="main-content">{children}</main>
-        <Footer locations={shell.locations} />
+        <Footer {...shell.footer} />
         <Toaster
           theme="light"
           position="top-center"

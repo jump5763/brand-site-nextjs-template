@@ -16,7 +16,7 @@ export function renderPage(site: SiteDocument, pathOrId: string) {
     <div data-page-id={page.id}>
       {page.sections.map((section) => (
         <React.Fragment key={section.id}>
-          {renderSection(section)}
+          {renderSection(section, site)}
         </React.Fragment>
       ))}
     </div>

@@ -37,6 +37,7 @@ export default {
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/sections/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     screens: {
@@ -51,7 +52,7 @@ export default {
       fontSize,
       fontFamily: {
         sans: [
-          "var(--font-inter)",
+          "var(--font-typography, var(--font-inter))",
           "Inter",
           "-apple-system",
           "BlinkMacSystemFont",
@@ -60,14 +61,14 @@ export default {
           "sans-serif",
         ],
         display: [
-          "var(--font-cormorant)",
+          "var(--font-heading, var(--font-cormorant))",
           "Cormorant Garamond",
           "Georgia",
           "Times New Roman",
           "serif",
         ],
         serif: [
-          "var(--font-cormorant)",
+          "var(--font-heading, var(--font-cormorant))",
           "Cormorant Garamond",
           "Georgia",
           "serif",

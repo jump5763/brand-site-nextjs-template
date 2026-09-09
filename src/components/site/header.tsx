@@ -14,11 +14,16 @@ import {
   SheetClose,
 } from "@/components/ui/sheet";
 
-type HeaderProps = {
-  navLinks: ReadonlyArray<{ href: string; label: string }>;
-  storeCount?: number;
-};
-export function Header({ navLinks, storeCount = 0 }: HeaderProps) {
+import type { HeaderProps } from "@/site-schema/runtime/site-shell";
+export function Header({
+  navLinks,
+  action,
+  brandName,
+  homeHref,
+  locationsLabel,
+  hoursLabel,
+  email,
+}: HeaderProps) {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
@@ -74,7 +79,7 @@ export function Header({ navLinks, storeCount = 0 }: HeaderProps) {
             >
               <div className="flex h-full flex-col overflow-y-auto px-[24px] pb-[28px] pt-[28px]">
                 <div className="flex items-center justify-between pr-[28px]">
-                  <Brand />
+                  <Brand name={brandName} href={homeHref} />
                 </div>
 
                 <nav
@@ -105,10 +110,10 @@ export function Header({ navLinks, storeCount = 0 }: HeaderProps) {
 
                 <SheetClose asChild>
                   <Link
-                    href="/menu"
+                    href={action.href}
                     className={ctaClass("primary", "lg", "mt-[36px] w-full")}
                   >
-                    Order online
+                    {action.label}
                     <ArrowUpRight
                       className="h-[18px] w-[18px]"
                       strokeWidth={2.2}
@@ -119,19 +124,19 @@ export function Header({ navLinks, storeCount = 0 }: HeaderProps) {
                 <div className="mt-[36px] space-y-[16px] border-t border-border pt-[24px]">
                   <p className="flex items-center gap-[10px] text-[13px] text-muted-foreground">
                     <MapPin className="h-[16px] w-[16px] text-sage-600" />
-                    {storeCount} stores — SF, LA & Palo Alto
+                    {locationsLabel}
                   </p>
                   <p className="flex items-center gap-[10px] text-[13px] text-muted-foreground">
                     <Clock className="h-[16px] w-[16px] text-sage-600" />
-                    Open every day, 10:30 AM – 9:00 PM
+                    {hoursLabel}
                   </p>
                   <p className="text-[13px] text-muted-foreground">
                     Contact{" "}
                     <a
-                      href="mailto:hello@kekesalads.com"
+                      href={`mailto:${email}`}
                       className="font-semibold text-foreground underline decoration-sage-300 underline-offset-4 hover:decoration-sage-500"
                     >
-                      hello@kekesalads.com
+                      {email}
                     </a>
                   </p>
                 </div>
@@ -171,21 +176,21 @@ export function Header({ navLinks, storeCount = 0 }: HeaderProps) {
         {/* Center — brand */}
         <div className="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
           <span className="pointer-events-auto inline-block">
-            <Brand />
+            <Brand name={brandName} href={homeHref} />
           </span>
         </div>
 
         {/* Right zone — order CTA */}
         <div className="flex items-center">
           <Link
-            href="/menu"
+            href={action.href}
             className={ctaClass(
               "primary",
               "sm",
               "h-[44px] px-[20px] text-[14px] desktop:h-[46px] desktop:px-[26px] desktop:text-[15px]",
             )}
           >
-            Order online
+            {action.label}
             <ArrowUpRight
               className="hidden h-[16px] w-[16px] desktop:inline-block"
               strokeWidth={2.2}

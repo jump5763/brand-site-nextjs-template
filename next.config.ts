@@ -1,8 +1,15 @@
+import { remoteMediaHosts } from "./src/site-schema/runtime/media-policy.mjs";
 import path from "node:path";
 import type { NextConfig } from "next";
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 
 const nextConfig = (phase: string): NextConfig => ({
+  images: {
+    remotePatterns: remoteMediaHosts.map((hostname) => ({
+      protocol: "https" as const,
+      hostname,
+    })),
+  },
   // Pin tracing to this project so surrounding lockfiles never confuse the build.
   outputFileTracingRoot: path.join(__dirname),
   webpack: (config) => {

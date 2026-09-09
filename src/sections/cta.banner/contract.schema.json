@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://codeforma.local/sections/products.carousel",
-  "title": "products.carousel content",
+  "$id": "https://codeforma.local/sections/cta.banner",
+  "title": "cta.banner content",
   "type": "object",
   "additionalProperties": false,
   "properties": {
@@ -20,16 +20,16 @@
     "action": {
       "$ref": "https://codeforma.local/site-schema/core#/$defs/siteAction"
     },
-    "productActionLabel": {
-      "type": "string",
-      "minLength": 1
-    },
-    "products": {
+    "perks": {
       "type": "array",
       "items": {
-        "$ref": "https://codeforma.local/site-schema/core#/$defs/catalogProduct"
+        "$ref": "https://codeforma.local/site-schema/core#/$defs/iconLabel"
       },
       "minItems": 1
+    },
+    "monogram": {
+      "type": "string",
+      "minLength": 1
     }
   },
   "required": [
@@ -37,7 +37,7 @@
     "title",
     "description",
     "action",
-    "productActionLabel",
-    "products"
+    "perks",
+    "monogram"
   ]
 }

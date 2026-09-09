@@ -74,8 +74,16 @@
 
 ## Site Schema 项目规范
 
-本模板使用与 keke-brand-site v45 兼容的 Site Schema。编辑 `src/site-schema/current.json` 时必须保留顶层 `siteId`、`siteUrl`、`theme`、`layout`、`pages`，商品、分类、门店、评价、metadata 和 Section 数据都归属于对应 Page 的 Section `content`。禁止添加顶层 `resources` 或 `schemaVersion`。
+本模板使用与 keke-brand-site 项目 Contract 定义的 Site Schema。编辑 `src/site-schema/current.json` 时必须保留顶层 `siteId`、`siteUrl`、`theme`、`layout`、`pages`，商品、分类、门店、评价、metadata 和 Section 数据都归属于对应 Page 的 Section `content`。禁止添加顶层 `resources` 或 `schemaVersion`。
 
 所有内容页面统一由唯一入口 `src/app/[[...slug]]/page.tsx` 渲染。同一份已校验文档驱动 Page metadata、canonical、`src/app/sitemap.ts` 和 `src/app/robots.ts`。编排页面只能使用 `src/site-schema/generated/capabilities.json` 中已登记的 `type.variant`。
 
 只使用受控入口 `schema:check`、`validate:site`；涉及路由或渲染时再运行 `typecheck` 和 `build`。禁止在 Agent 工作流中执行任意 Shell，禁止手工改 generated 文件。工作流见 `.agents/skills/edit-site-content/SKILL.md` 和 `.agents/skills/compose-page/SKILL.md`。
+
+## Section 复用与页面验收
+
+只有实际内容结构、响应式布局、媒体、交互和操作入口满足需求时，才复用对应 Section。品牌一致性通过共享设计 token、基础组件和交互规范实现，不要求所有页面使用相同布局。允许合理重复 Section，但不得把无关内容强塞进既有字段。
+
+依照 `.agents/skills/compose-page/SKILL.md` 将需求与能力逐项匹配。存在缺口时，依照 `.agents/skills/create-section/SKILL.md` 兼容扩展能力或登记新 Section，再编排页面。不得为适配现有能力目录简化明确要求，也不得将其推迟为可选增强。扩展共享能力时保留已有页面行为。
+
+报告完成前，对照原始需求检查页面，并提供相关实现与验证证据。JSON 合法、渲染成功或工具调用结束，都不能单独证明需求已完成。明确报告未满足的要求，以及失败或无法执行的检查。

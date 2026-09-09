@@ -16,11 +16,19 @@ export function BrandMark({ className }: { className?: string }) {
   );
 }
 
-export function Brand({ className }: { className?: string }) {
+export function Brand({
+  className,
+  name,
+  href,
+}: {
+  className?: string;
+  name: string;
+  href: string;
+}) {
   return (
     <Link
-      href="/"
-      aria-label="keke — home"
+      href={href}
+      aria-label={`${name} — home`}
       className={cn(
         "inline-flex items-center justify-center gap-[11px] rounded-full focus-visible:outline-2 focus-visible:outline-offset-4",
         className,
@@ -28,7 +36,7 @@ export function Brand({ className }: { className?: string }) {
     >
       <BrandMark />
       <span className="font-display text-[32px] font-semibold leading-none tracking-[-0.5px] text-foreground">
-        keke
+        {name}
       </span>
     </Link>
   );

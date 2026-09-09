@@ -68,7 +68,7 @@
   body {
     @apply bg-background text-foreground;
     font-family:
-      var(--font-inter),
+      var(--font-typography, var(--font-inter)),
       "Inter",
       -apple-system,
       BlinkMacSystemFont,
@@ -218,7 +218,7 @@
 
   /* Type scale — serif display voice */
   .t-eyebrow {
-    font-family: var(--font-inter), "Inter", Arial, sans-serif;
+    font-family: var(--font-typography, var(--font-inter)), "Inter", Arial, sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 1.6;

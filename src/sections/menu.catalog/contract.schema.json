@@ -1,28 +1,88 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://codeforma.local/sections/menu.catalog",
+  "title": "menu.catalog content",
   "type": "object",
   "additionalProperties": false,
-  "required": ["hero", "categories"],
   "properties": {
     "hero": {
       "type": "object",
-      "required": ["title", "description", "action"],
-      "additionalProperties": true
+      "additionalProperties": false,
+      "properties": {
+        "eyebrow": {
+          "type": "string",
+          "minLength": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "action": {
+          "$ref": "https://codeforma.local/site-schema/core#/$defs/siteAction"
+        },
+        "hoursLabel": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "eyebrow",
+        "title",
+        "description",
+        "action",
+        "hoursLabel"
+      ]
     },
     "categories": {
       "type": "array",
-      "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "label", "products"],
+        "additionalProperties": false,
         "properties": {
-          "id": { "type": "string" },
-          "label": { "type": "string" },
-          "products": { "type": "array" }
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": {
+            "type": "string"
+          },
+          "products": {
+            "type": "array",
+            "items": {
+              "$ref": "https://codeforma.local/site-schema/core#/$defs/catalogProduct"
+            },
+            "minItems": 0
+          }
         },
-        "additionalProperties": true
-      }
+        "required": [
+          "id",
+          "label",
+          "description",
+          "products"
+        ]
+      },
+      "minItems": 1
+    },
+    "limitedDescription": {
+      "type": "string",
+      "minLength": 1
+    },
+    "currency": {
+      "const": "USD"
     }
-  }
+  },
+  "required": [
+    "hero",
+    "categories",
+    "limitedDescription",
+    "currency"
+  ]
 }

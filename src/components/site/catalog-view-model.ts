@@ -1,4 +1,4 @@
-import type { CategoryId, Product } from "@/lib/site";
+import type { CategoryId, Product } from "@/lib/catalog";
 
 export type CatFilter = CategoryId | "all" | "limited";
 export type DietFilter =

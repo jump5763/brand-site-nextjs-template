@@ -17,7 +17,7 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 import { ctaClass } from "@/components/site/cta";
 import { Reveal } from "@/components/site/motion";
-import type { CategoryId, Product } from "@/lib/site";
+import type { CategoryId, Product } from "@/lib/catalog";
 import { selectCatalog } from "@/components/site/catalog-view-model";
 import {
   Sheet,
@@ -189,13 +189,28 @@ function ProductCard({
 /* ---------------------------------------------------------------- */
 
 export interface MenuCatalogProps {
+  id: string;
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    action: { label: string; href: string };
+    hoursLabel: string;
+  };
+  limitedDescription: string;
   products: readonly Product[];
-  categories: ReadonlyArray<{ id: CategoryId | "limited"; label: string }>;
-  featuredIds: readonly string[];
+  categories: ReadonlyArray<{
+    id: CategoryId | "limited";
+    label: string;
+    description: string;
+  }>;
   currency: string;
 }
 
 export function MenuClient({
+  id,
+  hero,
+  limitedDescription,
   products: catalogProducts,
   categories: catalogCategories,
   currency = "USD",
@@ -222,7 +237,7 @@ export function MenuClient({
         .map((category) => ({
           key: category.id as string,
           label: category.label,
-          description: categoryDescription(category.id as CategoryId),
+          description: category.description,
           items: results.filter(
             (product) => product.category === (category.id as CategoryId),
           ),
@@ -234,8 +249,7 @@ export function MenuClient({
         {
           key: "limited",
           label: "Limited time",
-          description:
-            "Small-batch seasonal picks that leave the menu when they sell out.",
+          description: limitedDescription,
           items: results,
         },
       ];
@@ -249,7 +263,7 @@ export function MenuClient({
         items: results,
       },
     ];
-  }, [cat, results, catalogCategories]);
+  }, [cat, results, catalogCategories, limitedDescription]);
 
   const bagList = Object.entries(bag)
     .map(([id, quantity]) => ({
@@ -279,7 +293,7 @@ export function MenuClient({
   const activeCatLabel = catChips.find((chip) => chip.id === cat)?.label ?? "";
 
   return (
-    <div className="pb-[140px]">
+    <div id={id} className="pb-[140px]">
       {/* Page intro */}
       <section className="pt-[40px] tablet:pt-[72px]">
         <div className="container-site">
@@ -289,33 +303,34 @@ export function MenuClient({
                 className="a-hero t-eyebrow text-sage-700"
                 style={{ animationDelay: "0ms" }}
               >
-                Seasonal menu
+                {hero.eyebrow}
               </p>
               <h1
                 className="a-hero mt-[16px] font-display text-[46px] font-semibold leading-[1.05] tracking-[-0.5px] text-foreground tablet:text-[64px]"
                 style={{ animationDelay: "90ms" }}
               >
-                Salads, bowls &amp; everything fresh.
+                {hero.title}
               </h1>
               <p
                 className="a-hero mt-[20px] max-w-[560px] text-[15px] leading-[1.75] text-muted-foreground"
                 style={{ animationDelay: "190ms" }}
               >
-                Every item below is built to order from produce our partner
-                farms picked this week. Prices include our house greens as the
-                base — swap anything to make it yours.
+                {hero.description}
               </p>
             </div>
             <div
               className="a-hero flex flex-col gap-[12px] desktop:items-end"
               style={{ animationDelay: "300ms" }}
             >
-              <Link href="/#locations" className={ctaClass("primary", "md")}>
-                Order online
+              <Link
+                href={hero.action.href}
+                className={ctaClass("primary", "md")}
+              >
+                {hero.action.label}
                 <ArrowRight className="h-[16px] w-[16px]" strokeWidth={2.2} />
               </Link>
               <p className="text-[12px] text-muted-foreground">
-                Open daily, 10:30 AM – 9:00 PM · SF, LA &amp; Palo Alto
+                {hero.hoursLabel}
               </p>
             </div>
           </div>
@@ -620,30 +635,17 @@ export function MenuClient({
   );
 }
 
-const categoryDescription = (id: CategoryId): string => {
-  switch (id) {
-    case "salads":
-      return "Crisp, chopped and dressed to order — the classics plus whatever is freshest this week.";
-    case "bowls":
-      return "Warm grains, roasted vegetables and clean proteins, layered in a bowl you can eat with one hand.";
-    case "sides":
-      return "Small plates to share, or to make any bowl a little more of everything.";
-    case "drinks":
-      return "Pressed and blended in-house every morning — no syrups, no concentrate.";
-    case "desserts":
-      return "Sweets that still count as real food: naturally sweet, never overdone.";
-    default:
-      return "";
-  }
-};
-
 const categoryById = (
   id: CategoryId,
-  categories: ReadonlyArray<{ id: CategoryId | "limited"; label: string }>,
+  categories: ReadonlyArray<{
+    id: CategoryId | "limited";
+    label: string;
+    description: string;
+  }>,
 ) => {
   const found = categories.find((category) => category.id === id);
   return {
     label: found?.label ?? "Menu",
-    description: categoryDescription(id),
+    description: found?.description ?? "",
   };
 };

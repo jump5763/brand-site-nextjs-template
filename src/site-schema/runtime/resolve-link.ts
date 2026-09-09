@@ -1,3 +1,4 @@
+import { linkTargetError } from "./link-policy.mjs";
 export interface PageIdentity {
   id: string;
   path: string;
@@ -83,6 +84,8 @@ export function resolveLinkTarget(
         "LINK_PAGE_UNKNOWN",
         "Page link requires pageId",
       );
+    const error = linkTargetError(document, target);
+    if (error) throw new LinkResolutionError("LINK_TARGET_INVALID", error);
     const page = resolvePage(document, pageId);
     const fragment =
       "fragment" in target && typeof target.fragment === "string"

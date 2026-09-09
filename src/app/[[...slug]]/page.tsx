@@ -1,3 +1,4 @@
+import { jsonLdProps } from "@/site-schema/runtime/json-ld";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { loadSiteSchema } from "@/site-schema/runtime/load-site";
@@ -39,5 +40,13 @@ export default async function ContentPage({ params }: RouteProps) {
   } catch {
     notFound();
   }
-  return renderPage(site, path);
+  const page = resolvePage(site, path);
+  return (
+    <>
+      {page.metadata.structuredData ? (
+        <script {...jsonLdProps(page.metadata.structuredData)} />
+      ) : null}
+      {renderPage(site, path)}
+    </>
+  );
 }

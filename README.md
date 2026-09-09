@@ -35,8 +35,10 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 
 ## Site Schema
 
-This restaurant template follows the keke-brand-site v45 Site Schema. Keep `siteId`, `siteUrl`, `theme`, `layout`, and `pages` at the top level of `src/site-schema/current.json`; products, categories, locations, reviews, metadata, and media remain under the owning Page Section `content`. Do not add `resources` or `schemaVersion`.
+This restaurant template follows the keke-brand-site Site Schema Site Schema. Keep `siteId`, `siteUrl`, `theme`, `layout`, and `pages` at the top level of `src/site-schema/current.json`; products, categories, locations, reviews, metadata, and media remain under the owning Page Section `content`. Do not add `resources` or `schemaVersion`.
 
 All content pages use the single `src/app/[[...slug]]/page.tsx` route. The same validated document drives metadata, canonical URLs, `sitemap.xml`, and `robots.txt`. Select registered Section capabilities from `src/site-schema/generated/capabilities.json`.
 
 Run `pnpm schema:check` and `pnpm validate:site src/site-schema/current.json` after content changes. Run `pnpm typecheck` and `pnpm build` when code, routing, or rendering changes. Project workflows are documented in `.agents/skills/edit-site-content/SKILL.md` and `.agents/skills/compose-page/SKILL.md`.
+
+Default content belongs to this template’s original home page and Menu. v45 is only a structural/protocol reference, never the default business content. Reuse the original components and preserve their visuals, responsive layout, and interactions.

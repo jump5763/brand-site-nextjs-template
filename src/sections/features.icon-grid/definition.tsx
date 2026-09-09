@@ -1,15 +1,14 @@
 import type { FeaturesIconGridSection } from "@/site-schema/generated/types";
-import { IconGridView, type IconGridProps } from "./view";
-
-export const toProps = (section: FeaturesIconGridSection): IconGridProps =>
-  section.content as unknown as IconGridProps;
-const definition = {
-  id: "features.icon-grid" as const,
-  type: "features" as const,
-  variant: "icon-grid" as const,
+import View from "./view";
+import type { ValuesProps } from "@/lib/home-view-model";
+export const toProps = (section: FeaturesIconGridSection): ValuesProps =>
+  section.content;
+export default {
+  id: "features.icon-grid",
+  type: "features",
+  variant: "icon-grid",
   toProps,
   render: (section: FeaturesIconGridSection) => (
-    <IconGridView {...toProps(section)} />
+    <View id={section.id} {...toProps(section)} />
   ),
-};
-export default definition;
+} as const;

@@ -19,35 +19,14 @@ export type LinkTarget =
  * via the `definition` "section".
  */
 export type SiteSection =
-  | CtaStoryLinksSection
-  | FaqDefaultSection
-  | FeaturesDeviceShowcaseSection
+  | CtaBannerSection
   | FeaturesIconGridSection
-  | FeaturesMediaGridSection
-  | FeaturesStoryDisclosuresSection
   | HeroDefaultSection
-  | HeroIntroSection
-  | LocationsFeaturedSingleSection
   | LocationsMapListSection
   | MenuCatalogSection
   | ProductsCarouselSection
   | ReviewsCarouselSection
-  | StorySequenceSection
   | StorySplitSection;
-/**
- * This interface was referenced by `HeroDefaultSection`'s JSON-Schema
- * via the `definition` "action".
- */
-export type Action1 = {
-  [k: string]: unknown;
-} & {
-  label: string;
-  href?: string;
-  target?: {
-    [k: string]: unknown;
-  };
-  newTab?: boolean;
-};
 
 export interface SiteDocument {
   siteId: string;
@@ -62,8 +41,8 @@ export interface SiteDocument {
  */
 export interface Theme {
   fonts: {
-    heading: string;
-    typography: string;
+    heading: "Cormorant Garamond" | "Inter";
+    typography: "Inter" | "Cormorant Garamond";
   };
   colors: {
     /**
@@ -87,20 +66,34 @@ export interface Layout {
  */
 export interface Header {
   variant: string;
-  content: HeaderContent;
+  content: {
+    brandName: string;
+    /**
+     * @minItems 1
+     */
+    navigation: [
+      {
+        label: string;
+        target: LinkTarget;
+      },
+      ...{
+        label: string;
+        target: LinkTarget;
+      }[]
+    ];
+    action: SiteAction;
+    locationsLabel: string;
+    hoursLabel: string;
+    email: string;
+  };
 }
 /**
  * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "headerContent".
+ * via the `definition` "siteAction".
  */
-export interface HeaderContent {
-  brandName: string;
-  hasOrdering?: boolean;
-  logoPath: string;
-  navigation: {
-    label: string;
-    target: LinkTarget;
-  }[];
+export interface SiteAction {
+  label: string;
+  target: LinkTarget;
 }
 /**
  * This interface was referenced by `SiteDocument`'s JSON-Schema
@@ -108,42 +101,37 @@ export interface HeaderContent {
  */
 export interface Footer {
   variant: string;
-  content: FooterContent;
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "footerContent".
- */
-export interface FooterContent {
-  brandName: string;
-  logoPath: string;
-  tagline?: string;
-  copyright?: string;
-  navigation: FooterLink[];
-  actions?: FooterLink[];
-  legalLinks?: FooterLink[];
-  attribution?: FooterLink;
-  businessHours?: FooterText;
-  contact?: FooterText;
-  location?: FooterText;
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "footerLink".
- */
-export interface FooterLink {
-  label: string;
-  href: string;
-  external?: boolean;
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "footerText".
- */
-export interface FooterText {
-  label: string;
-  text: string;
-  href?: string;
+  content: {
+    brandName: string;
+    anchorId: string;
+    eyebrow: string;
+    title: string;
+    description: string;
+    phone: string;
+    phoneHref: string;
+    email: string;
+    phoneLabel: string;
+    emailLabel: string;
+    tagline: string;
+    /**
+     * @minItems 0
+     */
+    badges: string[];
+    /**
+     * @minItems 0
+     */
+    navigation: SiteAction[];
+    navigationLabel: string;
+    locationsLabel: string;
+    locationsTarget: LinkTarget;
+    contactLabel: string;
+    pressLabel: string;
+    pressEmail: string;
+    copyright: string;
+    legalTagline: string;
+    backToTopLabel: string;
+    action: SiteAction;
+  };
 }
 /**
  * This interface was referenced by `SiteDocument`'s JSON-Schema
@@ -179,88 +167,32 @@ export interface Metadata {
 }
 /**
  * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "CtaStoryLinksSection".
+ * via the `definition` "CtaBannerSection".
  */
-export interface CtaStoryLinksSection {
+export interface CtaBannerSection {
   id: string;
   type: "cta";
-  variant: "story-links";
-  content: {
-    title: string;
-    description: string;
-    /**
-     * @minItems 2
-     * @maxItems 2
-     */
-    actions: [
-      {
-        label: string;
-        href: string;
-      },
-      {
-        label: string;
-        href: string;
-      }
-    ];
-  };
+  variant: "banner";
+  content: CtaBannerContent;
+}
+export interface CtaBannerContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  action: SiteAction;
+  /**
+   * @minItems 1
+   */
+  perks: [IconLabel, ...IconLabel[]];
+  monogram: string;
 }
 /**
  * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "FaqDefaultSection".
+ * via the `definition` "iconLabel".
  */
-export interface FaqDefaultSection {
-  id: string;
-  type: "faq";
-  variant: "default";
-  content: {
-    title: string;
-    description: string;
-    /**
-     * @minItems 1
-     */
-    items: [Item, ...Item[]];
-    defaultExpandedIds?: string[];
-    action?: Action;
-  };
-}
-/**
- * This interface was referenced by `FaqDefaultSection`'s JSON-Schema
- * via the `definition` "item".
- */
-export interface Item {
-  id: string;
-  question: string;
-  answer: string;
-  dateCreated?: string;
-}
-/**
- * This interface was referenced by `FaqDefaultSection`'s JSON-Schema
- * via the `definition` "action".
- */
-export interface Action {
+export interface IconLabel {
+  icon: "store" | "leaf" | "clock" | "sprout" | "bike";
   label: string;
-  target: {
-    [k: string]: unknown;
-  };
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "FeaturesDeviceShowcaseSection".
- */
-export interface FeaturesDeviceShowcaseSection {
-  id: string;
-  type: "features";
-  variant: "device-showcase";
-  content: {
-    title: string;
-    description: string;
-    media: {
-      [k: string]: unknown;
-    };
-    items: {
-      [k: string]: unknown;
-    }[];
-  };
 }
 /**
  * This interface was referenced by `SiteDocument`'s JSON-Schema
@@ -270,67 +202,24 @@ export interface FeaturesIconGridSection {
   id: string;
   type: "features";
   variant: "icon-grid";
-  content: {
-    title: string;
-    description: string;
-    /**
-     * @minItems 1
-     */
-    items: [
-      {
-        [k: string]: unknown;
-      },
-      ...{
-        [k: string]: unknown;
-      }[]
-    ];
-  };
+  content: FeaturesIconGridContent;
 }
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "FeaturesMediaGridSection".
- */
-export interface FeaturesMediaGridSection {
-  id: string;
-  type: "features";
-  variant: "media-grid";
-  content: {
-    title: string;
-    description: string;
-    /**
-     * @minItems 1
-     */
-    items: [
-      {
-        [k: string]: unknown;
-      },
-      ...{
-        [k: string]: unknown;
-      }[]
-    ];
-  };
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "FeaturesStoryDisclosuresSection".
- */
-export interface FeaturesStoryDisclosuresSection {
-  id: string;
-  type: "features";
-  variant: "story-disclosures";
-  content: {
-    /**
-     * @minItems 1
-     */
-    items: [
-      {
-        [k: string]: unknown;
-      },
-      ...{
-        [k: string]: unknown;
-      }[]
-    ];
-  };
+export interface FeaturesIconGridContent {
+  /**
+   * @minItems 1
+   */
+  items: [
+    {
+      icon: "store" | "leaf" | "clock" | "sprout" | "bike";
+      title: string;
+      text: string;
+    },
+    ...{
+      icon: "store" | "leaf" | "clock" | "sprout" | "bike";
+      title: string;
+      text: string;
+    }[]
+  ];
 }
 /**
  * This interface was referenced by `SiteDocument`'s JSON-Schema
@@ -340,264 +229,26 @@ export interface HeroDefaultSection {
   id: string;
   type: "hero";
   variant: "default";
-  content: {
-    title: string;
-    description: string;
-    textColor?: string;
-    /**
-     * @minItems 1
-     */
-    media: [Image, ...Image[]];
-    primaryAction?: Action1;
-    secondaryAction?: Action1;
-    tertiaryAction?: Action1;
-  };
+  content: HeroDefaultContent;
 }
-/**
- * This interface was referenced by `HeroDefaultSection`'s JSON-Schema
- * via the `definition` "image".
- */
-export interface Image {
-  kind: "image";
-  path: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "HeroIntroSection".
- */
-export interface HeroIntroSection {
-  id: string;
-  type: "hero";
-  variant: "intro";
-  content: {
-    title: string;
-    description: string;
-    media: Image1 | GoogleMap;
-  };
-}
-/**
- * This interface was referenced by `HeroIntroSection`'s JSON-Schema
- * via the `definition` "image".
- */
-export interface Image1 {
-  kind: "image";
-  path: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-/**
- * This interface was referenced by `HeroIntroSection`'s JSON-Schema
- * via the `definition` "googleMap".
- */
-export interface GoogleMap {
-  kind: "google-map";
-  placeId: string;
-  accessibleTitle: string;
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "LocationsFeaturedSingleSection".
- */
-export interface LocationsFeaturedSingleSection {
-  id: string;
-  type: "locations";
-  variant: "featured-single";
-  content: {
-    title: string;
-    description: string;
-    location: {
-      [k: string]: unknown;
-    };
-    services: string[];
-    storefront: {
-      [k: string]: unknown;
-    };
-    actions: {
-      [k: string]: unknown;
-    }[];
-  };
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "LocationsMapListSection".
- */
-export interface LocationsMapListSection {
-  id: string;
-  type: "locations";
-  variant: "map-list";
-  content: {
-    title: string;
-    description: string;
-    /**
-     * @minItems 1
-     */
-    locations: [
-      {
-        [k: string]: unknown;
-      },
-      ...{
-        [k: string]: unknown;
-      }[]
-    ];
-  };
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "MenuCatalogSection".
- */
-export interface MenuCatalogSection {
-  id: string;
-  type: "menu";
-  variant: "catalog";
-  content: {
-    hero: {
-      [k: string]: unknown;
-    };
-    /**
-     * @minItems 1
-     */
-    categories: [
-      {
-        id: string;
-        label: string;
-        products: unknown[];
-        [k: string]: unknown;
-      },
-      ...{
-        id: string;
-        label: string;
-        products: unknown[];
-        [k: string]: unknown;
-      }[]
-    ];
-  };
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "ProductsCarouselSection".
- */
-export interface ProductsCarouselSection {
-  id: string;
-  type: "products";
-  variant: "carousel";
-  content: {
-    title: string;
-    description: string;
-    hasOrdering?: boolean;
-    /**
-     * @minItems 1
-     */
-    products: [
-      {
-        id: string;
-        [k: string]: unknown;
-      },
-      ...{
-        id: string;
-        [k: string]: unknown;
-      }[]
-    ];
-  };
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "ReviewsCarouselSection".
- */
-export interface ReviewsCarouselSection {
-  id: string;
-  type: "reviews";
-  variant: "carousel";
-  content: {
-    title: string;
-    description: string;
-    /**
-     * @minItems 1
-     */
-    reviews: [
-      {
-        [k: string]: unknown;
-      },
-      ...{
-        [k: string]: unknown;
-      }[]
-    ];
-  };
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "StorySequenceSection".
- */
-export interface StorySequenceSection {
-  id: string;
-  type: "story";
-  variant: "sequence";
-  content: {
-    /**
-     * @minItems 2
-     * @maxItems 2
-     */
-    items: [Item1, Item1];
-  };
-}
-/**
- * This interface was referenced by `StorySequenceSection`'s JSON-Schema
- * via the `definition` "item".
- */
-export interface Item1 {
-  id: string;
+export interface HeroDefaultContent {
+  eyebrow: string;
   title: string;
   description: string;
-  media: Image2;
-}
-/**
- * This interface was referenced by `StorySequenceSection`'s JSON-Schema
- * via the `definition` "image".
- */
-export interface Image2 {
-  kind: "image";
-  path: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-/**
- * This interface was referenced by `SiteDocument`'s JSON-Schema
- * via the `definition` "StorySplitSection".
- */
-export interface StorySplitSection {
-  id: string;
-  type: "story";
-  variant: "split";
-  content: {
-    title: string;
-    description: string;
-    media: Image3;
-    action?: Action2;
-  };
-}
-/**
- * This interface was referenced by `StorySplitSection`'s JSON-Schema
- * via the `definition` "image".
- */
-export interface Image3 {
-  kind: "image";
-  path: string;
-  alt: string;
-  width: number;
-  height: number;
-}
-/**
- * This interface was referenced by `StorySplitSection`'s JSON-Schema
- * via the `definition` "action".
- */
-export interface Action2 {
-  label: string;
-  target: {
-    [k: string]: unknown;
+  primaryAction: SiteAction;
+  secondaryAction: SiteAction;
+  /**
+   * @minItems 1
+   */
+  benefits: [IconLabel, ...IconLabel[]];
+  /**
+   * @minItems 1
+   */
+  media: [Media, ...Media[]];
+  carousel: {
+    label: string;
+    caption: string;
+    freshLabel: string;
   };
 }
 /**
@@ -608,6 +259,237 @@ export interface Media {
   kind: "image";
   path: string;
   alt: string;
-  width: number;
-  height: number;
+  width?: number;
+  height?: number;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "LocationsMapListSection".
+ */
+export interface LocationsMapListSection {
+  id: string;
+  type: "locations";
+  variant: "map-list";
+  content: LocationsMapListContent;
+}
+export interface LocationsMapListContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  /**
+   * @minItems 1
+   */
+  locations: [StoreLocation, ...StoreLocation[]];
+  directionsLabel: string;
+  action: SiteAction;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "storeLocation".
+ */
+export interface StoreLocation {
+  id: string;
+  name: string;
+  street: string;
+  city: string;
+  phone: string;
+  phoneHref: string;
+  /**
+   * @minItems 1
+   */
+  hours: [
+    {
+      day: string;
+      time: string;
+    },
+    ...{
+      day: string;
+      time: string;
+    }[]
+  ];
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "MenuCatalogSection".
+ */
+export interface MenuCatalogSection {
+  id: string;
+  type: "menu";
+  variant: "catalog";
+  content: MenuCatalogContent;
+}
+export interface MenuCatalogContent {
+  hero: {
+    eyebrow: string;
+    title: string;
+    description: string;
+    action: SiteAction;
+    hoursLabel: string;
+  };
+  /**
+   * @minItems 1
+   */
+  categories: [
+    {
+      id: string;
+      label: string;
+      description: string;
+      /**
+       * @minItems 0
+       */
+      products: CatalogProduct[];
+    },
+    ...{
+      id: string;
+      label: string;
+      description: string;
+      /**
+       * @minItems 0
+       */
+      products: CatalogProduct[];
+    }[]
+  ];
+  limitedDescription: string;
+  currency: "USD";
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "catalogProduct".
+ */
+export interface CatalogProduct {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  priceCents: number;
+  calories: number;
+  /**
+   * @minItems 0
+   */
+  diet: ("Vegan" | "Vegetarian" | "Gluten-free" | "High-protein")[];
+  media: Media;
+  badge?: "New" | "Limited" | "Chef's pick" | "Bestseller";
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "ProductsCarouselSection".
+ */
+export interface ProductsCarouselSection {
+  id: string;
+  type: "products";
+  variant: "carousel";
+  content: ProductsCarouselContent;
+}
+export interface ProductsCarouselContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  action: SiteAction;
+  productActionLabel: string;
+  /**
+   * @minItems 1
+   */
+  products: [CatalogProduct, ...CatalogProduct[]];
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "ReviewsCarouselSection".
+ */
+export interface ReviewsCarouselSection {
+  id: string;
+  type: "reviews";
+  variant: "carousel";
+  content: ReviewsCarouselContent;
+}
+export interface ReviewsCarouselContent {
+  eyebrow: string;
+  title: string;
+  /**
+   * @minItems 1
+   */
+  reviews: [CustomerReview, ...CustomerReview[]];
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "customerReview".
+ */
+export interface CustomerReview {
+  quote: string;
+  author: string;
+  location: string;
+  source: string;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "StorySplitSection".
+ */
+export interface StorySplitSection {
+  id: string;
+  type: "story";
+  variant: "split";
+  content: StorySplitContent;
+}
+export interface StorySplitContent {
+  eyebrow: string;
+  title: string;
+  description: string;
+  media: Media;
+  ingredientsLabel: string;
+  /**
+   * @minItems 1
+   */
+  ingredients: [string, ...string[]];
+  /**
+   * @minItems 1
+   */
+  promises: [string, ...string[]];
+  action: SiteAction;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "headerContent".
+ */
+export interface HeaderContent {
+  brandName: string;
+  hasOrdering?: boolean;
+  logoPath: string;
+  navigation: {
+    label: string;
+    target: LinkTarget;
+  }[];
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "footerLink".
+ */
+export interface FooterLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "footerText".
+ */
+export interface FooterText {
+  label: string;
+  text: string;
+  href?: string;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "footerContent".
+ */
+export interface FooterContent {
+  brandName: string;
+  logoPath: string;
+  tagline?: string;
+  copyright?: string;
+  navigation: FooterLink[];
+  actions?: FooterLink[];
+  legalLinks?: FooterLink[];
+  attribution?: FooterLink;
+  businessHours?: FooterText;
+  contact?: FooterText;
+  location?: FooterText;
 }

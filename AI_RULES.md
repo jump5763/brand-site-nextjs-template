@@ -74,8 +74,16 @@ By following these guidelines, we can build a more robust, maintainable, and con
 
 ## Site Schema contract
 
-This template uses the v45 Site Schema as its content contract. Preserve the top-level `siteId`, `siteUrl`, `theme`, `layout`, and `pages` keys in `src/site-schema/current.json`. Product, category, location, review, metadata, and Section data stay under the owning Page Section `content`; never add top-level `resources` or `schemaVersion`.
+This template uses the Site Schema Site Schema as its content contract. Preserve the top-level `siteId`, `siteUrl`, `theme`, `layout`, and `pages` keys in `src/site-schema/current.json`. Product, category, location, review, metadata, and Section data stay under the owning Page Section `content`; never add top-level `resources` or `schemaVersion`.
 
 All content pages render through the single `src/app/[[...slug]]/page.tsx` route. The validated document also supplies Page metadata, canonical URLs, `src/app/sitemap.ts`, and `src/app/robots.ts`. Use registered `type.variant` capabilities from `src/site-schema/generated/capabilities.json`.
 
 Use only the controlled checks `schema:check`, `validate:site`, `typecheck`, and `build` when routing or rendering changes. Do not execute arbitrary shell from an Agent workflow or edit generated files by hand. Project workflows are documented in `.agents/skills/edit-site-content/SKILL.md` and `.agents/skills/compose-page/SKILL.md`.
+
+## Section reuse and page acceptance
+
+Reuse a Section only when its actual content structure, responsive layout, media, interactions, and action destinations satisfy the request. Brand consistency comes from shared design tokens, base components, and interaction conventions; it does not require identical page layouts. Repeat a Section when appropriate, without forcing unrelated content into its fields.
+
+Follow `.agents/skills/compose-page/SKILL.md` to match requirements to capabilities. When a capability is missing, follow `.agents/skills/create-section/SKILL.md` to extend it compatibly or register a new Section before composition. Do not simplify explicit requirements to fit the current catalog or defer them as optional enhancements. Preserve existing page behavior when extending shared capabilities.
+
+Before reporting completion, compare the page with the original requirements and attach relevant implementation and verification evidence. Valid JSON, successful rendering, or a completed tool call alone does not prove fulfillment. Report unmet requirements and failed or unavailable checks explicitly.

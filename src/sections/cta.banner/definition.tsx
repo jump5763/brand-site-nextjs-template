@@ -1,22 +1,22 @@
 import type {
-  StorySplitSection,
+  CtaBannerSection,
   SiteDocument,
 } from "@/site-schema/generated/types";
 import View from "./view";
-import { resolveAction, type FarmProps } from "@/lib/home-view-model";
+import { resolveAction, type OrderProps } from "@/lib/home-view-model";
 export const toProps = (
-  section: StorySplitSection,
+  section: CtaBannerSection,
   site: SiteDocument,
-): FarmProps => ({
+): OrderProps => ({
   ...section.content,
   action: resolveAction(section.content.action, site),
 });
 export default {
-  id: "story.split",
-  type: "story",
-  variant: "split",
+  id: "cta.banner",
+  type: "cta",
+  variant: "banner",
   toProps,
-  render: (section: StorySplitSection, site: SiteDocument) => (
+  render: (section: CtaBannerSection, site: SiteDocument) => (
     <View id={section.id} {...toProps(section, site)} />
   ),
 } as const;

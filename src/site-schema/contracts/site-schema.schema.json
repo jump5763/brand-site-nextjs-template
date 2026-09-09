@@ -51,10 +51,16 @@
           "additionalProperties": false,
           "properties": {
             "heading": {
-              "type": "string"
+              "enum": [
+                "Cormorant Garamond",
+                "Inter"
+              ]
             },
             "typography": {
-              "type": "string"
+              "enum": [
+                "Inter",
+                "Cormorant Garamond"
+              ]
             }
           }
         },
@@ -76,7 +82,7 @@
           "patternProperties": {
             "^(background|primary(50|100|200|300|400|500|600|700|800|900)|secondary(50|100|200|300|400|500|600|700|800|900)|black(100|200|300|400|500|600|700|800|900)|white)$": {
               "type": "string",
-              "pattern": "^#[0-9A-Fa-f]{6}$"
+              "pattern": "^(#[0-9A-Fa-f]{6}|hsl\\([0-9.]+ [0-9.]+% [0-9.]+%\\))$"
             }
           }
         }
@@ -185,9 +191,7 @@
       "required": [
         "kind",
         "path",
-        "alt",
-        "width",
-        "height"
+        "alt"
       ],
       "properties": {
         "kind": {
@@ -279,7 +283,58 @@
           "minLength": 1
         },
         "content": {
-          "$ref": "#/$defs/headerContent"
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "brandName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "navigation": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "properties": {
+                  "label": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "target": {
+                    "$ref": "#/$defs/linkTarget"
+                  }
+                },
+                "required": [
+                  "label",
+                  "target"
+                ]
+              },
+              "minItems": 1
+            },
+            "action": {
+              "$ref": "#/$defs/siteAction"
+            },
+            "locationsLabel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "hoursLabel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "email": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "brandName",
+            "navigation",
+            "action",
+            "locationsLabel",
+            "hoursLabel",
+            "email"
+          ]
         }
       }
     },
@@ -338,7 +393,132 @@
           "minLength": 1
         },
         "content": {
-          "$ref": "#/$defs/footerContent"
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "brandName": {
+              "type": "string",
+              "minLength": 1
+            },
+            "anchorId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "eyebrow": {
+              "type": "string",
+              "minLength": 1
+            },
+            "title": {
+              "type": "string",
+              "minLength": 1
+            },
+            "description": {
+              "type": "string",
+              "minLength": 1
+            },
+            "phone": {
+              "type": "string",
+              "minLength": 1
+            },
+            "phoneHref": {
+              "type": "string",
+              "minLength": 1
+            },
+            "email": {
+              "type": "string",
+              "minLength": 1
+            },
+            "phoneLabel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "emailLabel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "tagline": {
+              "type": "string",
+              "minLength": 1
+            },
+            "badges": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "minLength": 1
+              },
+              "minItems": 0
+            },
+            "navigation": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/siteAction"
+              },
+              "minItems": 0
+            },
+            "navigationLabel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "locationsLabel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "locationsTarget": {
+              "$ref": "#/$defs/linkTarget"
+            },
+            "contactLabel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "pressLabel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "pressEmail": {
+              "type": "string",
+              "minLength": 1
+            },
+            "copyright": {
+              "type": "string",
+              "minLength": 1
+            },
+            "legalTagline": {
+              "type": "string",
+              "minLength": 1
+            },
+            "backToTopLabel": {
+              "type": "string",
+              "minLength": 1
+            },
+            "action": {
+              "$ref": "#/$defs/siteAction"
+            }
+          },
+          "required": [
+            "brandName",
+            "anchorId",
+            "eyebrow",
+            "title",
+            "description",
+            "phone",
+            "phoneHref",
+            "email",
+            "phoneLabel",
+            "emailLabel",
+            "tagline",
+            "badges",
+            "navigation",
+            "navigationLabel",
+            "locationsLabel",
+            "locationsTarget",
+            "contactLabel",
+            "pressLabel",
+            "pressEmail",
+            "copyright",
+            "legalTagline",
+            "backToTopLabel",
+            "action"
+          ]
         }
       }
     },
@@ -441,6 +621,203 @@
           "$ref": "#/$defs/footerText"
         }
       }
+    },
+    "catalogProduct": {
+      "title": "CatalogProduct",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "category": {
+          "type": "string",
+          "minLength": 1
+        },
+        "priceCents": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "calories": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "diet": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "Vegan",
+              "Vegetarian",
+              "Gluten-free",
+              "High-protein"
+            ]
+          },
+          "minItems": 0
+        },
+        "media": {
+          "$ref": "#/$defs/media"
+        },
+        "badge": {
+          "enum": [
+            "New",
+            "Limited",
+            "Chef's pick",
+            "Bestseller"
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "category",
+        "priceCents",
+        "calories",
+        "diet",
+        "media"
+      ]
+    },
+    "storeLocation": {
+      "title": "StoreLocation",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1
+        },
+        "street": {
+          "type": "string",
+          "minLength": 1
+        },
+        "city": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 1
+        },
+        "phoneHref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hours": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "day": {
+                "type": "string",
+                "minLength": 1
+              },
+              "time": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "day",
+              "time"
+            ]
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "street",
+        "city",
+        "phone",
+        "phoneHref",
+        "hours"
+      ]
+    },
+    "customerReview": {
+      "title": "CustomerReview",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "quote": {
+          "type": "string",
+          "minLength": 1
+        },
+        "author": {
+          "type": "string",
+          "minLength": 1
+        },
+        "location": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "quote",
+        "author",
+        "location",
+        "source"
+      ]
+    },
+    "siteAction": {
+      "title": "SiteAction",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1
+        },
+        "target": {
+          "$ref": "#/$defs/linkTarget"
+        }
+      },
+      "required": [
+        "label",
+        "target"
+      ]
+    },
+    "iconLabel": {
+      "title": "IconLabel",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "icon": {
+          "enum": [
+            "store",
+            "leaf",
+            "clock",
+            "sprout",
+            "bike"
+          ]
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "icon",
+        "label"
+      ]
     }
   }
 }

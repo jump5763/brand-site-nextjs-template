@@ -11,34 +11,22 @@ import {
 } from "@/components/ui/carousel";
 import { cn } from "@/lib/utils";
 
-const slideImg = (id: string, w = 1600) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
-
-const slides = [
-  {
-    src: slideImg("photo-1546069901-ba9599a7e63c"),
-    alt: "Seasonal salads and grain bowls arranged on a light table",
-  },
-  {
-    src: slideImg("photo-1512621776951-a57141f2eefd"),
-    alt: "Fresh vegetable salad with chickpeas and herbs",
-  },
-  {
-    src: slideImg("photo-1540420773420-3366772f4999"),
-    alt: "Kale salad with shaved parmesan and toasted croutons",
-  },
-  {
-    src: slideImg("photo-1512058564366-18510be2db19"),
-    alt: "Fire-roasted salmon grain bowl with avocado and sesame",
-  },
-];
-
 const AUTOPLAY_MS = 5600;
 
 /* The ui/carousel primitive handles the slide engine (drag, snap, keyboard),
    loop behaviour and ARIA. Autoplay, progress dots and the caption overlay
    are composed here through the exposed CarouselApi. */
-export function HeroCarousel() {
+export function HeroCarousel({
+  slides,
+  label,
+  caption,
+  freshLabel,
+}: {
+  slides: Array<{ src: string; alt: string }>;
+  label: string;
+  caption: string;
+  freshLabel: string;
+}) {
   const [api, setApi] = useState<CarouselApi>();
   const [index, setIndex] = useState(0);
   const [hovered, setHovered] = useState(false);
@@ -92,7 +80,7 @@ export function HeroCarousel() {
     <Carousel
       setApi={setApi}
       opts={{ loop: true }}
-      aria-label="Seasonal dishes at keke"
+      aria-label={label}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       onFocusCapture={() => setHovered(true)}
@@ -129,10 +117,10 @@ export function HeroCarousel() {
           </span>
           <span>
             <span className="block text-[13px] font-semibold text-foreground">
-              This week&rsquo;s harvest
+              {caption}
             </span>
             <span className="block text-[12px] text-muted-foreground">
-              Picked fresh · {index + 1} of {slides.length}
+              {freshLabel} · {index + 1} of {slides.length}
             </span>
           </span>
         </div>

@@ -1,16 +1,22 @@
-import type { LocationsMapListSection } from "@/site-schema/generated/types";
-import { LocationsMapListView, type LocationMapListProps } from "./view";
-
+import type {
+  LocationsMapListSection,
+  SiteDocument,
+} from "@/site-schema/generated/types";
+import View from "./view";
+import { resolveAction, type LocationsProps } from "@/lib/home-view-model";
 export const toProps = (
   section: LocationsMapListSection,
-): LocationMapListProps => section.content as unknown as LocationMapListProps;
-const definition = {
-  id: "locations.map-list" as const,
-  type: "locations" as const,
-  variant: "map-list" as const,
+  site: SiteDocument,
+): LocationsProps => ({
+  ...section.content,
+  action: resolveAction(section.content.action, site),
+});
+export default {
+  id: "locations.map-list",
+  type: "locations",
+  variant: "map-list",
   toProps,
-  render: (section: LocationsMapListSection) => (
-    <LocationsMapListView {...toProps(section)} />
+  render: (section: LocationsMapListSection, site: SiteDocument) => (
+    <View id={section.id} {...toProps(section, site)} />
   ),
-};
-export default definition;
+} as const;

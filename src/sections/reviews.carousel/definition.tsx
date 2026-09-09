@@ -1,16 +1,14 @@
 import type { ReviewsCarouselSection } from "@/site-schema/generated/types";
-import { ReviewsCarouselView, type ReviewsCarouselProps } from "./view";
-
-export const toProps = (
-  section: ReviewsCarouselSection,
-): ReviewsCarouselProps => section.content as unknown as ReviewsCarouselProps;
-const definition = {
-  id: "reviews.carousel" as const,
-  type: "reviews" as const,
-  variant: "carousel" as const,
+import View from "./view";
+import type { ReviewsProps } from "@/lib/home-view-model";
+export const toProps = (section: ReviewsCarouselSection): ReviewsProps =>
+  section.content;
+export default {
+  id: "reviews.carousel",
+  type: "reviews",
+  variant: "carousel",
   toProps,
   render: (section: ReviewsCarouselSection) => (
-    <ReviewsCarouselView {...toProps(section)} />
+    <View id={section.id} {...toProps(section)} />
   ),
-};
-export default definition;
+} as const;

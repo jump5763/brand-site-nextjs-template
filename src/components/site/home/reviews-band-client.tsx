@@ -3,17 +3,18 @@
 import { useRef, useState } from "react";
 import { ArrowRight, Star } from "lucide-react";
 import { Reveal } from "@/components/site/motion";
-import { reviews as defaultReviews, type Review } from "@/lib/home-view-model";
+import type { ReviewsProps } from "@/lib/home-view-model";
 
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return <p className="t-eyebrow text-sage-700">{children}</p>;
 }
 
 export function ReviewsBandClient({
-  reviews = defaultReviews,
-}: {
-  reviews?: Review[];
-}) {
+  id,
+  reviews,
+  eyebrow,
+  title,
+}: ReviewsProps & { id: string }) {
   const scroller = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
@@ -36,12 +37,15 @@ export function ReviewsBandClient({
   };
 
   return (
-    <section className="!pb-[40px] !pt-[64px] tablet:!pb-[56px] tablet:!pt-[96px]">
+    <section
+      id={id}
+      className="!pb-[40px] !pt-[64px] tablet:!pb-[56px] tablet:!pt-[96px]"
+    >
       <div className="container-site">
         <div className="flex flex-col gap-[24px] tablet:flex-row tablet:items-end tablet:justify-between">
           <Reveal>
-            <Eyebrow>Word on the street</Eyebrow>
-            <h2 className="t-h2 mt-[14px]">Loved around the neighborhood.</h2>
+            <Eyebrow>{eyebrow}</Eyebrow>
+            <h2 className="t-h2 mt-[14px]">{title}</h2>
           </Reveal>
           <Reveal delay={120} className="flex items-center gap-[10px]">
             <button

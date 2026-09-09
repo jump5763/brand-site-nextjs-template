@@ -1,3 +1,5 @@
+import { mediaPathError } from "./media-policy.mjs";
+import { linkTargetError } from "./link-policy.mjs";
 // Shared by the CLI and server loader; only generated contracts are compiled.
 import Ajv from "ajv/dist/2020.js";
 import addFormats from "ajv-formats";
@@ -81,7 +83,6 @@ export function createSiteValidator(rootSchema) {
       appendSchemaErrors(core.errors);
       return { valid: false, errors };
     }
-    const pageIds = new Set(value.pages.map((page) => page.id));
     const seenIds = new Set(),
       seenPaths = new Set(),
       products = new Map();
@@ -109,6 +110,10 @@ export function createSiteValidator(rootSchema) {
           at + "/path",
           "Page path is reserved by the application",
         );
+      if (page.path !== '/' && (!page.path.startsWith('/') || page.path.endsWith('/') || page.path.includes('//') || /[?#\\\s]/.test(page.path) || page.path.split('/').some(part => part === '.' || part === '..')))
+        add('PAGE_PATH_INVALID', at + '/path', 'Use a normalized page path without query, fragment or trailing slash');
+      if (page.metadata.canonicalPath !== page.path)
+        add('PAGE_CANONICAL_MISMATCH', at + '/metadata/canonicalPath', 'Canonical path must match this page path');
       const sectionIds = new Set();
       page.sections.forEach((section, j) => {
         const sectionAt = `${at}/sections/${j}`;
@@ -133,6 +138,23 @@ export function createSiteValidator(rootSchema) {
             sectionAt,
             "SECTION_CONTRACT_INVALID",
           );
+        if (section.type === 'menu' && section.variant === 'catalog' && Array.isArray(section.content.categories)) {
+          const categoryIds = new Set(), productIds = new Set();
+          section.content.categories.forEach((category, index) => {
+            const categoryAt = `${sectionAt}/content/categories/${index}`;
+            if (!object(category)) return;
+            if (categoryIds.has(category.id) || category.id === 'all') add('CATEGORY_ID_INVALID', categoryAt + '/id', 'Category identity must be unique and cannot use all');
+            categoryIds.add(category.id);
+            if (!Array.isArray(category.products)) return;
+            category.products.forEach((product, index) => {
+              if (!object(product)) return;
+              const productAt = `${categoryAt}/products/${index}`;
+              if (product.category !== category.id || category.id === 'limited') add('PRODUCT_CATEGORY_INVALID', productAt + '/category', 'Product must belong to its containing category; limited is a virtual filter');
+              if(productIds.has(product.id)) add('PRODUCT_ID_DUPLICATE', productAt + '/id', 'Duplicate product in the catalog');
+              productIds.add(product.id);
+            });
+          });
+        }
         for (const collection of [
           section.content.products,
           section.content.categories,
@@ -166,7 +188,6 @@ export function createSiteValidator(rootSchema) {
         }
       });
     });
-    // Preserve existing link/media semantic checks; asset resolution is separate.
     const walk = (node, at) => {
       if (Array.isArray(node)) {
         node.forEach((child, i) => walk(child, pointer(at, i)));
@@ -174,39 +195,28 @@ export function createSiteValidator(rootSchema) {
       }
       if (!object(node)) return;
       if (node.kind === "image") {
-        if (
-          typeof node.path !== "string" ||
-          !(node.path.startsWith("/media/") || node.path.startsWith("https://"))
-        )
-          add(
-            "MEDIA_PATH_INVALID",
-            pointer(at, "path"),
-            "Image path must use /media/ or https://",
-          );
-        if (
-          typeof node.width !== "number" ||
-          typeof node.height !== "number" ||
-          node.width < 1 ||
-          node.height < 1
-        )
-          add(
-            "MEDIA_DIMENSIONS_REQUIRED",
-            at,
-            "Image width and height must be positive numbers",
-          );
+        const issue = mediaPathError(node.path);
+        if (issue) add("MEDIA_PATH_INVALID", pointer(at, "path"), issue);
+        for (const dimension of ["width", "height"])
+          if (
+            node[dimension] !== undefined &&
+            (!Number.isInteger(node[dimension]) || node[dimension] < 1)
+          )
+            add(
+              "MEDIA_DIMENSIONS_INVALID",
+              pointer(at, dimension),
+              "Image dimensions must be positive integers",
+            );
       }
       if (node.kind === "page") {
-        if (!pageIds.has(node.pageId))
-          add("LINK_PAGE_UNKNOWN", pointer(at, "pageId"), "Unknown page id");
-        if (
-          node.fragment !== undefined &&
-          (typeof node.fragment !== "string" ||
-            !/^[A-Za-z0-9_-]+$/.test(node.fragment))
-        )
+        const issue = linkTargetError(value, node);
+        if (issue)
           add(
-            "LINK_FRAGMENT_INVALID",
-            pointer(at, "fragment"),
-            "Invalid fragment",
+            issue === "Unknown page id"
+              ? "LINK_PAGE_UNKNOWN"
+              : "LINK_FRAGMENT_INVALID",
+            at,
+            issue,
           );
       }
       for (const [key, child] of Object.entries(node))
