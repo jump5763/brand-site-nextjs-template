@@ -1,10 +1,6 @@
 import { existsSync, realpathSync, statSync } from "node:fs";
 import path from "node:path";
-export const remoteMediaHosts = [
-  "images.unsplash.com",
-  "lh3.googleusercontent.com",
-  "www.mrkeke.com",
-];
+export const remoteMediaHosts = [];
 export function mediaPathError(
   src,
   publicDir = path.resolve(process.cwd(), "public"),

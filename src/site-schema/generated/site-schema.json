@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://codeforma.local/site-schema/generated",
+  "title": "SiteDocument",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "siteId",
     "siteUrl",
     "theme",
-    "layout",
     "pages"
   ],
   "properties": {
@@ -23,11 +23,9 @@
     "theme": {
       "$ref": "#/$defs/theme"
     },
-    "layout": {
-      "$ref": "#/$defs/layout"
-    },
     "pages": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "$ref": "#/$defs/page"
       }
@@ -44,22 +42,22 @@
       "properties": {
         "fonts": {
           "type": "object",
+          "additionalProperties": false,
           "required": [
             "heading",
             "typography"
           ],
-          "additionalProperties": false,
           "properties": {
             "heading": {
               "enum": [
-                "Cormorant Garamond",
-                "Inter"
+                "System Sans",
+                "System Serif"
               ]
             },
             "typography": {
               "enum": [
-                "Inter",
-                "Cormorant Garamond"
+                "System Sans",
+                "System Serif"
               ]
             }
           }
@@ -69,26 +67,93 @@
           "additionalProperties": false,
           "required": [
             "background",
-            "primary50",
-            "primary500",
-            "primary900",
-            "secondary50",
-            "secondary500",
-            "secondary900",
-            "black100",
-            "black900",
-            "white"
+            "foreground",
+            "card",
+            "cardForeground",
+            "popover",
+            "popoverForeground",
+            "primary",
+            "primaryForeground",
+            "secondary",
+            "secondaryForeground",
+            "muted",
+            "mutedForeground",
+            "accent",
+            "accentForeground",
+            "destructive",
+            "destructiveForeground",
+            "border",
+            "input",
+            "ring"
           ],
-          "patternProperties": {
-            "^(background|primary(50|100|200|300|400|500|600|700|800|900)|secondary(50|100|200|300|400|500|600|700|800|900)|black(100|200|300|400|500|600|700|800|900)|white)$": {
-              "type": "string",
-              "pattern": "^(#[0-9A-Fa-f]{6}|hsl\\([0-9.]+ [0-9.]+% [0-9.]+%\\))$"
+          "properties": {
+            "background": {
+              "$ref": "#/$defs/color"
+            },
+            "foreground": {
+              "$ref": "#/$defs/color"
+            },
+            "card": {
+              "$ref": "#/$defs/color"
+            },
+            "cardForeground": {
+              "$ref": "#/$defs/color"
+            },
+            "popover": {
+              "$ref": "#/$defs/color"
+            },
+            "popoverForeground": {
+              "$ref": "#/$defs/color"
+            },
+            "primary": {
+              "$ref": "#/$defs/color"
+            },
+            "primaryForeground": {
+              "$ref": "#/$defs/color"
+            },
+            "secondary": {
+              "$ref": "#/$defs/color"
+            },
+            "secondaryForeground": {
+              "$ref": "#/$defs/color"
+            },
+            "muted": {
+              "$ref": "#/$defs/color"
+            },
+            "mutedForeground": {
+              "$ref": "#/$defs/color"
+            },
+            "accent": {
+              "$ref": "#/$defs/color"
+            },
+            "accentForeground": {
+              "$ref": "#/$defs/color"
+            },
+            "destructive": {
+              "$ref": "#/$defs/color"
+            },
+            "destructiveForeground": {
+              "$ref": "#/$defs/color"
+            },
+            "border": {
+              "$ref": "#/$defs/color"
+            },
+            "input": {
+              "$ref": "#/$defs/color"
+            },
+            "ring": {
+              "$ref": "#/$defs/color"
             }
           }
         }
       }
     },
+    "color": {
+      "type": "string",
+      "pattern": "^(#[0-9A-Fa-f]{6}|hsl\\([0-9.]+ [0-9.]+% [0-9.]+%\\))$"
+    },
     "page": {
+      "title": "SitePage",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -99,7 +164,8 @@
       ],
       "properties": {
         "id": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "path": {
           "type": "string",
@@ -114,37 +180,11 @@
             "$ref": "#/$defs/section"
           }
         }
-      },
-      "title": "SitePage"
+      }
     },
     "section": {
       "title": "SiteSection",
-      "oneOf": [
-        {
-          "$ref": "#/$defs/CtaBannerSection"
-        },
-        {
-          "$ref": "#/$defs/FeaturesIconGridSection"
-        },
-        {
-          "$ref": "#/$defs/HeroDefaultSection"
-        },
-        {
-          "$ref": "#/$defs/LocationsMapListSection"
-        },
-        {
-          "$ref": "#/$defs/MenuCatalogSection"
-        },
-        {
-          "$ref": "#/$defs/ProductsCarouselSection"
-        },
-        {
-          "$ref": "#/$defs/ReviewsCarouselSection"
-        },
-        {
-          "$ref": "#/$defs/StorySplitSection"
-        }
-      ]
+      "not": {}
     },
     "metadata": {
       "type": "object",
@@ -160,13 +200,15 @@
           "pattern": "^/"
         },
         "title": {
-          "type": "string"
+          "type": "string",
+          "minLength": 1
         },
         "description": {
           "type": "string"
         },
         "robots": {
           "type": "object",
+          "additionalProperties": false,
           "required": [
             "index",
             "follow"
@@ -192,6 +234,7 @@
       }
     },
     "media": {
+      "title": "SiteMedia",
       "type": "object",
       "additionalProperties": false,
       "required": [
@@ -224,6 +267,7 @@
       "oneOf": [
         {
           "type": "object",
+          "additionalProperties": false,
           "required": [
             "kind",
             "pageId"
@@ -233,16 +277,18 @@
               "const": "page"
             },
             "pageId": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             },
             "fragment": {
-              "type": "string"
+              "type": "string",
+              "minLength": 1
             }
-          },
-          "additionalProperties": false
+          }
         },
         {
           "type": "object",
+          "additionalProperties": false,
           "required": [
             "kind",
             "href"
@@ -255,538 +301,18 @@
               "type": "string",
               "pattern": "^https?://"
             }
-          },
-          "additionalProperties": false
-        }
-      ]
-    },
-    "layout": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "header",
-        "footer"
-      ],
-      "properties": {
-        "header": {
-          "$ref": "#/$defs/header"
-        },
-        "footer": {
-          "$ref": "#/$defs/footer"
-        }
-      }
-    },
-    "header": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "variant": {
-          "type": "string",
-          "minLength": 1
-        },
-        "content": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "brandName": {
-              "type": "string",
-              "minLength": 1
-            },
-            "navigation": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "label": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "target": {
-                    "$ref": "#/$defs/linkTarget"
-                  }
-                },
-                "required": [
-                  "label",
-                  "target"
-                ]
-              },
-              "minItems": 1
-            },
-            "action": {
-              "$ref": "#/$defs/siteAction"
-            },
-            "locationsLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "hoursLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "email": {
-              "type": "string",
-              "minLength": 1
-            }
-          },
-          "required": [
-            "brandName",
-            "navigation",
-            "action",
-            "locationsLabel",
-            "hoursLabel",
-            "email"
-          ]
-        }
-      }
-    },
-    "headerContent": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "brandName",
-        "logoPath",
-        "navigation"
-      ],
-      "properties": {
-        "brandName": {
-          "type": "string",
-          "minLength": 1
-        },
-        "hasOrdering": {
-          "type": "boolean"
-        },
-        "logoPath": {
-          "type": "string",
-          "minLength": 1
-        },
-        "navigation": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-              "label",
-              "target"
-            ],
-            "properties": {
-              "label": {
-                "type": "string",
-                "minLength": 1
-              },
-              "target": {
-                "$ref": "#/$defs/linkTarget"
-              }
-            }
           }
         }
-      }
-    },
-    "footer": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "variant": {
-          "type": "string",
-          "minLength": 1
-        },
-        "content": {
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "brandName": {
-              "type": "string",
-              "minLength": 1
-            },
-            "anchorId": {
-              "type": "string",
-              "minLength": 1
-            },
-            "eyebrow": {
-              "type": "string",
-              "minLength": 1
-            },
-            "title": {
-              "type": "string",
-              "minLength": 1
-            },
-            "description": {
-              "type": "string",
-              "minLength": 1
-            },
-            "phone": {
-              "type": "string",
-              "minLength": 1
-            },
-            "phoneHref": {
-              "type": "string",
-              "minLength": 1
-            },
-            "email": {
-              "type": "string",
-              "minLength": 1
-            },
-            "phoneLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "emailLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "tagline": {
-              "type": "string",
-              "minLength": 1
-            },
-            "badges": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "minLength": 1
-              },
-              "minItems": 0
-            },
-            "navigation": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/siteAction"
-              },
-              "minItems": 0
-            },
-            "navigationLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "locationsLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "locationsTarget": {
-              "$ref": "#/$defs/linkTarget"
-            },
-            "contactLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "pressLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "pressEmail": {
-              "type": "string",
-              "minLength": 1
-            },
-            "copyright": {
-              "type": "string",
-              "minLength": 1
-            },
-            "legalTagline": {
-              "type": "string",
-              "minLength": 1
-            },
-            "backToTopLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "action": {
-              "$ref": "#/$defs/siteAction"
-            }
-          },
-          "required": [
-            "brandName",
-            "anchorId",
-            "eyebrow",
-            "title",
-            "description",
-            "phone",
-            "phoneHref",
-            "email",
-            "phoneLabel",
-            "emailLabel",
-            "tagline",
-            "badges",
-            "navigation",
-            "navigationLabel",
-            "locationsLabel",
-            "locationsTarget",
-            "contactLabel",
-            "pressLabel",
-            "pressEmail",
-            "copyright",
-            "legalTagline",
-            "backToTopLabel",
-            "action"
-          ]
-        }
-      }
-    },
-    "footerLink": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "label",
-        "href"
-      ],
-      "properties": {
-        "label": {
-          "type": "string",
-          "minLength": 1
-        },
-        "href": {
-          "type": "string",
-          "minLength": 1
-        },
-        "external": {
-          "type": "boolean"
-        }
-      }
-    },
-    "footerText": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "label",
-        "text"
-      ],
-      "properties": {
-        "label": {
-          "type": "string",
-          "minLength": 1
-        },
-        "text": {
-          "type": "string",
-          "minLength": 1
-        },
-        "href": {
-          "type": "string",
-          "minLength": 1
-        }
-      }
-    },
-    "footerContent": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "brandName",
-        "logoPath",
-        "navigation"
-      ],
-      "properties": {
-        "brandName": {
-          "type": "string",
-          "minLength": 1
-        },
-        "logoPath": {
-          "type": "string",
-          "minLength": 1
-        },
-        "tagline": {
-          "type": "string",
-          "minLength": 1
-        },
-        "copyright": {
-          "type": "string",
-          "minLength": 1
-        },
-        "navigation": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/footerLink"
-          }
-        },
-        "actions": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/footerLink"
-          }
-        },
-        "legalLinks": {
-          "type": "array",
-          "items": {
-            "$ref": "#/$defs/footerLink"
-          }
-        },
-        "attribution": {
-          "$ref": "#/$defs/footerLink"
-        },
-        "businessHours": {
-          "$ref": "#/$defs/footerText"
-        },
-        "contact": {
-          "$ref": "#/$defs/footerText"
-        },
-        "location": {
-          "$ref": "#/$defs/footerText"
-        }
-      }
-    },
-    "catalogProduct": {
-      "title": "CatalogProduct",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "description": {
-          "type": "string",
-          "minLength": 1
-        },
-        "category": {
-          "type": "string",
-          "minLength": 1
-        },
-        "priceCents": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "calories": {
-          "type": "integer",
-          "minimum": 0
-        },
-        "diet": {
-          "type": "array",
-          "items": {
-            "enum": [
-              "Vegan",
-              "Vegetarian",
-              "Gluten-free",
-              "High-protein"
-            ]
-          },
-          "minItems": 0
-        },
-        "media": {
-          "$ref": "#/$defs/media"
-        },
-        "badge": {
-          "enum": [
-            "New",
-            "Limited",
-            "Chef's pick",
-            "Bestseller"
-          ]
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "description",
-        "category",
-        "priceCents",
-        "calories",
-        "diet",
-        "media"
-      ]
-    },
-    "storeLocation": {
-      "title": "StoreLocation",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "name": {
-          "type": "string",
-          "minLength": 1
-        },
-        "street": {
-          "type": "string",
-          "minLength": 1
-        },
-        "city": {
-          "type": "string",
-          "minLength": 1
-        },
-        "phone": {
-          "type": "string",
-          "minLength": 1
-        },
-        "phoneHref": {
-          "type": "string",
-          "minLength": 1
-        },
-        "hours": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "properties": {
-              "day": {
-                "type": "string",
-                "minLength": 1
-              },
-              "time": {
-                "type": "string",
-                "minLength": 1
-              }
-            },
-            "required": [
-              "day",
-              "time"
-            ]
-          },
-          "minItems": 1
-        }
-      },
-      "required": [
-        "id",
-        "name",
-        "street",
-        "city",
-        "phone",
-        "phoneHref",
-        "hours"
-      ]
-    },
-    "customerReview": {
-      "title": "CustomerReview",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "quote": {
-          "type": "string",
-          "minLength": 1
-        },
-        "author": {
-          "type": "string",
-          "minLength": 1
-        },
-        "location": {
-          "type": "string",
-          "minLength": 1
-        },
-        "source": {
-          "type": "string",
-          "minLength": 1
-        }
-      },
-      "required": [
-        "quote",
-        "author",
-        "location",
-        "source"
       ]
     },
     "siteAction": {
       "title": "SiteAction",
       "type": "object",
       "additionalProperties": false,
+      "required": [
+        "label",
+        "target"
+      ],
       "properties": {
         "label": {
           "type": "string",
@@ -795,625 +321,7 @@
         "target": {
           "$ref": "#/$defs/linkTarget"
         }
-      },
-      "required": [
-        "label",
-        "target"
-      ]
-    },
-    "iconLabel": {
-      "title": "IconLabel",
-      "type": "object",
-      "additionalProperties": false,
-      "properties": {
-        "icon": {
-          "enum": [
-            "store",
-            "leaf",
-            "clock",
-            "sprout",
-            "bike"
-          ]
-        },
-        "label": {
-          "type": "string",
-          "minLength": 1
-        }
-      },
-      "required": [
-        "icon",
-        "label"
-      ]
-    },
-    "CtaBannerSection": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type",
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "type": {
-          "const": "cta"
-        },
-        "variant": {
-          "const": "banner"
-        },
-        "content": {
-          "title": "cta.banner content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "eyebrow": {
-              "type": "string",
-              "minLength": 1
-            },
-            "title": {
-              "type": "string",
-              "minLength": 1
-            },
-            "description": {
-              "type": "string",
-              "minLength": 1
-            },
-            "action": {
-              "$ref": "#/$defs/siteAction"
-            },
-            "perks": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/iconLabel"
-              },
-              "minItems": 1
-            },
-            "monogram": {
-              "type": "string",
-              "minLength": 1
-            }
-          },
-          "required": [
-            "eyebrow",
-            "title",
-            "description",
-            "action",
-            "perks",
-            "monogram"
-          ]
-        }
-      },
-      "title": "CtaBannerSection"
-    },
-    "FeaturesIconGridSection": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type",
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "type": {
-          "const": "features"
-        },
-        "variant": {
-          "const": "icon-grid"
-        },
-        "content": {
-          "title": "features.icon-grid content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "items": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "icon": {
-                    "enum": [
-                      "store",
-                      "leaf",
-                      "clock",
-                      "sprout",
-                      "bike"
-                    ]
-                  },
-                  "title": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "text": {
-                    "type": "string",
-                    "minLength": 1
-                  }
-                },
-                "required": [
-                  "icon",
-                  "title",
-                  "text"
-                ]
-              },
-              "minItems": 1
-            }
-          },
-          "required": [
-            "items"
-          ]
-        }
-      },
-      "title": "FeaturesIconGridSection"
-    },
-    "HeroDefaultSection": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type",
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "type": {
-          "const": "hero"
-        },
-        "variant": {
-          "const": "default"
-        },
-        "content": {
-          "title": "hero.default content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "eyebrow": {
-              "type": "string",
-              "minLength": 1
-            },
-            "title": {
-              "type": "string",
-              "minLength": 1
-            },
-            "description": {
-              "type": "string",
-              "minLength": 1
-            },
-            "primaryAction": {
-              "$ref": "#/$defs/siteAction"
-            },
-            "secondaryAction": {
-              "$ref": "#/$defs/siteAction"
-            },
-            "benefits": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/iconLabel"
-              },
-              "minItems": 1
-            },
-            "media": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/media"
-              },
-              "minItems": 1
-            },
-            "carousel": {
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "label": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "caption": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "freshLabel": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "required": [
-                "label",
-                "caption",
-                "freshLabel"
-              ]
-            }
-          },
-          "required": [
-            "eyebrow",
-            "title",
-            "description",
-            "primaryAction",
-            "secondaryAction",
-            "benefits",
-            "media",
-            "carousel"
-          ]
-        }
-      },
-      "title": "HeroDefaultSection"
-    },
-    "LocationsMapListSection": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type",
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "type": {
-          "const": "locations"
-        },
-        "variant": {
-          "const": "map-list"
-        },
-        "content": {
-          "title": "locations.map-list content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "eyebrow": {
-              "type": "string",
-              "minLength": 1
-            },
-            "title": {
-              "type": "string",
-              "minLength": 1
-            },
-            "description": {
-              "type": "string",
-              "minLength": 1
-            },
-            "locations": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/storeLocation"
-              },
-              "minItems": 1
-            },
-            "directionsLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "action": {
-              "$ref": "#/$defs/siteAction"
-            }
-          },
-          "required": [
-            "eyebrow",
-            "title",
-            "description",
-            "locations",
-            "directionsLabel",
-            "action"
-          ]
-        }
-      },
-      "title": "LocationsMapListSection"
-    },
-    "MenuCatalogSection": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type",
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "type": {
-          "const": "menu"
-        },
-        "variant": {
-          "const": "catalog"
-        },
-        "content": {
-          "title": "menu.catalog content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "hero": {
-              "type": "object",
-              "additionalProperties": false,
-              "properties": {
-                "eyebrow": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "title": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "description": {
-                  "type": "string",
-                  "minLength": 1
-                },
-                "action": {
-                  "$ref": "#/$defs/siteAction"
-                },
-                "hoursLabel": {
-                  "type": "string",
-                  "minLength": 1
-                }
-              },
-              "required": [
-                "eyebrow",
-                "title",
-                "description",
-                "action",
-                "hoursLabel"
-              ]
-            },
-            "categories": {
-              "type": "array",
-              "items": {
-                "type": "object",
-                "additionalProperties": false,
-                "properties": {
-                  "id": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "label": {
-                    "type": "string",
-                    "minLength": 1
-                  },
-                  "description": {
-                    "type": "string"
-                  },
-                  "products": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/$defs/catalogProduct"
-                    },
-                    "minItems": 0
-                  }
-                },
-                "required": [
-                  "id",
-                  "label",
-                  "description",
-                  "products"
-                ]
-              },
-              "minItems": 1
-            },
-            "limitedDescription": {
-              "type": "string",
-              "minLength": 1
-            },
-            "currency": {
-              "const": "USD"
-            }
-          },
-          "required": [
-            "hero",
-            "categories",
-            "limitedDescription",
-            "currency"
-          ]
-        }
-      },
-      "title": "MenuCatalogSection"
-    },
-    "ProductsCarouselSection": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type",
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "type": {
-          "const": "products"
-        },
-        "variant": {
-          "const": "carousel"
-        },
-        "content": {
-          "title": "products.carousel content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "eyebrow": {
-              "type": "string",
-              "minLength": 1
-            },
-            "title": {
-              "type": "string",
-              "minLength": 1
-            },
-            "description": {
-              "type": "string",
-              "minLength": 1
-            },
-            "action": {
-              "$ref": "#/$defs/siteAction"
-            },
-            "productActionLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "products": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/catalogProduct"
-              },
-              "minItems": 1
-            }
-          },
-          "required": [
-            "eyebrow",
-            "title",
-            "description",
-            "action",
-            "productActionLabel",
-            "products"
-          ]
-        }
-      },
-      "title": "ProductsCarouselSection"
-    },
-    "ReviewsCarouselSection": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type",
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "type": {
-          "const": "reviews"
-        },
-        "variant": {
-          "const": "carousel"
-        },
-        "content": {
-          "title": "reviews.carousel content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "eyebrow": {
-              "type": "string",
-              "minLength": 1
-            },
-            "title": {
-              "type": "string",
-              "minLength": 1
-            },
-            "reviews": {
-              "type": "array",
-              "items": {
-                "$ref": "#/$defs/customerReview"
-              },
-              "minItems": 1
-            }
-          },
-          "required": [
-            "eyebrow",
-            "title",
-            "reviews"
-          ]
-        }
-      },
-      "title": "ReviewsCarouselSection"
-    },
-    "StorySplitSection": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "id",
-        "type",
-        "variant",
-        "content"
-      ],
-      "properties": {
-        "id": {
-          "type": "string",
-          "minLength": 1
-        },
-        "type": {
-          "const": "story"
-        },
-        "variant": {
-          "const": "split"
-        },
-        "content": {
-          "title": "story.split content",
-          "type": "object",
-          "additionalProperties": false,
-          "properties": {
-            "eyebrow": {
-              "type": "string",
-              "minLength": 1
-            },
-            "title": {
-              "type": "string",
-              "minLength": 1
-            },
-            "description": {
-              "type": "string",
-              "minLength": 1
-            },
-            "media": {
-              "$ref": "#/$defs/media"
-            },
-            "ingredientsLabel": {
-              "type": "string",
-              "minLength": 1
-            },
-            "ingredients": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "minLength": 1
-              },
-              "minItems": 1
-            },
-            "promises": {
-              "type": "array",
-              "items": {
-                "type": "string",
-                "minLength": 1
-              },
-              "minItems": 1
-            },
-            "action": {
-              "$ref": "#/$defs/siteAction"
-            }
-          },
-          "required": [
-            "eyebrow",
-            "title",
-            "description",
-            "media",
-            "ingredientsLabel",
-            "ingredients",
-            "promises",
-            "action"
-          ]
-        }
-      },
-      "title": "StorySplitSection"
+      }
     }
-  },
-  "title": "SiteDocument"
+  }
 }

@@ -1,6 +1,6 @@
 # Next.js Site Schema Template
 
-Content pages render from `src/site-schema/current.json` through `src/app/[[...slug]]/page.tsx`. The same validated document drives Page metadata, canonical URLs, sitemap, and robots. Component implementations live under `src/sections` and `src/components`.
+The starter renders an empty home Page from `src/site-schema/current.json` through `src/app/[[...slug]]/page.tsx`. It begins with zero Section capabilities and displays `Blank page` until the Agent implements and composes content.
 
 ## Getting started
 
@@ -21,12 +21,16 @@ Both dev and build explicitly use Webpack. The development component tagger supp
 
 Start with [AI_RULES.md](AI_RULES.md) and choose the content-editing, Page-composition, or Section-development Skill. The template's maintained references are:
 
-- [Content contract](.agents/reference/content-contract.md): ownership, identities, links, products, media, and generation.
+- [Content contract](.agents/reference/content-contract.md): ownership, identities, links, media, and generation.
 - [Shared Section components](.agents/reference/section-components-standard.md): Section, SiteContainer, SectionHeader, Eyebrow, and Body.
 - [Heading hierarchy](.agents/reference/html-heading-hierarchy-standard.md): Page and nested semantics, IDs, accessible states, and acceptance.
 - [Styling rules](.agents/reference/tailwind-css-best-practices.md): project tokens, breakpoints, and CSS boundaries.
 - [Validation matrix](.agents/reference/validation.md): checks by change type and their practical limits.
 
-Use the existing Schema as the content source. Shared layout helpers do not introduce new JSON fields or registered Section capabilities. Keep real Views and private logic beside their Section; Header/Footer belong to `src/components/layout`. Full ownership and scaffolding rules are in [Section package format](.agents/skills/create-section/references/section-format.md).
+For a new site without a suitable `current.json`, follow [Bootstrap current.json](.agents/skills/compose-page/references/bootstrap-current-json.md). Its example shows document topology only; build the actual draft from current contracts and sourced site content.
+
+Use the Schema as the Page/content source. Keep real Views and private logic beside their Section. Design Header/Footer only when requested and give shared shell content an explicit owner; the starter has no `layout` Schema field. Full ownership and scaffolding rules are in [Section package format](.agents/skills/create-section/references/section-format.md).
+
+The agreed runtime model, Agent flow, acceptance levels, and implementation notes are recorded in [Blank Template and Agent Implementation Flow](docs/blank-template-and-agent-flow.md).
 
 For framework and hosting details, consult the [Next.js documentation](https://nextjs.org/docs).

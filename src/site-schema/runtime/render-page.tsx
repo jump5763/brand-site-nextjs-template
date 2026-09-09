@@ -12,10 +12,19 @@ export function resolvePage(site: SiteDocument, pathOrId: string) {
 
 export function renderPage(site: SiteDocument, pathOrId: string) {
   const page = resolvePage(site, pathOrId);
+  if (page.sections.length === 0) {
+    return (
+      <div data-page-id={page.id} className="grid min-h-screen place-items-center px-6">
+        <h1 className="text-3xl font-semibold tracking-tight text-foreground">
+          {page.metadata.title}
+        </h1>
+      </div>
+    );
+  }
   return (
     <div data-page-id={page.id}>
       {page.sections.map((section) => (
-        <React.Fragment key={section.id}>
+        <React.Fragment key={(section as { id: string }).id}>
           {renderSection(section, site)}
         </React.Fragment>
       ))}

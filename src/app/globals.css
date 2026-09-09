@@ -4,59 +4,41 @@
 
 @layer base {
   :root {
-    /* Warm canvas */
-    --background: 42 42% 94%;
-    --foreground: 60 6% 13%;
-
+    --background: 0 0% 100%;
+    --foreground: 221 39% 11%;
     --card: 0 0% 100%;
-    --card-foreground: 60 6% 13%;
+    --card-foreground: 221 39% 11%;
     --popover: 0 0% 100%;
-    --popover-foreground: 60 6% 13%;
-
-    /* Keke yellow — reserved for the decisive action / strong selected state */
-    --primary: 45 100% 57%;
-    --primary-foreground: 45 30% 9%;
-
-    /* Pale sage supporting surfaces */
-    --secondary: 88 24% 90%;
-    --secondary-foreground: 88 22% 26%;
-    --muted: 42 24% 90%;
-    --muted-foreground: 45 6% 38%;
-    --accent: 86 22% 92%;
-    --accent-foreground: 88 22% 26%;
-
-    --destructive: 3 70% 48%;
+    --popover-foreground: 221 39% 11%;
+    --primary: 221 39% 11%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 221 39% 11%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 220 9% 46%;
+    --accent: 220 14% 96%;
+    --accent-foreground: 221 39% 11%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-
-    --border: 42 20% 85%;
-    --input: 42 20% 85%;
-    --ring: 88 24% 34%;
-
-    --radius: 16px;
-
-    /* Near-black inverse surface */
-    --inverse: 60 7% 11%;
-    --inverse-foreground: 45 33% 96%;
-
-    --header-h: 96px;
-
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 217 91% 60%;
+    --chart-1: 217 91% 60%;
+    --chart-2: 142 71% 45%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 262 83% 58%;
+    --chart-5: 0 72% 51%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 221 39% 11%;
+    --sidebar-primary: 221 39% 11%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 96%;
+    --sidebar-accent-foreground: 221 39% 11%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217 91% 60%;
+    --radius: 8px;
     --section-space-y: 64px;
     --section-space-y-spacious: 72px;
-
-    --chart-1: 45 100% 57%;
-    --chart-2: 88 24% 40%;
-    --chart-3: 20 90% 55%;
-    --chart-4: 88 22% 76%;
-    --chart-5: 45 30% 40%;
-
-    --sidebar-background: 0 0% 100%;
-    --sidebar-foreground: 60 6% 13%;
-    --sidebar-primary: 45 100% 57%;
-    --sidebar-primary-foreground: 45 30% 9%;
-    --sidebar-accent: 88 24% 90%;
-    --sidebar-accent-foreground: 88 22% 26%;
-    --sidebar-border: 42 20% 85%;
-    --sidebar-ring: 88 24% 34%;
   }
 
   @media (min-width: 769px) {
@@ -65,244 +47,53 @@
       --section-space-y-spacious: 104px;
     }
   }
-}
 
-@layer base {
   * {
     @apply border-border;
   }
-  html {
-    scroll-behavior: smooth;
-    -webkit-font-smoothing: antialiased;
-  }
+
   body {
     @apply bg-background text-foreground;
-    font-family:
-      var(--font-typography, var(--font-inter)),
-      "Inter",
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Arial,
-      sans-serif;
-    font-size: 16px;
-    line-height: 1.5;
+    min-height: 100vh;
+    font-family: var(--font-typography, ui-sans-serif, system-ui, sans-serif);
   }
-  ::selection {
-    background: hsl(var(--primary));
-    color: hsl(45 40% 8%);
-  }
-  [id] {
-    scroll-margin-top: calc(var(--header-h) + 24px);
-  }
+
   :focus-visible {
     outline: 2px solid hsl(var(--ring));
     outline-offset: 2px;
   }
-  img {
-    display: block;
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
 }
 
 @layer components {
-  /* Centered maximum-width canvas */
   .container-site {
     width: 100%;
     max-width: 1760px;
     margin-inline: auto;
     padding-inline: 16px;
   }
+
+  .t-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.6;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .t-h2 {
+    font-family: var(--font-heading, ui-serif, Georgia, serif);
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
   @media (min-width: 769px) {
     .container-site {
       padding-inline: 40px;
     }
-  }
 
-  .no-scrollbar {
-    scrollbar-width: none;
-  }
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .text-balance {
-    text-wrap: balance;
-  }
-  .text-pretty {
-    text-wrap: pretty;
-  }
-
-  /* ---------- Motion primitives ---------- */
-  /* Scroll-triggered reveal. Hidden only once .js marks the page active. */
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .reveal {
-      transition:
-        opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
-        transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
-    }
-    .js .reveal:not(.in-view) {
-      opacity: 0;
-      transform: translateY(26px);
-    }
-  }
-
-  @keyframes hero-up {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-  .a-hero {
-    opacity: 0;
-    animation: hero-up 750ms cubic-bezier(0.22, 1, 0.36, 1) both;
-  }
-
-  @keyframes kenburns {
-    from {
-      transform: scale(1.02);
-    }
-    to {
-      transform: scale(1.1);
-    }
-  }
-  .a-kenburns {
-    animation: kenburns 24s ease-in-out infinite alternate;
-    will-change: transform;
-  }
-
-  @keyframes float-soft {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-10px);
-    }
-  }
-  .a-float {
-    animation: float-soft 7s ease-in-out infinite alternate;
-  }
-
-  /* Carousel progress-line pagination: fills left → right over the
-     autoplay dwell, so each segment doubles as a time indicator. */
-  @keyframes progress-fill {
-    from {
-      transform: scaleX(0);
-    }
-    to {
-      transform: scaleX(1);
-    }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .a-hero,
-    .a-kenburns,
-    .a-float,
-    .reveal {
-      opacity: 1 !important;
-      transform: none !important;
-      transition: none !important;
-      animation: none !important;
-    }
-  }
-
-  /* Type scale — serif display voice */
-  .t-eyebrow {
-    font-family: var(--font-typography, var(--font-inter)), "Inter", Arial, sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 1.6;
-    letter-spacing: 1.6px;
-    text-transform: uppercase;
-  }
-  .t-display {
-    font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-    font-size: 54px;
-    font-weight: 600;
-    line-height: 1.12;
-    letter-spacing: -0.6px;
-  }
-  .t-h2 {
-    font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-    font-size: 42px;
-    font-weight: 600;
-    line-height: 1.15;
-    letter-spacing: -0.4px;
-  }
-  .t-h3 {
-    font-family: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
-    font-size: 30px;
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.2px;
-  }
-  .t-lead {
-    font-size: 17px;
-    line-height: 1.7;
-  }
-  @media (max-width: 430px) {
-    .t-display {
-      font-size: 46px;
-      line-height: 1.16;
-      letter-spacing: -0.4px;
-    }
     .t-h2 {
-      font-size: 36px;
-      line-height: 1.2;
-    }
-    .t-h3 {
-      font-size: 27px;
-      line-height: 1.28;
-    }
-  }
-  @media (min-width: 769px) {
-    .t-display {
-      font-size: 88px;
-      line-height: 1.02;
-    }
-    .t-h2 {
-      font-size: 54px;
-      line-height: 1.1;
-    }
-    .t-h3 {
-      font-size: 36px;
-      line-height: 1.18;
-    }
-    .t-lead {
-      font-size: 18px;
-      line-height: 1.7;
-    }
-  }
-  @media (min-width: 1024px) {
-    .t-display {
-      font-size: 96px;
-      line-height: 1;
-    }
-  }
-  @media (min-width: 1440px) {
-    .t-display {
-      font-size: 108px;
-      line-height: 1;
+      font-size: 48px;
     }
   }
 }

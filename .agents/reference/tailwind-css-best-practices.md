@@ -5,7 +5,7 @@ Read for JSX classes, typography, theme, or layout changes. Authorities: [Tailwi
 ## Theme and typography
 
 - Rendering follows Schema theme -> themeToCssVariables -> CSS variables -> configured utilities. UI helpers consume props/tokens; route/runtime orchestration may read Schema.
-- Use declared semantic colors. Existing sage/butter accents may remain where appropriate; theme-dependent colors must not become fixed copied brand colors.
+- Use declared semantic colors. Theme-dependent colors must not become fixed copied brand colors.
 - font-body/font-sans share the typography font; font-display/font-serif use the configured heading font. Some primitives contain unmapped font-heading: check effective styling rather than assuming that alias works.
 - Use Body for reusable body scales and SectionHeader.descriptionSize for descriptions. Keep layout/color overrides separate; repeated new scales belong in compatible shared variants.
 - Semantic levels follow the [heading rules](html-heading-hierarchy-standard.md), not font size. Custom Hero/editorial sizes may remain when presets do not fit.

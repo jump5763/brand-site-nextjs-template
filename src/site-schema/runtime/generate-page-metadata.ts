@@ -30,10 +30,7 @@ export function generatePageMetadata(
   const page = findPage(site, pathOrId);
   const canonicalPath = page.metadata.canonicalPath ?? page.path;
   const metadata: Metadata = {
-    title:
-      page.id === "home"
-        ? { absolute: page.metadata.title }
-        : page.metadata.title,
+    title: page.metadata.title,
     description: page.metadata.description,
     alternates: { canonical: new URL(canonicalPath, site.siteUrl).toString() },
     robots: page.metadata.robots

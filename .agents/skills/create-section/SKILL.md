@@ -7,6 +7,8 @@ description: Create or compatibly extend registered Section packages when existi
 
 For concrete capability gaps. Data edits use [edit-site-content](../edit-site-content/SKILL.md); composition uses [compose-page](../compose-page/SKILL.md).
 
+Creating the first Section is the normal path in a blank starter. On later work, inspect existing capabilities before adding another.
+
 Read [package format](references/section-format.md), [content rules](../../reference/content-contract.md), and [validation](../../reference/validation.md). Presentation work requires [Section components](../../reference/section-components-standard.md), [headings](../../reference/html-heading-hierarchy-standard.md), and [styling](../../reference/tailwind-css-best-practices.md).
 
 1. Identify the gap and acceptance criteria; inspect related capabilities and shared UI. Extend compatible meaning; introduce a variant/type only for distinct structure or meaning.

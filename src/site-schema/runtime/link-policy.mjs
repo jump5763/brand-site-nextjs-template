@@ -1,14 +1,7 @@
-// Page sections, catalog groups, and the shared shell expose these anchors.
+// Every page exposes its top marker and registered Section instance anchors.
 export function pageAnchors(site, page) {
   const anchors = new Set(["top"]);
-  const footerId = site.layout?.footer?.content?.anchorId;
-  if (footerId) anchors.add(footerId);
-  for (const section of page.sections ?? []) {
-    anchors.add(section.id);
-    if (section.type === "menu" && section.variant === "catalog")
-      for (const category of section.content.categories ?? [])
-        anchors.add(category.id);
-  }
+  for (const section of page.sections ?? []) anchors.add(section.id);
   return anchors;
 }
 export function linkTargetError(site, target) {

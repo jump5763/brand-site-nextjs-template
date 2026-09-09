@@ -11,16 +11,6 @@ const pointer = (base, key) =>
 const object = (value) =>
   value !== null && typeof value === "object" && !Array.isArray(value);
 const reservedPaths = ["/api", "/_next", "/admin", "/auth", "/checkout"];
-const stable = (value) =>
-  Array.isArray(value)
-    ? value.map(stable)
-    : object(value)
-      ? Object.fromEntries(
-          Object.keys(value)
-            .sort()
-            .map((key) => [key, stable(value[key])]),
-        )
-      : value;
 
 export class SiteValidationError extends Error {
   constructor(diagnostics) {
@@ -51,8 +41,11 @@ export function validateSiteCore(value) {
 export function createSiteValidator(rootSchema) {
   const ajv = addFormats(new Ajv({ allErrors: true, strict: false }));
   ajv.addSchema(rootSchema);
+  const sectionVariants = Array.isArray(rootSchema.$defs.section?.oneOf)
+    ? rootSchema.$defs.section.oneOf
+    : [];
   const sections = new Map(
-    rootSchema.$defs.section.oneOf.map(({ $ref }) => {
+    sectionVariants.map(({ $ref }) => {
       const definition = rootSchema.$defs[$ref.split("/").at(-1)];
       return [
         `${definition.properties.type.const}.${definition.properties.variant.const}`,
@@ -84,8 +77,7 @@ export function createSiteValidator(rootSchema) {
       return { valid: false, errors };
     }
     const seenIds = new Set(),
-      seenPaths = new Set(),
-      products = new Map();
+      seenPaths = new Set();
     value.pages.forEach((page, i) => {
       const at = `/pages/${i}`;
       if (seenIds.has(page.id))
@@ -138,54 +130,6 @@ export function createSiteValidator(rootSchema) {
             sectionAt,
             "SECTION_CONTRACT_INVALID",
           );
-        if (section.type === 'menu' && section.variant === 'catalog' && Array.isArray(section.content.categories)) {
-          const categoryIds = new Set(), productIds = new Set();
-          section.content.categories.forEach((category, index) => {
-            const categoryAt = `${sectionAt}/content/categories/${index}`;
-            if (!object(category)) return;
-            if (categoryIds.has(category.id) || category.id === 'all') add('CATEGORY_ID_INVALID', categoryAt + '/id', 'Category identity must be unique and cannot use all');
-            categoryIds.add(category.id);
-            if (!Array.isArray(category.products)) return;
-            category.products.forEach((product, index) => {
-              if (!object(product)) return;
-              const productAt = `${categoryAt}/products/${index}`;
-              if (product.category !== category.id || category.id === 'limited') add('PRODUCT_CATEGORY_INVALID', productAt + '/category', 'Product must belong to its containing category; limited is a virtual filter');
-              if(productIds.has(product.id)) add('PRODUCT_ID_DUPLICATE', productAt + '/id', 'Duplicate product in the catalog');
-              productIds.add(product.id);
-            });
-          });
-        }
-        for (const collection of [
-          section.content.products,
-          section.content.categories,
-        ]) {
-          if (!Array.isArray(collection)) continue;
-          for (const item of collection) {
-            const candidates =
-              object(item) && Array.isArray(item.products)
-                ? item.products
-                : [item];
-            for (const product of candidates) {
-              if (
-                !object(product) ||
-                typeof product.id !== "string" ||
-                !(product.title || product.name)
-              )
-                continue;
-              const fingerprint = JSON.stringify(stable(product));
-              if (
-                products.has(product.id) &&
-                products.get(product.id) !== fingerprint
-              )
-                add(
-                  "PRODUCT_DEFINITION_CONFLICT",
-                  sectionAt + "/content",
-                  `Conflicting product definition for ${product.id}`,
-                );
-              products.set(product.id, fingerprint);
-            }
-          }
-        }
       });
     });
     const walk = (node, at) => {

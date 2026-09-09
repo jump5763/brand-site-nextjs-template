@@ -23,5 +23,5 @@ function resolveImageSource(src: ImageProps["src"]) {
 export function Image({src, ...props}: ImageProps) {
   // The shared component intentionally stays framework-agnostic.
   // eslint-disable-next-line @next/next/no-img-element
-  return <img {...props} src={resolveImageSource(src)} />;
+  return <img {...props} alt={props.alt ?? ""} src={resolveImageSource(src)} />;
 }

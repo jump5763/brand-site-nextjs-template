@@ -15,7 +15,7 @@ Discovery scans `src/sections/<type>.<variant>/`. Adapt the [descriptor](../asse
 - Definition's render(section, site) invokes the real View through typed toProps. Ignore site when unnecessary; resolve actions with the runtime resolveAction adapter before passing props.
 - Types come from generated/types.ts. View props are explicit and minimal across client boundaries. Views do not load current.json, scan files, or execute paths from data.
 - Keep layout/private helpers in the owning Section. A client View can declare use client directly; avoid forwarding files that conceal ownership.
-- Shell: components/layout; primitives: components/ui; cross-owner UI patterns: components/shared; pure utilities: lib; data orchestration: site-schema/runtime. All are under src.
+- A requested shared shell belongs in an appropriate layout/shared owner; primitives belong in components/ui, cross-owner UI patterns in components/shared, pure utilities in lib, and data orchestration in site-schema/runtime. All are under src.
 - Inspect shared exports, props, behavior, and consumers before adding UI. Share only matching responsibilities/interfaces/evolution without consumer-private dependencies. Repeated Page instances do not create independent implementation owners.
 - Use direct imports and descriptive files; no sibling Section-private imports, shared barrels/registries, or page-wide business view-models.
 

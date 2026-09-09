@@ -1,6 +1,6 @@
 import { mediaPathError, remoteMediaHosts } from "./media-policy.mjs";
-import type { Media } from "../generated/types";
-export type MediaInput = Media;
+import type { SiteMedia } from "../generated/types";
+export type MediaInput = SiteMedia;
 export interface ResolvedMedia {
   src: string;
   alt: string;
@@ -17,7 +17,7 @@ export class MediaResolutionError extends Error {
   }
 }
 export function resolveMedia(
-  media: Media,
+  media: SiteMedia,
   options: { publicDir?: string } = {},
 ): ResolvedMedia {
   const issue = mediaPathError(media.path, options.publicDir);
