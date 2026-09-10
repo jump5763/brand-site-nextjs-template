@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "testimonials.grid",
+  "type": "testimonials",
+  "variant": "grid",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Reviews Grid",
+    "description": "Sage-tinted review band with an h2 heading and a responsive grid of quote cards carrying star ratings, the quote, and reviewer name with location. Reviewer details are never headings.",
+    "useWhen": ["A page shows short customer quotes and star ratings as social proof"],
+    "avoidWhen": ["The page needs editorial storytelling or dish photography"],
+    "rendering": "server"
+  }
+}

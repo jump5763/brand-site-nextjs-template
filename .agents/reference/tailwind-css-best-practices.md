@@ -30,7 +30,10 @@ Use [Section/SiteContainer](section-components-standard.md) for matching spacing
 - Write complete static classes, never fragments such as `bg-${color}-500`. Use ternaries, cn, and finite class maps/CVA as appropriate; do not add CVA for a trivial branch.
 - Components adding defaults merge `cn(defaultClasses, className)`. Written token order alone is not CSS conflict resolution.
 - Prefer tokens/variants. Arbitrary values suit unique geometry, variable bridges, or unsupported design requirements; promote repeated values only when responsibilities match.
-- Utilities come first. globals.css owns base styles, tokens, shared utilities, and existing animations. Scoped CSS may handle a required animation/selector/layout that utilities express poorly; do not add a parallel styling system or conceal component ownership.
+- Utilities come first. globals.css owns base styles, tokens, and minimal shared utilities. Scoped CSS may handle a required selector or layout that utilities express poorly; do not add a parallel styling system or conceal component ownership.
+- Define reusable custom animations in `tailwind.config.ts` through `theme.extend.animation`, with their keyframes in `theme.extend.keyframes`.
+- Prefer `transform` and `opacity` for animation; avoid animating layout properties such as `width`, `height`, `top`, or `left`.
+- Use Tailwind transitions for hover, focus, pressed, expanded, and selected states. 
 - Preserve relevant hover/focus/disabled/open/reduced-motion behavior. Replace removed outlines visibly and verify changed overlays/sticky elements together.
 - Content scanning covers actual sources, not node_modules, the whole workspace, or generated CSS. Safelist must not compensate for dynamic class fragments.
 

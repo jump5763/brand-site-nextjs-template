@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "id": "site-header.default",
+  "type": "site-header",
+  "variant": "default",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Site Header",
+    "description": "Sticky top navigation bar with the brand wordmark, primary page links, a prominent order call to action, and a mobile drawer menu. Emits no headings.",
+    "useWhen": [
+      "A page needs the site's persistent navigation and order call to action at the top of the document"
+    ],
+    "avoidWhen": [
+      "The page needs an editorial title block, breadcrumb, or hero media instead of navigation"
+    ],
+    "rendering": "client-island"
+  }
+}
