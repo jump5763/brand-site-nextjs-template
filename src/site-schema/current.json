@@ -112,8 +112,8 @@
           "variant": "overlay",
           "content": {
             "eyebrow": "Farm-Fresh Kitchen",
-            "headline": "Real food, grown close to home.",
-            "subheadline": "Chef-crafted salads, warm grain bowls and cold-pressed juices made fresh every morning with produce from farms we know by name.",
+            "headline": "Real food, grown nearby.",
+            "subheadline": "Chef-crafted salads, grain bowls and cold-pressed juice, made fresh every morning from farms we know.",
             "media": {
               "kind": "image",
               "path": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=2400&h=1600&q=80",
@@ -158,7 +158,7 @@
           "content": {
             "eyebrow": "Seasonal Menu",
             "title": "New this season",
-            "description": "Every season our chefs rebuild the menu around what the farms are harvesting right now. These four are on the counter this month.",
+            "description": "Our chefs rebuild the menu around the harvest. Four dishes are on the counter this month.",
             "items": [
               {
                 "name": "Avocado Herb Crunch",
@@ -226,7 +226,7 @@
           "content": {
             "eyebrow": "Sourcing",
             "title": "Ingredients you can trace",
-            "description": "We buy from growers within a day's drive, so produce arrives at its peak and reaches your bowl the same day it leaves the field.",
+            "description": "We buy from growers within a day's drive, so produce reaches your bowl the day it leaves the field.",
             "note": "Sourced within 250 miles whenever the season allows.",
             "media": {
               "kind": "image",
@@ -272,10 +272,10 @@
           "variant": "split",
           "content": {
             "eyebrow": "Our Story",
-            "title": "Built around one honest bowl",
+            "title": "One honest bowl",
             "paragraphs": [
-              "Verdant began with a single counter, one blender and a market stall's worth of vegetables. We wanted a lunch that tasted like a farm stand but moved like a fast-food line: real produce, cooked that morning, in and out in five minutes.",
-              "Today every kitchen still cooks from scratch, the menu still follows the harvest, and every bowl is built the moment you order it. Six neighbourhood kitchens, one short ingredient list, and no shortcuts we would have to explain."
+              "Verdant began with one counter, one blender and a market stall's worth of vegetables: food that tasted like a farm stand but moved like a fast-food line.",
+              "Every kitchen still cooks from scratch, the menu still follows the harvest, and every bowl is built the moment you order it."
             ],
             "media": {
               "kind": "image",
@@ -309,7 +309,7 @@
           "content": {
             "eyebrow": "Guest Reviews",
             "title": "What our guests say",
-            "description": "Rated 4.9 out of 5 across our neighbourhood kitchens by guests who eat here more than once a week.",
+            "description": "Rated 4.9 out of 5 across all three neighbourhood kitchens.",
             "items": [
               {
                 "quote": "The kale caesar is the only salad I have ever actually craved. Everything tastes like it was picked yesterday, because most of it was.",
@@ -360,8 +360,8 @@
           "content": {
             "eyebrow": "Find Us",
             "title": "Neighbourhood kitchens",
-            "description": "Three kitchens, one menu. Pick up at the counter, order ahead for pickup, or have it delivered to your door.",
-            "mapNote": "All three locations offer pickup and delivery every day we are open.",
+            "description": "Three kitchens, one menu. Order ahead for pickup or delivery.",
+            "mapNote": "Pickup and delivery at all three locations.",
             "stores": [
               {
                 "name": "Back Bay",
@@ -551,8 +551,8 @@
           "variant": "banner",
           "content": {
             "eyebrow": "The Menu",
-            "title": "Salads, grain bowls and sides, made to order",
-            "description": "Every bowl is built when you order it: greens dressed to order, grains warmed to order, nothing sitting under a heat lamp. Pick a category, then filter by what you eat or sort by price.",
+            "title": "Salads, grain bowls and sides",
+            "description": "Every bowl is built when you order it. Pick a category, then filter by diet or sort by price.",
             "media": {
               "kind": "image",
               "path": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&h=825&q=75",
@@ -569,8 +569,8 @@
           "variant": "default",
           "content": {
             "eyebrow": "Full Menu",
-            "title": "Sixteen dishes, one short ingredient list",
-            "description": "Choose a category below, then narrow the list with the dietary filters or re-order it by price.",
+            "title": "Sixteen dishes, one ingredient list",
+            "description": "Pick a category, then filter by diet or sort by price.",
             "categories": [
               { "name": "Salads", "description": "Cold, crisp and dressed to order." },
               { "name": "Grain Bowls", "description": "Warm whole grains with roasted vegetables and protein." },
