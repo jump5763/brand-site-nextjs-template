@@ -81,22 +81,12 @@ export default {
           "100%": {
             transform: "translateX(-50%)",
           },
-        },
-        "fade-up": {
-          from: { opacity: "0", transform: "translateY(18px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        "fade-in": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
         }
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        marquee: "marquee 32s linear infinite",
-        "fade-up": "fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both",
-        "fade-in": "fade-in 0.8s ease-out both"
+        marquee: "marquee 32s linear infinite"
       },
     },
   },

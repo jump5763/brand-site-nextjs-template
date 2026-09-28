@@ -13,7 +13,8 @@ The editable document is [current.json](../../src/site-schema/current.json). Sup
 - Paths are normalized and site-unique. Content Pages use [the catch-all route](../../src/app/[[...slug]]/page.tsx); do not create fixed content routes or duplicate View defaults.
 - Metadata requires title, description, and canonicalPath. Canonical path equals Page path. The empty-Page renderer uses title as its h1; a populated Page obtains headings from Sections.
 - Internal actions use `{kind: "page", pageId, fragment?}`. [Link policy](../../src/site-schema/runtime/link-policy.mjs) permits `top` and Section instance IDs. A DOM heading ID is not automatically a Schema link target.
-- Current media objects are images with kind/path/alt. `/media/...` resolves inside public/media; remote images require credential-free HTTPS on the [allowlist](../../src/site-schema/runtime/media-policy.mjs). URL validity does not prove availability.
+- Current media objects are images with kind/path/alt. `/media/...` resolves inside public/media; remote images require credential-free HTTP(S) URLs. URL validity does not prove availability.
+- Site Schema images remain owned by `current.json`. Resolve them with `resolveMedia` and render them with the shared `Image` component's `media` prop. When using `next/image`, spread `mediaEditingProps(media)` from `media-binding` onto it. This preserves Preview's media binding without importing server media-policy code into a client Section. Never copy a resolved URL into Section source.
 - Do not serialize registries, runtime indexes, executable paths/functions, arbitrary styling, or component props. Domain consistency rules belong to the owning Section contract/adapter.
 - `metadata.robots.index: false` excludes a Page from sitemap. siteUrl supplies canonical and sitemap bases and must be intentional before delivery.
 
