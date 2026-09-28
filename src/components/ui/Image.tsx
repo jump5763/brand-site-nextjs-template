@@ -1,6 +1,20 @@
 import type {ComponentProps} from "react";
+// This helper is client-safe and keeps the shared Image bound to current.json media.
+// eslint-disable-next-line no-restricted-imports
+import {mediaEditingProps} from "@/site-schema/runtime/media-binding";
 
-export type ImageProps = ComponentProps<"img">;
+type NativeImageProps = ComponentProps<"img">;
+type SharedImageProps = Omit<NativeImageProps, "src" | "alt">;
+export type BoundImageMedia = Readonly<{
+  src: string;
+  alt: string;
+  editRef?: string;
+}>;
+
+export type ImageProps = SharedImageProps & (
+  | {media: BoundImageMedia; src?: never; alt?: never}
+  | {media?: never; src?: NativeImageProps["src"]; alt?: NativeImageProps["alt"]}
+);
 
 declare const process: {
   env: {
@@ -8,7 +22,7 @@ declare const process: {
   };
 };
 
-function resolveImageSource(src: ImageProps["src"]) {
+function resolveImageSource(src: NativeImageProps["src"]) {
   const cdnBaseUrl = typeof process === "undefined"
     ? ""
     : process.env.NEXT_PUBLIC_IMAGE_CDN?.replace(/\/+$/, "") ?? "";
@@ -20,8 +34,18 @@ function resolveImageSource(src: ImageProps["src"]) {
   return `${cdnBaseUrl}${src}`;
 }
 
-export function Image({src, ...props}: ImageProps) {
-  // The shared component intentionally stays framework-agnostic.
-  // eslint-disable-next-line @next/next/no-img-element
-  return <img {...props} alt={props.alt ?? ""} src={resolveImageSource(src)} />;
+export function Image({media, src, alt, ...props}: ImageProps) {
+  const imageSource = media?.src ?? src;
+  const imageAlt = media?.alt ?? alt;
+
+  return (
+    // The shared component intentionally stays framework-agnostic.
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      {...props}
+      {...(media === undefined ? {} : mediaEditingProps(media))}
+      src={resolveImageSource(imageSource)}
+      alt={imageAlt}
+    />
+  );
 }

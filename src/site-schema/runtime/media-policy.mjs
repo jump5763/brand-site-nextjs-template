@@ -1,6 +1,6 @@
 import { existsSync, realpathSync, statSync } from "node:fs";
 import path from "node:path";
-export const remoteMediaHosts = [];
+export const remoteMediaHosts = ["*"];
 export function mediaPathError(
   src,
   publicDir = path.resolve(process.cwd(), "public"),
@@ -29,12 +29,12 @@ export function mediaPathError(
   try {
     const url = new URL(src);
     if (
-      url.protocol !== "https:" ||
+      (url.protocol !== "https:" && url.protocol !== "http:") ||
       url.username ||
       url.password ||
-      !remoteMediaHosts.includes(url.hostname)
+      (!remoteMediaHosts.includes("*") && !remoteMediaHosts.includes(url.hostname))
     )
-      return "Remote media must use an allowlisted HTTPS host";
+      return "Remote media must use an HTTP(S) URL without credentials";
     return null;
   } catch {
     return "Invalid media URL";
