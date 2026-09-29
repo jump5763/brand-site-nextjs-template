@@ -6,7 +6,7 @@ type GoogleMapProps = Omit<
   ComponentPropsWithRef<"div">,
   "children" | "dangerouslySetInnerHTML"
 > & {
-  apiKey?: string;
+  apiKey: string;
   mode: "place";
   query: string;
   zoom?: number;

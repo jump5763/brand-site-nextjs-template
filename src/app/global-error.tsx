@@ -2,8 +2,6 @@
 
 import { useEffect } from "react";
 
-// Document-level fallback: it replaces the root layout, so it renders its own
-// html/body and stays free of shared client components.
 export default function GlobalError({
   error,
   reset,
@@ -17,28 +15,50 @@ export default function GlobalError({
 
   return (
     <html lang="en">
-      <body className="bg-background font-sans text-foreground antialiased">
-        <section className="grid min-h-screen place-items-center px-[16px] text-center tablet:px-[40px]">
-          <div className="max-w-[560px]">
-            <p className="font-heading text-[16px] font-semibold uppercase tracking-[0.28em] text-primary">
-              Verdant
-            </p>
-            <h1 className="mt-8 text-[36px] font-semibold leading-[1.2] text-primary tablet:text-[44px]">
+      <body
+        style={{
+          margin: 0,
+          minHeight: "100vh",
+          background: "#ffffff",
+          color: "#111827",
+          fontFamily: "system-ui, sans-serif",
+        }}
+      >
+        <main
+          style={{
+            boxSizing: "border-box",
+            display: "grid",
+            minHeight: "100vh",
+            placeContent: "center",
+            padding: "24px",
+            textAlign: "center",
+          }}
+        >
+          <div style={{ maxWidth: "28rem" }}>
+            <h1 style={{ margin: 0, fontSize: "1.5rem", lineHeight: 1.3 }}>
               Something went wrong
             </h1>
-            <p className="mt-5 text-base leading-relaxed text-muted-foreground">
-              The page could not be rendered. Try again, or come back in a
-              moment.
+            <p style={{ margin: "12px 0 0", color: "#4b5563", lineHeight: 1.6 }}>
+              The site could not be loaded. Try again.
             </p>
             <button
               type="button"
               onClick={reset}
-              className="mt-10 inline-flex h-12 items-center justify-center rounded-full bg-primary px-7 text-sm font-semibold tracking-wide text-primary-foreground transition-colors hover:bg-primary/90"
+              style={{
+                marginTop: "24px",
+                border: 0,
+                borderRadius: "6px",
+                padding: "10px 16px",
+                background: "#111827",
+                color: "#ffffff",
+                font: "inherit",
+                cursor: "pointer",
+              }}
             >
               Try again
             </button>
           </div>
-        </section>
+        </main>
       </body>
     </html>
   );
