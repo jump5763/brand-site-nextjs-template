@@ -1,7 +1,6 @@
 import { mediaPathError, remoteMediaHosts } from "./media-policy.mjs";
 import type { SiteMedia } from "../generated/types";
-import { siteMediaBinding, mediaEditingProps } from "./media-binding";
-export { mediaEditingProps } from "./media-binding";
+import { siteMediaBinding } from "./media-binding";
 export type MediaInput = SiteMedia;
 export interface ResolvedMedia {
   src: string;

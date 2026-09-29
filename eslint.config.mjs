@@ -8,6 +8,23 @@ const eslintConfig = [
     ignores: [".next/**", "node_modules/**"],
   },
   {
+    files: ["src/**/*.{ts,tsx}"],
+    ignores: ["src/components/ui/Image.tsx"],
+    rules: {
+      "no-restricted-syntax": [
+        "error",
+        {
+          selector: "ImportDeclaration[source.value='next/image']",
+          message: "Use @/components/ui/Image for all images.",
+        },
+        {
+          selector: "JSXOpeningElement[name.name='img']",
+          message: "Use @/components/ui/Image instead of a native img element.",
+        },
+      ],
+    },
+  },
+  {
     files: [
       "src/components/ui/**/*.{ts,tsx}",
       "src/components/shared/**/*.{ts,tsx}",

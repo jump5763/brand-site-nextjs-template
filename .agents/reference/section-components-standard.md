@@ -9,6 +9,7 @@ For Section presentation work. These are React helpers, not registered Schema ca
 | SectionHeader | Independently placed title group and Body description | [section-header.tsx](../../src/components/shared/section-header.tsx) |
 | Eyebrow | Introductory paragraph, not a heading | [eyebrow.tsx](../../src/components/shared/eyebrow.tsx) |
 | Body | Body font, size, line height, weight | [Body.tsx](../../src/components/ui/typography/Body.tsx) |
+| Image | Exclusive renderer for Site Schema and UI images; preserves editing bindings and CDN resolution | [Image.tsx](../../src/components/ui/Image.tsx) |
 
 ## Container API
 
@@ -18,6 +19,7 @@ For Section presentation work. These are React helpers, not registered Schema ca
 - Default `container="site"` wraps children once; containerClassName styles that wrapper. `container="none"` renders children directly and ignores containerClassName. Avoid duplicate containers/gutters.
 - SiteContainer uses `.container-site`: max width 1760px, gutters 16px/40px at 769px. Reuse it for matching shell or multi-part layouts.
 - Cards, media, backgrounds, grids, and actions remain in View. Use implemented props, not another project's SectionFrame API.
+- Render every image through Image. Use `media` for resolved Site Schema media and `src`/`alt` only for non-Schema assets; do not use native `<img>`, `next/image`, CSS background images, or another wrapper.
 
 ## Title API
 

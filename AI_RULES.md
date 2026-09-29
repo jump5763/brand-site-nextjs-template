@@ -14,7 +14,7 @@ The application is built using the following core technologies:
 *   **State Management**: Primarily React Context API and built-in React hooks (`useState`, `useReducer`).
 *   **Notifications/Toasts**: Sonner for displaying non-intrusive notifications.
 *   **Maps**: Use the existing GoogleMap component for all map embeds.
-*   **Media**: Use real photography from https://images.unsplash.com through Site Schema media fields by default. Do not generate SVG illustrations as website image assets.
+*   **Media**: Use real photography from https://images.unsplash.com through Site Schema media fields by default. Render every image with `src/components/ui/Image.tsx`; do not use native `<img>`, `next/image`, CSS background images, or another image wrapper. Resolve Site Schema media with `resolveMedia` and pass it through the `media` prop. Do not generate SVG illustrations as website image assets.
 *   **Animation**: `tailwindcss-animate` and animation capabilities built into Radix UI components.
 
 ## Library Usage Guidelines
