@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "story.split",
+  "type": "story",
+  "variant": "split",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Brand Story",
+    "description": "Editorial brand story: h2 heading, narrative paragraphs, optional figures, optional action, and a two-photo collage on the opposite side.",
+    "useWhen": ["A page tells how the brand started, what it stands for, and gives supporting numbers"],
+    "avoidWhen": ["A page lists ingredients or a dish catalog"],
+    "rendering": "server"
+  }
+}

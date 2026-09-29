@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codeforma.local/sections/story.split",
+  "title": "Brand Story",
+  "type": "object",
+  "required": ["title", "paragraphs", "media"],
+  "additionalProperties": false,
+  "properties": {
+    "eyebrow": { "type": "string", "minLength": 1, "description": "Small uppercase kicker above the heading." },
+    "title": { "type": "string", "minLength": 1, "description": "Section h2." },
+    "paragraphs": { "type": "array", "minItems": 1, "maxItems": 4, "items": { "type": "string", "minLength": 1 }, "description": "Narrative paragraphs in reading order." },
+    "media": { "$ref": "https://codeforma.local/site-schema/core#/$defs/media", "description": "Primary photograph." },
+    "mediaSecondary": { "$ref": "https://codeforma.local/site-schema/core#/$defs/media", "description": "Optional inset photograph." },
+    "stats": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["value", "label"],
+        "additionalProperties": false,
+        "properties": {
+          "value": { "type": "string", "minLength": 1, "description": "Figure such as 24 or 100%." },
+          "label": { "type": "string", "minLength": 1, "description": "Short description of the figure." }
+        }
+      }
+    },
+    "action": { "$ref": "https://codeforma.local/site-schema/core#/$defs/siteAction", "description": "Optional follow-up link." }
+  }
+}

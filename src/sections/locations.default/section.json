@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "id": "locations.default",
+  "type": "locations",
+  "variant": "default",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Store Locations",
+    "description": "Interactive locations block: h2 heading, selectable store cards with address, phone, opening hours and directions link, plus a Google map that follows the selected store.",
+    "useWhen": ["A page must show real store addresses and opening hours with a map"],
+    "avoidWhen": ["The page only needs the closing site footer contact summary"],
+    "rendering": "client-island"
+  }
+}

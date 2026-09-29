@@ -1,3 +1,564 @@
 {
-  "sections": []
+  "sections": [
+    {
+      "version": 1,
+      "id": "featured-dishes.carousel",
+      "type": "featured-dishes",
+      "variant": "carousel",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Featured Dishes Carousel",
+        "description": "Autoplaying dish carousel with an h2 section heading, h3 dish names, price, badge and photography, plus prev/next controls and an optional action linking to the full menu.",
+        "useWhen": [
+          "A page highlights a rotating set of seasonal or new dishes above a detail page"
+        ],
+        "avoidWhen": [
+          "A page needs a complete filterable catalog of every dish"
+        ],
+        "rendering": "client-island"
+      },
+      "schemaKey": "FeaturedDishesCarouselSection",
+      "contentFields": [
+        {
+          "name": "eyebrow",
+          "required": false,
+          "type": "string",
+          "description": "Small uppercase kicker above the section heading."
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string",
+          "description": "Section h2."
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": "string",
+          "description": "Short introduction under the section heading."
+        },
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        },
+        {
+          "name": "action",
+          "required": false,
+          "description": "Optional link to the complete menu."
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "ingredients.default",
+      "type": "ingredients",
+      "variant": "default",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Ingredients Feature",
+        "description": "Two-column ingredients introduction: h2 heading, icon-led h3 ingredient highlights, optional note, and a large photograph with an optional inset second photo.",
+        "useWhen": [
+          "A page explains sourcing, produce quality, or preparation standards beside real photography"
+        ],
+        "avoidWhen": [
+          "A page needs the brand history, opening hours, or a dish catalog"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "IngredientsDefaultSection",
+      "contentFields": [
+        {
+          "name": "eyebrow",
+          "required": false,
+          "type": "string",
+          "description": "Small uppercase kicker above the heading."
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string",
+          "description": "Section h2."
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": "string",
+          "description": "Introductory paragraph beside the heading."
+        },
+        {
+          "name": "note",
+          "required": false,
+          "type": "string",
+          "description": "Optional short closing line, such as a sourcing promise."
+        },
+        {
+          "name": "media",
+          "required": true,
+          "description": "Main photograph."
+        },
+        {
+          "name": "mediaSecondary",
+          "required": false,
+          "description": "Optional smaller inset photograph."
+        },
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "locations.default",
+      "type": "locations",
+      "variant": "default",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Store Locations",
+        "description": "Interactive locations block: h2 heading, selectable store cards with address, phone, opening hours and directions link, plus a Google map that follows the selected store.",
+        "useWhen": [
+          "A page must show real store addresses and opening hours with a map"
+        ],
+        "avoidWhen": [
+          "The page only needs the closing site footer contact summary"
+        ],
+        "rendering": "client-island"
+      },
+      "schemaKey": "LocationsDefaultSection",
+      "contentFields": [
+        {
+          "name": "eyebrow",
+          "required": false,
+          "type": "string",
+          "description": "Small uppercase kicker above the heading."
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string",
+          "description": "Section h2."
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": "string",
+          "description": "Short introduction under the heading."
+        },
+        {
+          "name": "mapNote",
+          "required": false,
+          "type": "string",
+          "description": "Optional line under the map, for example parking or delivery information."
+        },
+        {
+          "name": "stores",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "marquee.default",
+      "type": "marquee",
+      "variant": "default",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Marquee Band",
+        "description": "Full-width brand-colored band with continuously scrolling short statements and a leaf separator. Emits no headings.",
+        "useWhen": [
+          "A page needs a short rhythm break between major blocks that states brand promises"
+        ],
+        "avoidWhen": [
+          "Long paragraphs, prices, or interactive controls must be presented"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "MarqueeDefaultSection",
+      "contentFields": [
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "menu-catalog.default",
+      "type": "menu-catalog",
+      "variant": "default",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Menu Catalog",
+        "description": "Category tabs with live dish counts, multi-select dietary filters, price and name sorting, and a responsive dish-card grid with photography, description, price and hover interaction. Section h2, category h3 per panel, dish names h4.",
+        "useWhen": [
+          "A menu page needs its full dish catalog grouped by category with filtering and sorting"
+        ],
+        "avoidWhen": [
+          "A page only highlights a few seasonal dishes without a complete catalog"
+        ],
+        "rendering": "client-island"
+      },
+      "schemaKey": "MenuCatalogDefaultSection",
+      "contentFields": [
+        {
+          "name": "eyebrow",
+          "required": false,
+          "type": "string",
+          "description": "Small uppercase kicker above the section heading."
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string",
+          "description": "Stable section h2 above the category tabs."
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": "string",
+          "description": "Short introduction under the section heading."
+        },
+        {
+          "name": "categories",
+          "required": true,
+          "type": "array"
+        },
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "page-hero.banner",
+      "type": "page-hero",
+      "variant": "banner",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Page Banner",
+        "description": "Compact page opener with the page h1, supporting copy, optional metadata pills, and a rounded photograph beside the text.",
+        "useWhen": [
+          "A content-heavy page needs its single h1 and an introduction without a full-screen image"
+        ],
+        "avoidWhen": [
+          "The page opens with a full-bleed hero image and calls to action"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "PageHeroBannerSection",
+      "contentFields": [
+        {
+          "name": "eyebrow",
+          "required": false,
+          "type": "string",
+          "description": "Small uppercase kicker above the title."
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string",
+          "description": "The page h1. One per page."
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": "string",
+          "description": "Short introduction paragraph."
+        },
+        {
+          "name": "media",
+          "required": true,
+          "description": "Photograph displayed beside the introduction."
+        },
+        {
+          "name": "meta",
+          "required": false,
+          "type": "array",
+          "description": "Short pills summarising the page content."
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "page-hero.overlay",
+      "type": "page-hero",
+      "variant": "overlay",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Full-Screen Hero",
+        "description": "Full-bleed food photography opening a page, with a cream content card holding the page h1, supporting copy, calls to action, and optional highlight figures.",
+        "useWhen": [
+          "A page opens with a large atmospheric food image and needs its single h1 plus the strongest calls to action"
+        ],
+        "avoidWhen": [
+          "The page needs a compact title band above a dense content layout"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "PageHeroOverlaySection",
+      "contentFields": [
+        {
+          "name": "eyebrow",
+          "required": false,
+          "type": "string",
+          "description": "Small uppercase kicker above the headline."
+        },
+        {
+          "name": "headline",
+          "required": true,
+          "type": "string",
+          "description": "The page h1. One per page."
+        },
+        {
+          "name": "subheadline",
+          "required": false,
+          "type": "string",
+          "description": "Supporting sentence under the headline."
+        },
+        {
+          "name": "media",
+          "required": true,
+          "description": "Full-bleed background photograph."
+        },
+        {
+          "name": "primaryAction",
+          "required": true
+        },
+        {
+          "name": "secondaryAction",
+          "required": false
+        },
+        {
+          "name": "highlights",
+          "required": false,
+          "type": "array"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "site-footer.default",
+      "type": "site-footer",
+      "variant": "default",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Site Footer",
+        "description": "Brand-colored site footer with the wordmark, social links, navigation column, opening hours, store contact information, a legal note, and an optional back-to-top link. Its column titles are h2 and store names are h3.",
+        "useWhen": [
+          "A page needs the closing site shell with navigation, hours, contact details, and legal information"
+        ],
+        "avoidWhen": [
+          "The page needs an editorial closing section, testimonial, or location map instead of shell information"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "SiteFooterDefaultSection",
+      "contentFields": [
+        {
+          "name": "brandName",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "tagline",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "name": "social",
+          "required": false,
+          "type": "array"
+        },
+        {
+          "name": "explore",
+          "required": true
+        },
+        {
+          "name": "hours",
+          "required": true
+        },
+        {
+          "name": "visit",
+          "required": true
+        },
+        {
+          "name": "backToTop",
+          "required": false
+        },
+        {
+          "name": "legalNote",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "site-header.default",
+      "type": "site-header",
+      "variant": "default",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Site Header",
+        "description": "Sticky top navigation bar with the brand wordmark, primary page links, a prominent order call to action, and a mobile drawer menu. Emits no headings.",
+        "useWhen": [
+          "A page needs the site's persistent navigation and order call to action at the top of the document"
+        ],
+        "avoidWhen": [
+          "The page needs an editorial title block, breadcrumb, or hero media instead of navigation"
+        ],
+        "rendering": "client-island"
+      },
+      "schemaKey": "SiteHeaderDefaultSection",
+      "contentFields": [
+        {
+          "name": "brandName",
+          "required": true,
+          "type": "string",
+          "description": "Wordmark shown at the start of the bar."
+        },
+        {
+          "name": "brandTagline",
+          "required": false,
+          "type": "string",
+          "description": "Short line rendered under the wordmark on wider viewports."
+        },
+        {
+          "name": "brandTarget",
+          "required": false,
+          "description": "Destination of the wordmark link. Defaults to the site root."
+        },
+        {
+          "name": "navigation",
+          "required": true,
+          "type": "array"
+        },
+        {
+          "name": "action",
+          "required": true,
+          "description": "Primary call to action rendered as the brand button."
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "story.split",
+      "type": "story",
+      "variant": "split",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Brand Story",
+        "description": "Editorial brand story: h2 heading, narrative paragraphs, optional figures, optional action, and a two-photo collage on the opposite side.",
+        "useWhen": [
+          "A page tells how the brand started, what it stands for, and gives supporting numbers"
+        ],
+        "avoidWhen": [
+          "A page lists ingredients or a dish catalog"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "StorySplitSection",
+      "contentFields": [
+        {
+          "name": "eyebrow",
+          "required": false,
+          "type": "string",
+          "description": "Small uppercase kicker above the heading."
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string",
+          "description": "Section h2."
+        },
+        {
+          "name": "paragraphs",
+          "required": true,
+          "type": "array",
+          "description": "Narrative paragraphs in reading order."
+        },
+        {
+          "name": "media",
+          "required": true,
+          "description": "Primary photograph."
+        },
+        {
+          "name": "mediaSecondary",
+          "required": false,
+          "description": "Optional inset photograph."
+        },
+        {
+          "name": "stats",
+          "required": false,
+          "type": "array"
+        },
+        {
+          "name": "action",
+          "required": false,
+          "description": "Optional follow-up link."
+        }
+      ]
+    },
+    {
+      "version": 1,
+      "id": "testimonials.grid",
+      "type": "testimonials",
+      "variant": "grid",
+      "contract": "./contract.schema.json",
+      "definition": "./definition.tsx",
+      "capability": {
+        "title": "Reviews Grid",
+        "description": "Sage-tinted review band with an h2 heading and a responsive grid of quote cards carrying star ratings, the quote, and reviewer name with location. Reviewer details are never headings.",
+        "useWhen": [
+          "A page shows short customer quotes and star ratings as social proof"
+        ],
+        "avoidWhen": [
+          "The page needs editorial storytelling or dish photography"
+        ],
+        "rendering": "server"
+      },
+      "schemaKey": "TestimonialsGridSection",
+      "contentFields": [
+        {
+          "name": "eyebrow",
+          "required": false,
+          "type": "string",
+          "description": "Small uppercase kicker above the heading."
+        },
+        {
+          "name": "title",
+          "required": true,
+          "type": "string",
+          "description": "Section h2."
+        },
+        {
+          "name": "description",
+          "required": false,
+          "type": "string",
+          "description": "Short introduction under the heading."
+        },
+        {
+          "name": "items",
+          "required": true,
+          "type": "array"
+        }
+      ]
+    }
+  ]
 }

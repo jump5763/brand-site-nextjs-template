@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "id": "featured-dishes.carousel",
+  "type": "featured-dishes",
+  "variant": "carousel",
+  "contract": "./contract.schema.json",
+  "definition": "./definition.tsx",
+  "capability": {
+    "title": "Featured Dishes Carousel",
+    "description": "Autoplaying dish carousel with an h2 section heading, h3 dish names, price, badge and photography, plus prev/next controls and an optional action linking to the full menu.",
+    "useWhen": [
+      "A page highlights a rotating set of seasonal or new dishes above a detail page"
+    ],
+    "avoidWhen": [
+      "A page needs a complete filterable catalog of every dish"
+    ],
+    "rendering": "client-island"
+  }
+}

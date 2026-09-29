@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codeforma.local/sections/ingredients.default",
+  "title": "Ingredients Feature",
+  "type": "object",
+  "required": ["title", "items", "media"],
+  "additionalProperties": false,
+  "properties": {
+    "eyebrow": { "type": "string", "minLength": 1, "description": "Small uppercase kicker above the heading." },
+    "title": { "type": "string", "minLength": 1, "description": "Section h2." },
+    "description": { "type": "string", "minLength": 1, "description": "Introductory paragraph beside the heading." },
+    "note": { "type": "string", "minLength": 1, "description": "Optional short closing line, such as a sourcing promise." },
+    "media": { "$ref": "https://codeforma.local/site-schema/core#/$defs/media", "description": "Main photograph." },
+    "mediaSecondary": { "$ref": "https://codeforma.local/site-schema/core#/$defs/media", "description": "Optional smaller inset photograph." },
+    "items": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "required": ["name", "description", "icon"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "description": "Highlight h3." },
+          "description": { "type": "string", "minLength": 1, "description": "One or two sentences about this ingredient." },
+          "icon": { "enum": ["leaf", "sprout", "droplet", "wheat", "sun", "flame", "heart", "truck"], "description": "Icon key rendered by the view." }
+        }
+      }
+    }
+  }
+}

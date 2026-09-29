@@ -7,6 +7,22 @@
 export type Color = string;
 /**
  * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "section".
+ */
+export type SiteSection =
+  | FeaturedDishesCarouselSection
+  | IngredientsDefaultSection
+  | LocationsDefaultSection
+  | MarqueeDefaultSection
+  | MenuCatalogDefaultSection
+  | PageHeroBannerSection
+  | PageHeroOverlaySection
+  | SiteFooterDefaultSection
+  | SiteHeaderDefaultSection
+  | StorySplitSection
+  | TestimonialsGridSection;
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
  * via the `definition` "linkTarget".
  */
 export type LinkTarget =
@@ -91,7 +107,66 @@ export interface Metadata {
       }
     | unknown[];
 }
-export type SiteSection = never;
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "FeaturedDishesCarouselSection".
+ */
+export interface FeaturedDishesCarouselSection {
+  id: string;
+  type: "featured-dishes";
+  variant: "carousel";
+  content: FeaturedDishesCarousel;
+}
+export interface FeaturedDishesCarousel {
+  /**
+   * Small uppercase kicker above the section heading.
+   */
+  eyebrow?: string;
+  /**
+   * Section h2.
+   */
+  title: string;
+  /**
+   * Short introduction under the section heading.
+   */
+  description?: string;
+  /**
+   * @minItems 3
+   * @maxItems 8
+   */
+  items:
+    | [Dish, Dish, Dish]
+    | [Dish, Dish, Dish, Dish]
+    | [Dish, Dish, Dish, Dish, Dish]
+    | [Dish, Dish, Dish, Dish, Dish, Dish]
+    | [Dish, Dish, Dish, Dish, Dish, Dish, Dish]
+    | [Dish, Dish, Dish, Dish, Dish, Dish, Dish, Dish];
+  action?: SiteAction1;
+}
+/**
+ * This interface was referenced by `FeaturedDishesCarousel`'s JSON-Schema
+ * via the `definition` "dish".
+ */
+export interface Dish {
+  /**
+   * Card h3.
+   */
+  name: string;
+  /**
+   * Short dish description.
+   */
+  description: string;
+  /**
+   * Display price such as $12.75.
+   */
+  price: string;
+  /**
+   * Optional short label such as New or Seasonal.
+   */
+  badge?: string;
+  media: SiteMedia;
+  action?: SiteAction;
+}
 /**
  * This interface was referenced by `SiteDocument`'s JSON-Schema
  * via the `definition` "media".
@@ -110,4 +185,1882 @@ export interface SiteMedia {
 export interface SiteAction {
   label: string;
   target: LinkTarget;
+}
+/**
+ * Optional link to the complete menu.
+ */
+export interface SiteAction1 {
+  label: string;
+  target: LinkTarget;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "IngredientsDefaultSection".
+ */
+export interface IngredientsDefaultSection {
+  id: string;
+  type: "ingredients";
+  variant: "default";
+  content: IngredientsFeature;
+}
+export interface IngredientsFeature {
+  /**
+   * Small uppercase kicker above the heading.
+   */
+  eyebrow?: string;
+  /**
+   * Section h2.
+   */
+  title: string;
+  /**
+   * Introductory paragraph beside the heading.
+   */
+  description?: string;
+  /**
+   * Optional short closing line, such as a sourcing promise.
+   */
+  note?: string;
+  media: SiteMedia1;
+  mediaSecondary?: SiteMedia2;
+  /**
+   * @minItems 2
+   * @maxItems 4
+   */
+  items:
+    | [
+        {
+          /**
+           * Highlight h3.
+           */
+          name: string;
+          /**
+           * One or two sentences about this ingredient.
+           */
+          description: string;
+          /**
+           * Icon key rendered by the view.
+           */
+          icon: "leaf" | "sprout" | "droplet" | "wheat" | "sun" | "flame" | "heart" | "truck";
+        },
+        {
+          /**
+           * Highlight h3.
+           */
+          name: string;
+          /**
+           * One or two sentences about this ingredient.
+           */
+          description: string;
+          /**
+           * Icon key rendered by the view.
+           */
+          icon: "leaf" | "sprout" | "droplet" | "wheat" | "sun" | "flame" | "heart" | "truck";
+        }
+      ]
+    | [
+        {
+          /**
+           * Highlight h3.
+           */
+          name: string;
+          /**
+           * One or two sentences about this ingredient.
+           */
+          description: string;
+          /**
+           * Icon key rendered by the view.
+           */
+          icon: "leaf" | "sprout" | "droplet" | "wheat" | "sun" | "flame" | "heart" | "truck";
+        },
+        {
+          /**
+           * Highlight h3.
+           */
+          name: string;
+          /**
+           * One or two sentences about this ingredient.
+           */
+          description: string;
+          /**
+           * Icon key rendered by the view.
+           */
+          icon: "leaf" | "sprout" | "droplet" | "wheat" | "sun" | "flame" | "heart" | "truck";
+        },
+        {
+          /**
+           * Highlight h3.
+           */
+          name: string;
+          /**
+           * One or two sentences about this ingredient.
+           */
+          description: string;
+          /**
+           * Icon key rendered by the view.
+           */
+          icon: "leaf" | "sprout" | "droplet" | "wheat" | "sun" | "flame" | "heart" | "truck";
+        }
+      ]
+    | [
+        {
+          /**
+           * Highlight h3.
+           */
+          name: string;
+          /**
+           * One or two sentences about this ingredient.
+           */
+          description: string;
+          /**
+           * Icon key rendered by the view.
+           */
+          icon: "leaf" | "sprout" | "droplet" | "wheat" | "sun" | "flame" | "heart" | "truck";
+        },
+        {
+          /**
+           * Highlight h3.
+           */
+          name: string;
+          /**
+           * One or two sentences about this ingredient.
+           */
+          description: string;
+          /**
+           * Icon key rendered by the view.
+           */
+          icon: "leaf" | "sprout" | "droplet" | "wheat" | "sun" | "flame" | "heart" | "truck";
+        },
+        {
+          /**
+           * Highlight h3.
+           */
+          name: string;
+          /**
+           * One or two sentences about this ingredient.
+           */
+          description: string;
+          /**
+           * Icon key rendered by the view.
+           */
+          icon: "leaf" | "sprout" | "droplet" | "wheat" | "sun" | "flame" | "heart" | "truck";
+        },
+        {
+          /**
+           * Highlight h3.
+           */
+          name: string;
+          /**
+           * One or two sentences about this ingredient.
+           */
+          description: string;
+          /**
+           * Icon key rendered by the view.
+           */
+          icon: "leaf" | "sprout" | "droplet" | "wheat" | "sun" | "flame" | "heart" | "truck";
+        }
+      ];
+}
+/**
+ * Main photograph.
+ */
+export interface SiteMedia1 {
+  kind: "image";
+  path: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+/**
+ * Optional smaller inset photograph.
+ */
+export interface SiteMedia2 {
+  kind: "image";
+  path: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "LocationsDefaultSection".
+ */
+export interface LocationsDefaultSection {
+  id: string;
+  type: "locations";
+  variant: "default";
+  content: StoreLocations;
+}
+export interface StoreLocations {
+  /**
+   * Small uppercase kicker above the heading.
+   */
+  eyebrow?: string;
+  /**
+   * Section h2.
+   */
+  title: string;
+  /**
+   * Short introduction under the heading.
+   */
+  description?: string;
+  /**
+   * Optional line under the map, for example parking or delivery information.
+   */
+  mapNote?: string;
+  /**
+   * @minItems 1
+   * @maxItems 3
+   */
+  stores:
+    | [
+        {
+          /**
+           * Store card h3.
+           */
+          name: string;
+          /**
+           * Single line street address.
+           */
+          address: string;
+          /**
+           * Store phone number as display text.
+           */
+          phone?: string;
+          /**
+           * @minItems 1
+           * @maxItems 3
+           */
+          hours:
+            | [
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ];
+          /**
+           * Place query passed to the Google map embed.
+           */
+          mapQuery: string;
+          /**
+           * Optional map zoom level.
+           */
+          mapZoom?: number;
+          directions?: SiteAction2;
+        }
+      ]
+    | [
+        {
+          /**
+           * Store card h3.
+           */
+          name: string;
+          /**
+           * Single line street address.
+           */
+          address: string;
+          /**
+           * Store phone number as display text.
+           */
+          phone?: string;
+          /**
+           * @minItems 1
+           * @maxItems 3
+           */
+          hours:
+            | [
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ];
+          /**
+           * Place query passed to the Google map embed.
+           */
+          mapQuery: string;
+          /**
+           * Optional map zoom level.
+           */
+          mapZoom?: number;
+          directions?: SiteAction2;
+        },
+        {
+          /**
+           * Store card h3.
+           */
+          name: string;
+          /**
+           * Single line street address.
+           */
+          address: string;
+          /**
+           * Store phone number as display text.
+           */
+          phone?: string;
+          /**
+           * @minItems 1
+           * @maxItems 3
+           */
+          hours:
+            | [
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ];
+          /**
+           * Place query passed to the Google map embed.
+           */
+          mapQuery: string;
+          /**
+           * Optional map zoom level.
+           */
+          mapZoom?: number;
+          directions?: SiteAction2;
+        }
+      ]
+    | [
+        {
+          /**
+           * Store card h3.
+           */
+          name: string;
+          /**
+           * Single line street address.
+           */
+          address: string;
+          /**
+           * Store phone number as display text.
+           */
+          phone?: string;
+          /**
+           * @minItems 1
+           * @maxItems 3
+           */
+          hours:
+            | [
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ];
+          /**
+           * Place query passed to the Google map embed.
+           */
+          mapQuery: string;
+          /**
+           * Optional map zoom level.
+           */
+          mapZoom?: number;
+          directions?: SiteAction2;
+        },
+        {
+          /**
+           * Store card h3.
+           */
+          name: string;
+          /**
+           * Single line street address.
+           */
+          address: string;
+          /**
+           * Store phone number as display text.
+           */
+          phone?: string;
+          /**
+           * @minItems 1
+           * @maxItems 3
+           */
+          hours:
+            | [
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ];
+          /**
+           * Place query passed to the Google map embed.
+           */
+          mapQuery: string;
+          /**
+           * Optional map zoom level.
+           */
+          mapZoom?: number;
+          directions?: SiteAction2;
+        },
+        {
+          /**
+           * Store card h3.
+           */
+          name: string;
+          /**
+           * Single line street address.
+           */
+          address: string;
+          /**
+           * Store phone number as display text.
+           */
+          phone?: string;
+          /**
+           * @minItems 1
+           * @maxItems 3
+           */
+          hours:
+            | [
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ]
+            | [
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                },
+                {
+                  label: string;
+                  value: string;
+                }
+              ];
+          /**
+           * Place query passed to the Google map embed.
+           */
+          mapQuery: string;
+          /**
+           * Optional map zoom level.
+           */
+          mapZoom?: number;
+          directions?: SiteAction2;
+        }
+      ];
+}
+/**
+ * Optional external directions link.
+ */
+export interface SiteAction2 {
+  label: string;
+  target: LinkTarget;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "MarqueeDefaultSection".
+ */
+export interface MarqueeDefaultSection {
+  id: string;
+  type: "marquee";
+  variant: "default";
+  content: MarqueeBand;
+}
+export interface MarqueeBand {
+  /**
+   * @minItems 2
+   * @maxItems 8
+   */
+  items:
+    | [string, string]
+    | [string, string, string]
+    | [string, string, string, string]
+    | [string, string, string, string, string]
+    | [string, string, string, string, string, string]
+    | [string, string, string, string, string, string, string]
+    | [string, string, string, string, string, string, string, string];
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "MenuCatalogDefaultSection".
+ */
+export interface MenuCatalogDefaultSection {
+  id: string;
+  type: "menu-catalog";
+  variant: "default";
+  content: MenuCatalog;
+}
+export interface MenuCatalog {
+  /**
+   * Small uppercase kicker above the section heading.
+   */
+  eyebrow?: string;
+  /**
+   * Stable section h2 above the category tabs.
+   */
+  title: string;
+  /**
+   * Short introduction under the section heading.
+   */
+  description?: string;
+  /**
+   * @minItems 1
+   * @maxItems 8
+   */
+  categories:
+    | [
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        }
+      ]
+    | [
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        }
+      ]
+    | [
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        }
+      ]
+    | [
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        }
+      ]
+    | [
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        }
+      ]
+    | [
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        }
+      ]
+    | [
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        }
+      ]
+    | [
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        },
+        {
+          /**
+           * Tab label; every dish category must equal one of these names.
+           */
+          name: string;
+          /**
+           * One line describing the category.
+           */
+          description?: string;
+        }
+      ];
+  /**
+   * @minItems 1
+   */
+  items: [
+    {
+      /**
+       * Card h4.
+       */
+      name: string;
+      /**
+       * Short dish description.
+       */
+      description: string;
+      /**
+       * Display price such as $12.75.
+       */
+      price: string;
+      /**
+       * Must equal one of the declared category names.
+       */
+      category: string;
+      /**
+       * Dietary labels such as Vegan, Gluten-Free, High Protein, Spicy.
+       *
+       * @minItems 1
+       * @maxItems 3
+       */
+      tags?: [string] | [string, string] | [string, string, string];
+      /**
+       * Short factual detail such as 420 cal or Serves 2.
+       */
+      metadata?: string;
+      /**
+       * Optional short label such as New, Chef's pick or Limited.
+       */
+      badge?: string;
+      media: SiteMedia;
+    },
+    ...{
+      /**
+       * Card h4.
+       */
+      name: string;
+      /**
+       * Short dish description.
+       */
+      description: string;
+      /**
+       * Display price such as $12.75.
+       */
+      price: string;
+      /**
+       * Must equal one of the declared category names.
+       */
+      category: string;
+      /**
+       * Dietary labels such as Vegan, Gluten-Free, High Protein, Spicy.
+       *
+       * @minItems 1
+       * @maxItems 3
+       */
+      tags?: [string] | [string, string] | [string, string, string];
+      /**
+       * Short factual detail such as 420 cal or Serves 2.
+       */
+      metadata?: string;
+      /**
+       * Optional short label such as New, Chef's pick or Limited.
+       */
+      badge?: string;
+      media: SiteMedia;
+    }[]
+  ];
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "PageHeroBannerSection".
+ */
+export interface PageHeroBannerSection {
+  id: string;
+  type: "page-hero";
+  variant: "banner";
+  content: PageBanner;
+}
+export interface PageBanner {
+  /**
+   * Small uppercase kicker above the title.
+   */
+  eyebrow?: string;
+  /**
+   * The page h1. One per page.
+   */
+  title: string;
+  /**
+   * Short introduction paragraph.
+   */
+  description?: string;
+  media: SiteMedia3;
+  /**
+   * Short pills summarising the page content.
+   *
+   * @minItems 1
+   * @maxItems 4
+   */
+  meta?: [string] | [string, string] | [string, string, string] | [string, string, string, string];
+}
+/**
+ * Photograph displayed beside the introduction.
+ */
+export interface SiteMedia3 {
+  kind: "image";
+  path: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "PageHeroOverlaySection".
+ */
+export interface PageHeroOverlaySection {
+  id: string;
+  type: "page-hero";
+  variant: "overlay";
+  content: FullScreenHero;
+}
+export interface FullScreenHero {
+  /**
+   * Small uppercase kicker above the headline.
+   */
+  eyebrow?: string;
+  /**
+   * The page h1. One per page.
+   */
+  headline: string;
+  /**
+   * Supporting sentence under the headline.
+   */
+  subheadline?: string;
+  media: SiteMedia4;
+  primaryAction: SiteAction;
+  secondaryAction?: SiteAction;
+  /**
+   * @minItems 2
+   * @maxItems 4
+   */
+  highlights?:
+    [Highlight, Highlight] | [Highlight, Highlight, Highlight] | [Highlight, Highlight, Highlight, Highlight];
+}
+/**
+ * Full-bleed background photograph.
+ */
+export interface SiteMedia4 {
+  kind: "image";
+  path: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+/**
+ * This interface was referenced by `FullScreenHero`'s JSON-Schema
+ * via the `definition` "highlight".
+ */
+export interface Highlight {
+  value: string;
+  label: string;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "SiteFooterDefaultSection".
+ */
+export interface SiteFooterDefaultSection {
+  id: string;
+  type: "site-footer";
+  variant: "default";
+  content: SiteFooter;
+}
+export interface SiteFooter {
+  brandName: string;
+  tagline: string;
+  /**
+   * @minItems 1
+   * @maxItems 3
+   */
+  social?: [SocialLink] | [SocialLink, SocialLink] | [SocialLink, SocialLink, SocialLink];
+  explore: LinkColumn;
+  hours: HoursColumn;
+  visit: VisitColumn;
+  backToTop?: SiteAction;
+  legalNote: string;
+}
+/**
+ * This interface was referenced by `SiteFooter`'s JSON-Schema
+ * via the `definition` "socialLink".
+ */
+export interface SocialLink {
+  /**
+   * Accessible name of the icon-only link.
+   */
+  label: string;
+  icon: "instagram" | "facebook" | "youtube";
+  target: LinkTarget;
+}
+/**
+ * This interface was referenced by `SiteFooter`'s JSON-Schema
+ * via the `definition` "linkColumn".
+ */
+export interface LinkColumn {
+  title: string;
+  /**
+   * @minItems 1
+   */
+  links: [LabeledTarget, ...LabeledTarget[]];
+}
+/**
+ * This interface was referenced by `SiteFooter`'s JSON-Schema
+ * via the `definition` "labeledTarget".
+ */
+export interface LabeledTarget {
+  label: string;
+  target: LinkTarget;
+}
+/**
+ * This interface was referenced by `SiteFooter`'s JSON-Schema
+ * via the `definition` "hoursColumn".
+ */
+export interface HoursColumn {
+  title: string;
+  /**
+   * @minItems 1
+   */
+  entries: [LabelValue, ...LabelValue[]];
+}
+/**
+ * This interface was referenced by `SiteFooter`'s JSON-Schema
+ * via the `definition` "labelValue".
+ */
+export interface LabelValue {
+  label: string;
+  value: string;
+}
+/**
+ * This interface was referenced by `SiteFooter`'s JSON-Schema
+ * via the `definition` "visitColumn".
+ */
+export interface VisitColumn {
+  title: string;
+  email: string;
+  /**
+   * @minItems 1
+   */
+  stores: [Store, ...Store[]];
+}
+/**
+ * This interface was referenced by `SiteFooter`'s JSON-Schema
+ * via the `definition` "store".
+ */
+export interface Store {
+  name: string;
+  address: string;
+  phone?: string;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "SiteHeaderDefaultSection".
+ */
+export interface SiteHeaderDefaultSection {
+  id: string;
+  type: "site-header";
+  variant: "default";
+  content: SiteHeader;
+}
+export interface SiteHeader {
+  /**
+   * Wordmark shown at the start of the bar.
+   */
+  brandName: string;
+  /**
+   * Short line rendered under the wordmark on wider viewports.
+   */
+  brandTagline?: string;
+  /**
+   * Destination of the wordmark link. Defaults to the site root.
+   */
+  brandTarget?:
+    | {
+        kind: "page";
+        pageId: string;
+        fragment?: string;
+      }
+    | {
+        kind: "external";
+        href: string;
+      };
+  /**
+   * @minItems 1
+   */
+  navigation: [NavigationItem, ...NavigationItem[]];
+  action: SiteAction3;
+}
+/**
+ * This interface was referenced by `SiteHeader`'s JSON-Schema
+ * via the `definition` "navigationItem".
+ */
+export interface NavigationItem {
+  label: string;
+  target: LinkTarget;
+}
+/**
+ * Primary call to action rendered as the brand button.
+ */
+export interface SiteAction3 {
+  label: string;
+  target: LinkTarget;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "StorySplitSection".
+ */
+export interface StorySplitSection {
+  id: string;
+  type: "story";
+  variant: "split";
+  content: BrandStory;
+}
+export interface BrandStory {
+  /**
+   * Small uppercase kicker above the heading.
+   */
+  eyebrow?: string;
+  /**
+   * Section h2.
+   */
+  title: string;
+  /**
+   * Narrative paragraphs in reading order.
+   *
+   * @minItems 1
+   * @maxItems 4
+   */
+  paragraphs: [string] | [string, string] | [string, string, string] | [string, string, string, string];
+  media: SiteMedia5;
+  mediaSecondary?: SiteMedia6;
+  /**
+   * @minItems 2
+   * @maxItems 4
+   */
+  stats?:
+    | [
+        {
+          /**
+           * Figure such as 24 or 100%.
+           */
+          value: string;
+          /**
+           * Short description of the figure.
+           */
+          label: string;
+        },
+        {
+          /**
+           * Figure such as 24 or 100%.
+           */
+          value: string;
+          /**
+           * Short description of the figure.
+           */
+          label: string;
+        }
+      ]
+    | [
+        {
+          /**
+           * Figure such as 24 or 100%.
+           */
+          value: string;
+          /**
+           * Short description of the figure.
+           */
+          label: string;
+        },
+        {
+          /**
+           * Figure such as 24 or 100%.
+           */
+          value: string;
+          /**
+           * Short description of the figure.
+           */
+          label: string;
+        },
+        {
+          /**
+           * Figure such as 24 or 100%.
+           */
+          value: string;
+          /**
+           * Short description of the figure.
+           */
+          label: string;
+        }
+      ]
+    | [
+        {
+          /**
+           * Figure such as 24 or 100%.
+           */
+          value: string;
+          /**
+           * Short description of the figure.
+           */
+          label: string;
+        },
+        {
+          /**
+           * Figure such as 24 or 100%.
+           */
+          value: string;
+          /**
+           * Short description of the figure.
+           */
+          label: string;
+        },
+        {
+          /**
+           * Figure such as 24 or 100%.
+           */
+          value: string;
+          /**
+           * Short description of the figure.
+           */
+          label: string;
+        },
+        {
+          /**
+           * Figure such as 24 or 100%.
+           */
+          value: string;
+          /**
+           * Short description of the figure.
+           */
+          label: string;
+        }
+      ];
+  action?: SiteAction4;
+}
+/**
+ * Primary photograph.
+ */
+export interface SiteMedia5 {
+  kind: "image";
+  path: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+/**
+ * Optional inset photograph.
+ */
+export interface SiteMedia6 {
+  kind: "image";
+  path: string;
+  alt: string;
+  width?: number;
+  height?: number;
+}
+/**
+ * Optional follow-up link.
+ */
+export interface SiteAction4 {
+  label: string;
+  target: LinkTarget;
+}
+/**
+ * This interface was referenced by `SiteDocument`'s JSON-Schema
+ * via the `definition` "TestimonialsGridSection".
+ */
+export interface TestimonialsGridSection {
+  id: string;
+  type: "testimonials";
+  variant: "grid";
+  content: ReviewsGrid;
+}
+export interface ReviewsGrid {
+  /**
+   * Small uppercase kicker above the heading.
+   */
+  eyebrow?: string;
+  /**
+   * Section h2.
+   */
+  title: string;
+  /**
+   * Short introduction under the heading.
+   */
+  description?: string;
+  /**
+   * @minItems 3
+   * @maxItems 6
+   */
+  items:
+    | [
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        }
+      ]
+    | [
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        }
+      ]
+    | [
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        }
+      ]
+    | [
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        },
+        {
+          /**
+           * Reviewer quote in first person.
+           */
+          quote: string;
+          /**
+           * Reviewer name.
+           */
+          name: string;
+          /**
+           * Neighbourhood or city line, for example Boston, MA.
+           */
+          location: string;
+          /**
+           * Star rating out of five.
+           */
+          rating?: number;
+          media?: SiteMedia7;
+        }
+      ];
+}
+/**
+ * Optional reviewer portrait.
+ */
+export interface SiteMedia7 {
+  kind: "image";
+  path: string;
+  alt: string;
+  width?: number;
+  height?: number;
 }

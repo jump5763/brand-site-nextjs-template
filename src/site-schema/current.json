@@ -1,28 +1,28 @@
 {
-  "siteId": "untitled-site",
+  "siteId": "verdant-kitchen",
   "siteUrl": "http://localhost:3000",
   "theme": {
     "fonts": { "heading": "System Sans", "typography": "System Sans" },
     "colors": {
-      "background": "#FFFFFF",
-      "foreground": "#111827",
+      "background": "#FBFAF7",
+      "foreground": "#232826",
       "card": "#FFFFFF",
-      "cardForeground": "#111827",
+      "cardForeground": "#232826",
       "popover": "#FFFFFF",
-      "popoverForeground": "#111827",
-      "primary": "#111827",
+      "popoverForeground": "#232826",
+      "primary": "#14453D",
       "primaryForeground": "#FFFFFF",
-      "secondary": "#F3F4F6",
-      "secondaryForeground": "#111827",
-      "muted": "#F3F4F6",
-      "mutedForeground": "#6B7280",
-      "accent": "#F3F4F6",
-      "accentForeground": "#111827",
-      "destructive": "#DC2626",
+      "secondary": "#E6EDE6",
+      "secondaryForeground": "#14453D",
+      "muted": "#F1F0E9",
+      "mutedForeground": "#6D7773",
+      "accent": "#E9EFE9",
+      "accentForeground": "#14453D",
+      "destructive": "#B3261E",
       "destructiveForeground": "#FFFFFF",
-      "border": "#E5E7EB",
-      "input": "#E5E7EB",
-      "ring": "#2563EB"
+      "border": "#E5E3DA",
+      "input": "#E5E3DA",
+      "ring": "#14453D"
     }
   },
   "pages": [
@@ -30,12 +30,880 @@
       "id": "home",
       "path": "/",
       "metadata": {
-        "title": "Blank page",
-        "description": "",
+        "title": "Verdant Kitchen | Farm-Fresh Salads & Grain Bowls",
+        "description": "Verdant Kitchen serves chef-crafted salads, warm grain bowls and cold-pressed juices made from scratch every morning with produce from farms we know by name.",
         "canonicalPath": "/",
-        "robots": { "index": false, "follow": false }
+        "robots": { "index": true, "follow": true },
+        "openGraph": {
+          "type": "website",
+          "siteName": "Verdant Kitchen",
+          "title": "Verdant Kitchen | Farm-Fresh Salads & Grain Bowls",
+          "description": "Chef-crafted salads, warm grain bowls and cold-pressed juices made fresh every morning."
+        },
+        "structuredData": {
+          "@context": "https://schema.org",
+          "@type": "Restaurant",
+          "name": "Verdant Kitchen",
+          "description": "Farm-fresh salads, grain bowls and cold-pressed juices made from scratch in neighborhood kitchens.",
+          "image": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=2400&h=1600&q=80",
+          "servesCuisine": ["Salads", "Healthy", "American"],
+          "priceRange": "$$",
+          "telephone": "(617) 555-0142",
+          "email": "hello@verdantkitchen.com",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "128 Newbury Street",
+            "addressLocality": "Boston",
+            "addressRegion": "MA",
+            "postalCode": "02116",
+            "addressCountry": "US"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "10:30",
+              "closes": "21:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Saturday", "Sunday"],
+              "opens": "11:00",
+              "closes": "20:00"
+            }
+          ]
+        }
       },
-      "sections": []
+      "sections": [
+        {
+          "id": "top-nav",
+          "type": "site-header",
+          "variant": "default",
+          "content": {
+            "brandName": "Verdant",
+            "brandTagline": "Farm-Fresh Salads & Bowls",
+            "brandTarget": { "kind": "page", "pageId": "home" },
+            "navigation": [
+              { "label": "Home", "target": { "kind": "page", "pageId": "home" } },
+              { "label": "Menu", "target": { "kind": "page", "pageId": "menu" } },
+              {
+                "label": "Order Online",
+                "target": { "kind": "page", "pageId": "menu", "fragment": "menu-catalog" }
+              },
+              {
+                "label": "Locations",
+                "target": { "kind": "page", "pageId": "home", "fragment": "locations" }
+              },
+              {
+                "label": "About Us",
+                "target": { "kind": "page", "pageId": "home", "fragment": "about" }
+              },
+              {
+                "label": "Contact Us",
+                "target": { "kind": "page", "pageId": "home", "fragment": "contact" }
+              }
+            ],
+            "action": { "label": "Order Now", "target": { "kind": "page", "pageId": "menu" } }
+          }
+        },
+        {
+          "id": "hero",
+          "type": "page-hero",
+          "variant": "overlay",
+          "content": {
+            "eyebrow": "Farm-Fresh Kitchen",
+            "headline": "Real food, grown nearby.",
+            "subheadline": "Chef-crafted salads, grain bowls and cold-pressed juice, made fresh every morning from farms we know.",
+            "media": {
+              "kind": "image",
+              "path": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=2400&h=1600&q=80",
+              "alt": "Bright bowl of fresh greens, avocado and roasted vegetables photographed in natural light",
+              "width": 2400,
+              "height": 1600
+            },
+            "primaryAction": {
+              "label": "Order Now",
+              "target": { "kind": "page", "pageId": "menu" }
+            },
+            "secondaryAction": {
+              "label": "Find a Store",
+              "target": { "kind": "page", "pageId": "home", "fragment": "locations" }
+            },
+            "highlights": [
+              { "value": "100%", "label": "Organic greens" },
+              { "value": "12", "label": "Partner farms" },
+              { "value": "4.9", "label": "Average guest rating" }
+            ]
+          }
+        },
+        {
+          "id": "marquee",
+          "type": "marquee",
+          "variant": "default",
+          "content": {
+            "items": [
+              "Locally Sourced Produce",
+              "Chef-Crafted Daily",
+              "Zero Seed Oils",
+              "Organically Grown Greens",
+              "Compostable Packaging",
+              "Made From Scratch"
+            ]
+          }
+        },
+        {
+          "id": "seasonal",
+          "type": "featured-dishes",
+          "variant": "carousel",
+          "content": {
+            "eyebrow": "Seasonal Menu",
+            "title": "New this season",
+            "description": "Our chefs rebuild the menu around the harvest. Four dishes are on the counter this month.",
+            "items": [
+              {
+                "name": "Avocado Herb Crunch",
+                "description": "Romaine and baby spinach, avocado, cucumber, toasted seeds and a bright lime vinaigrette.",
+                "price": "$12.75",
+                "badge": "New",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Salad bowl with avocado, greens and toasted seeds",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Miso Salmon Grain Bowl",
+                "description": "Miso-glazed salmon over warm brown rice with charred broccoli, cucumber and sesame greens.",
+                "price": "$16.50",
+                "badge": "Seasonal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Plate of miso-glazed salmon with roasted vegetables",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Heirloom Tomato & Burrata",
+                "description": "Peak-season heirloom tomatoes with burrata, torn basil, pistachio crumble and aged balsamic.",
+                "price": "$14.50",
+                "badge": "Limited",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Fresh tomato salad served on a light ceramic plate",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Charred Corn & Basil Bowl",
+                "description": "Fire-charred sweet corn, heirloom tomato and quinoa with a lime-cilantro dressing.",
+                "price": "$14.25",
+                "badge": "New",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Colourful grain bowl with vegetables photographed from above",
+                  "width": 900,
+                  "height": 675
+                }
+              }
+            ],
+            "action": {
+              "label": "View the Full Menu",
+              "target": { "kind": "page", "pageId": "menu" }
+            }
+          }
+        },
+        {
+          "id": "ingredients",
+          "type": "ingredients",
+          "variant": "default",
+          "content": {
+            "eyebrow": "Sourcing",
+            "title": "Ingredients you can trace",
+            "description": "We buy from growers within a day's drive, so produce reaches your bowl the day it leaves the field.",
+            "note": "Sourced within 250 miles whenever the season allows.",
+            "media": {
+              "kind": "image",
+              "path": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1000&h=1250&q=75",
+              "alt": "Fresh vegetables, herbs and greens arranged on a kitchen counter",
+              "width": 1000,
+              "height": 1250
+            },
+            "mediaSecondary": {
+              "kind": "image",
+              "path": "https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=800&h=800&q=75",
+              "alt": "Crates of seasonal produce at a neighbourhood farmers market",
+              "width": 800,
+              "height": 800
+            },
+            "items": [
+              {
+                "name": "Regenerative Greens",
+                "description": "Leafy greens from certified regenerative farms, harvested the morning we serve them.",
+                "icon": "leaf"
+              },
+              {
+                "name": "Whole Grains",
+                "description": "Farro, quinoa and wild rice cooked from scratch in small batches, never from a freezer bag.",
+                "icon": "wheat"
+              },
+              {
+                "name": "Cold-Pressed Oils",
+                "description": "Extra-virgin olive, avocado and toasted sesame oils only. No seed oils, no shortcuts.",
+                "icon": "droplet"
+              },
+              {
+                "name": "House Dressings",
+                "description": "Every dressing, marinade and sauce is blended in our own kitchens from whole ingredients.",
+                "icon": "sprout"
+              }
+            ]
+          }
+        },
+        {
+          "id": "about",
+          "type": "story",
+          "variant": "split",
+          "content": {
+            "eyebrow": "Our Story",
+            "title": "One honest bowl",
+            "paragraphs": [
+              "Verdant began with one counter, one blender and a market stall's worth of vegetables: food that tasted like a farm stand but moved like a fast-food line.",
+              "Every kitchen still cooks from scratch, the menu still follows the harvest, and every bowl is built the moment you order it."
+            ],
+            "media": {
+              "kind": "image",
+              "path": "https://images.unsplash.com/photo-1464226184884-fa280b87c399?auto=format&fit=crop&w=1200&h=900&q=75",
+              "alt": "Rows of crops growing on a family farm at sunrise",
+              "width": 1200,
+              "height": 900
+            },
+            "mediaSecondary": {
+              "kind": "image",
+              "path": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=700&h=700&q=75",
+              "alt": "Warm, bright dining room of a modern neighbourhood restaurant",
+              "width": 700,
+              "height": 700
+            },
+            "stats": [
+              { "value": "2014", "label": "First counter opened" },
+              { "value": "12", "label": "Partner farms" },
+              { "value": "6", "label": "Neighbourhood kitchens" }
+            ],
+            "action": {
+              "label": "Visit Us",
+              "target": { "kind": "page", "pageId": "home", "fragment": "locations" }
+            }
+          }
+        },
+        {
+          "id": "reviews",
+          "type": "testimonials",
+          "variant": "grid",
+          "content": {
+            "eyebrow": "Guest Reviews",
+            "title": "What our guests say",
+            "description": "Rated 4.9 out of 5 across all three neighbourhood kitchens.",
+            "items": [
+              {
+                "quote": "The kale caesar is the only salad I have ever actually craved. Everything tastes like it was picked yesterday, because most of it was.",
+                "name": "Maya R.",
+                "location": "Back Bay, Boston",
+                "rating": 5,
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&w=200&h=200&q=75",
+                  "alt": "Portrait of guest Maya R.",
+                  "width": 200,
+                  "height": 200
+                }
+              },
+              {
+                "quote": "I eat here three days a week and the bowls never get boring. Properly filling without the afternoon slump.",
+                "name": "Daniel O.",
+                "location": "Williamsburg, Brooklyn",
+                "rating": 5,
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&w=200&h=200&q=75",
+                  "alt": "Portrait of guest Daniel O.",
+                  "width": 200,
+                  "height": 200
+                }
+              },
+              {
+                "quote": "Fast, clean, and the team remembers my order. It is the only quick lunch spot I trust to feed my whole studio.",
+                "name": "Priya N.",
+                "location": "Venice, Los Angeles",
+                "rating": 5,
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&crop=faces&w=200&h=200&q=75",
+                  "alt": "Portrait of guest Priya N.",
+                  "width": 200,
+                  "height": 200
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "locations",
+          "type": "locations",
+          "variant": "default",
+          "content": {
+            "eyebrow": "Find Us",
+            "title": "Neighbourhood kitchens",
+            "description": "Three kitchens, one menu. Order ahead for pickup or delivery.",
+            "mapNote": "Pickup and delivery at all three locations.",
+            "stores": [
+              {
+                "name": "Back Bay",
+                "address": "128 Newbury Street, Boston, MA 02116",
+                "phone": "(617) 555-0142",
+                "hours": [
+                  { "label": "Mon - Fri", "value": "10:30 AM - 9:00 PM" },
+                  { "label": "Sat - Sun", "value": "11:00 AM - 8:00 PM" }
+                ],
+                "mapQuery": "Newbury Street, Boston, MA",
+                "mapZoom": 15,
+                "directions": {
+                  "label": "Get directions",
+                  "target": {
+                    "kind": "external",
+                    "href": "https://www.google.com/maps/search/?api=1&query=Newbury+Street+Boston+MA"
+                  }
+                }
+              },
+              {
+                "name": "Williamsburg",
+                "address": "84 Wythe Avenue, Brooklyn, NY 11249",
+                "phone": "(718) 555-0198",
+                "hours": [
+                  { "label": "Mon - Fri", "value": "10:30 AM - 9:30 PM" },
+                  { "label": "Sat - Sun", "value": "11:00 AM - 9:30 PM" }
+                ],
+                "mapQuery": "Wythe Avenue, Brooklyn, NY",
+                "mapZoom": 15,
+                "directions": {
+                  "label": "Get directions",
+                  "target": {
+                    "kind": "external",
+                    "href": "https://www.google.com/maps/search/?api=1&query=Wythe+Avenue+Brooklyn+NY"
+                  }
+                }
+              },
+              {
+                "name": "Venice",
+                "address": "1214 Abbot Kinney Boulevard, Venice, CA 90291",
+                "phone": "(310) 555-0173",
+                "hours": [
+                  { "label": "Mon - Fri", "value": "10:00 AM - 9:00 PM" },
+                  { "label": "Sat - Sun", "value": "10:30 AM - 8:30 PM" }
+                ],
+                "mapQuery": "Abbot Kinney Boulevard, Venice, CA",
+                "mapZoom": 15,
+                "directions": {
+                  "label": "Get directions",
+                  "target": {
+                    "kind": "external",
+                    "href": "https://www.google.com/maps/search/?api=1&query=Abbot+Kinney+Boulevard+Venice+CA"
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "contact",
+          "type": "site-footer",
+          "variant": "default",
+          "content": {
+            "brandName": "Verdant",
+            "tagline": "Farm-fresh salads, grain bowls and cold-pressed juices, made from scratch in neighbourhood kitchens since 2014.",
+            "social": [
+              {
+                "label": "Verdant on Instagram",
+                "icon": "instagram",
+                "target": { "kind": "external", "href": "https://www.instagram.com/" }
+              },
+              {
+                "label": "Verdant on Facebook",
+                "icon": "facebook",
+                "target": { "kind": "external", "href": "https://www.facebook.com/" }
+              },
+              {
+                "label": "Verdant on YouTube",
+                "icon": "youtube",
+                "target": { "kind": "external", "href": "https://www.youtube.com/" }
+              }
+            ],
+            "explore": {
+              "title": "Explore",
+              "links": [
+                { "label": "Home", "target": { "kind": "page", "pageId": "home" } },
+                { "label": "Menu", "target": { "kind": "page", "pageId": "menu" } },
+                {
+                  "label": "Order Online",
+                  "target": { "kind": "page", "pageId": "menu", "fragment": "menu-catalog" }
+                },
+                {
+                  "label": "Locations",
+                  "target": { "kind": "page", "pageId": "home", "fragment": "locations" }
+                },
+                {
+                  "label": "About Us",
+                  "target": { "kind": "page", "pageId": "home", "fragment": "about" }
+                }
+              ]
+            },
+            "hours": {
+              "title": "Kitchen Hours",
+              "entries": [
+                { "label": "Monday - Friday", "value": "10:30 AM - 9:00 PM" },
+                { "label": "Saturday", "value": "11:00 AM - 9:00 PM" },
+                { "label": "Sunday", "value": "11:00 AM - 8:00 PM" }
+              ]
+            },
+            "visit": {
+              "title": "Visit Us",
+              "email": "hello@verdantkitchen.com",
+              "stores": [
+                {
+                  "name": "Back Bay",
+                  "address": "128 Newbury Street, Boston, MA 02116",
+                  "phone": "(617) 555-0142"
+                },
+                {
+                  "name": "Williamsburg",
+                  "address": "84 Wythe Avenue, Brooklyn, NY 11249",
+                  "phone": "(718) 555-0198"
+                },
+                {
+                  "name": "Venice",
+                  "address": "1214 Abbot Kinney Boulevard, Venice, CA 90291",
+                  "phone": "(310) 555-0173"
+                }
+              ]
+            },
+            "backToTop": { "label": "Back to top", "target": { "kind": "page", "pageId": "home", "fragment": "top" } },
+            "legalNote": "Copyright 2026 Verdant Kitchen. All rights reserved."
+          }
+        }
+      ]
+    },
+    {
+      "id": "menu",
+      "path": "/menu",
+      "metadata": {
+        "title": "Menu | Salads, Grain Bowls & Sides | Verdant Kitchen",
+        "description": "Explore the full Verdant Kitchen menu: sixteen salads, grain bowls, sides, drinks and seasonal specials, filterable by dietary preference and sortable by price.",
+        "canonicalPath": "/menu",
+        "robots": { "index": true, "follow": true },
+        "openGraph": {
+          "type": "website",
+          "siteName": "Verdant Kitchen",
+          "title": "Menu | Salads, Grain Bowls & Sides | Verdant Kitchen",
+          "description": "Sixteen made-to-order salads, grain bowls, sides, drinks and seasonal specials."
+        }
+      },
+      "sections": [
+        {
+          "id": "top-nav",
+          "type": "site-header",
+          "variant": "default",
+          "content": {
+            "brandName": "Verdant",
+            "brandTagline": "Farm-Fresh Salads & Bowls",
+            "brandTarget": { "kind": "page", "pageId": "home" },
+            "navigation": [
+              { "label": "Home", "target": { "kind": "page", "pageId": "home" } },
+              { "label": "Menu", "target": { "kind": "page", "pageId": "menu" } },
+              {
+                "label": "Order Online",
+                "target": { "kind": "page", "pageId": "menu", "fragment": "menu-catalog" }
+              },
+              {
+                "label": "Locations",
+                "target": { "kind": "page", "pageId": "home", "fragment": "locations" }
+              },
+              {
+                "label": "About Us",
+                "target": { "kind": "page", "pageId": "home", "fragment": "about" }
+              },
+              {
+                "label": "Contact Us",
+                "target": { "kind": "page", "pageId": "home", "fragment": "contact" }
+              }
+            ],
+            "action": { "label": "Order Now", "target": { "kind": "page", "pageId": "menu" } }
+          }
+        },
+        {
+          "id": "menu-banner",
+          "type": "page-hero",
+          "variant": "banner",
+          "content": {
+            "eyebrow": "The Menu",
+            "title": "Salads, grain bowls and sides",
+            "description": "Every bowl is built when you order it. Pick a category, then filter by diet or sort by price.",
+            "media": {
+              "kind": "image",
+              "path": "https://images.unsplash.com/photo-1466637574441-749b8f19452f?auto=format&fit=crop&w=1200&h=825&q=75",
+              "alt": "Fresh vegetables and herbs ready for service in a restaurant kitchen",
+              "width": 1200,
+              "height": 825
+            },
+            "meta": ["Updated Seasonally", "Vegan Options", "Gluten-Free Labels"]
+          }
+        },
+        {
+          "id": "menu-catalog",
+          "type": "menu-catalog",
+          "variant": "default",
+          "content": {
+            "eyebrow": "Full Menu",
+            "title": "Sixteen dishes, one ingredient list",
+            "description": "Pick a category, then filter by diet or sort by price.",
+            "categories": [
+              { "name": "Salads", "description": "Cold, crisp and dressed to order." },
+              { "name": "Grain Bowls", "description": "Warm whole grains with roasted vegetables and protein." },
+              { "name": "Sides", "description": "Small plates and soup to round out a bowl." },
+              { "name": "Drinks", "description": "Cold-pressed juice and slow-steeped coffee." },
+              { "name": "Desserts", "description": "Light, fruit-forward finishes." },
+              { "name": "Limited-Time Specials", "description": "Seasonal cooking, available while the harvest lasts." }
+            ],
+            "items": [
+              {
+                "name": "Emerald Kale Caesar",
+                "description": "Massaged kale, shaved parmesan, sourdough croutons and lemon-caesar dressing.",
+                "price": "$13.25",
+                "category": "Salads",
+                "tags": ["Vegetarian"],
+                "metadata": "410 cal",
+                "badge": "Guest Favorite",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Bowl of chopped kale salad with shaved cheese and croutons",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Avocado Herb Crunch",
+                "description": "Romaine and baby spinach, avocado, cucumber, toasted seeds and lime vinaigrette.",
+                "price": "$12.75",
+                "category": "Salads",
+                "tags": ["Vegan", "Gluten-Free"],
+                "metadata": "360 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Green salad topped with avocado and toasted seeds",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Heirloom Tomato & Burrata",
+                "description": "Heirloom tomatoes, burrata, torn basil, pistachio crumble and aged balsamic.",
+                "price": "$14.50",
+                "category": "Salads",
+                "tags": ["Vegetarian", "Gluten-Free"],
+                "metadata": "390 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Tomato salad with soft cheese and fresh basil on a light plate",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Citrus Quinoa Superfood",
+                "description": "Quinoa, navel orange, shaved fennel, arugula and citrus-herb vinaigrette.",
+                "price": "$13.50",
+                "category": "Salads",
+                "tags": ["Vegan", "Gluten-Free"],
+                "metadata": "430 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Two bowls of fresh salad with citrus and grains on a bright table",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Miso Salmon Grain Bowl",
+                "description": "Miso-glazed salmon over warm brown rice with charred broccoli, cucumber and sesame greens.",
+                "price": "$16.50",
+                "category": "Grain Bowls",
+                "tags": ["High Protein", "Gluten-Free"],
+                "metadata": "620 cal",
+                "badge": "Chef's Pick",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Glazed salmon fillet served with roasted vegetables",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Spiced Chickpea Harvest",
+                "description": "Roasted chickpeas, farro, roasted squash, kale and tahini-lemon dressing.",
+                "price": "$14.25",
+                "category": "Grain Bowls",
+                "tags": ["Vegan", "High Protein"],
+                "metadata": "540 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Grain bowl with roasted vegetables and chickpeas seen from above",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Charred Broccoli & Farro",
+                "description": "Charred broccoli, farro, pickled shallot, toasted almonds and green goddess dressing.",
+                "price": "$13.75",
+                "category": "Grain Bowls",
+                "tags": ["Vegetarian"],
+                "metadata": "480 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Warm grain dish with green vegetables and herbs on a ceramic plate",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Ginger Miso Soup",
+                "description": "White miso broth with ginger, scallion and silken tofu.",
+                "price": "$5.75",
+                "category": "Sides",
+                "tags": ["Vegan"],
+                "metadata": "180 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Bowl of miso soup with scallions on a light surface",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Sourdough Avocado Toast",
+                "description": "Toasted sourdough, smashed avocado, chilli flakes and lemon.",
+                "price": "$6.95",
+                "category": "Sides",
+                "tags": ["Vegan"],
+                "metadata": "320 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Slice of sourdough toast topped with smashed avocado",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Market Vegetable Plate",
+                "description": "Chef's selection of roasted and raw seasonal vegetables with green goddess dip.",
+                "price": "$8.25",
+                "category": "Sides",
+                "tags": ["Vegan", "Gluten-Free"],
+                "metadata": "240 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Table spread of seasonal vegetable dishes and dips",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Cold-Pressed Green Juice",
+                "description": "Cucumber, celery, kale, green apple and lemon, pressed fresh every morning.",
+                "price": "$7.50",
+                "category": "Drinks",
+                "tags": ["Vegan", "Gluten-Free"],
+                "metadata": "110 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1544145945-f90425340c7e?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Glass of freshly pressed green juice with a paper straw",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Maple Cold Brew",
+                "description": "Slow-steeped cold brew finished with a touch of maple and oat milk.",
+                "price": "$5.25",
+                "category": "Drinks",
+                "tags": ["Vegan"],
+                "metadata": "90 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Cup of iced coffee beside roasted coffee beans",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Almond Olive Oil Cake",
+                "description": "Moist almond cake with citrus zest and a spoon of whipped ricotta.",
+                "price": "$6.75",
+                "category": "Desserts",
+                "tags": ["Vegetarian"],
+                "metadata": "310 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1551024506-0bccd828d307?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Slice of almond cake with cream and berries on a plate",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Cinnamon Oat French Toast Bites",
+                "description": "Oat sourdough bites with cinnamon, maple and a side of honey-yogurt dip.",
+                "price": "$6.50",
+                "category": "Desserts",
+                "tags": ["Vegetarian"],
+                "metadata": "340 cal",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1484723091739-30a097e8f929?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "French toast bites with berries and maple syrup",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Stone Fruit & Burrata",
+                "description": "Peak-season peaches and plums with burrata, basil, pistachio crumble and balsamic.",
+                "price": "$14.75",
+                "category": "Limited-Time Specials",
+                "tags": ["Vegetarian", "Gluten-Free"],
+                "metadata": "380 cal",
+                "badge": "Limited",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1521305916504-4a1121188589?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Baskets of ripe stone fruit and produce at a market stall",
+                  "width": 900,
+                  "height": 675
+                }
+              },
+              {
+                "name": "Charred Corn & Basil Bowl",
+                "description": "Fire-charred sweet corn, heirloom tomato and quinoa with lime-cilantro dressing.",
+                "price": "$14.25",
+                "category": "Limited-Time Specials",
+                "tags": ["Vegan", "High Protein"],
+                "metadata": "450 cal",
+                "badge": "Limited",
+                "media": {
+                  "kind": "image",
+                  "path": "https://images.unsplash.com/photo-1607532941433-304659e8198a?auto=format&fit=crop&w=900&h=675&q=75",
+                  "alt": "Colourful bowl of charred corn, tomato and grains",
+                  "width": 900,
+                  "height": 675
+                }
+              }
+            ]
+          }
+        },
+        {
+          "id": "contact",
+          "type": "site-footer",
+          "variant": "default",
+          "content": {
+            "brandName": "Verdant",
+            "tagline": "Farm-fresh salads, grain bowls and cold-pressed juices, made from scratch in neighbourhood kitchens since 2014.",
+            "social": [
+              {
+                "label": "Verdant on Instagram",
+                "icon": "instagram",
+                "target": { "kind": "external", "href": "https://www.instagram.com/" }
+              },
+              {
+                "label": "Verdant on Facebook",
+                "icon": "facebook",
+                "target": { "kind": "external", "href": "https://www.facebook.com/" }
+              },
+              {
+                "label": "Verdant on YouTube",
+                "icon": "youtube",
+                "target": { "kind": "external", "href": "https://www.youtube.com/" }
+              }
+            ],
+            "explore": {
+              "title": "Explore",
+              "links": [
+                { "label": "Home", "target": { "kind": "page", "pageId": "home" } },
+                { "label": "Menu", "target": { "kind": "page", "pageId": "menu" } },
+                {
+                  "label": "Order Online",
+                  "target": { "kind": "page", "pageId": "menu", "fragment": "menu-catalog" }
+                },
+                {
+                  "label": "Locations",
+                  "target": { "kind": "page", "pageId": "home", "fragment": "locations" }
+                },
+                {
+                  "label": "About Us",
+                  "target": { "kind": "page", "pageId": "home", "fragment": "about" }
+                }
+              ]
+            },
+            "hours": {
+              "title": "Kitchen Hours",
+              "entries": [
+                { "label": "Monday - Friday", "value": "10:30 AM - 9:00 PM" },
+                { "label": "Saturday", "value": "11:00 AM - 9:00 PM" },
+                { "label": "Sunday", "value": "11:00 AM - 8:00 PM" }
+              ]
+            },
+            "visit": {
+              "title": "Visit Us",
+              "email": "hello@verdantkitchen.com",
+              "stores": [
+                {
+                  "name": "Back Bay",
+                  "address": "128 Newbury Street, Boston, MA 02116",
+                  "phone": "(617) 555-0142"
+                },
+                {
+                  "name": "Williamsburg",
+                  "address": "84 Wythe Avenue, Brooklyn, NY 11249",
+                  "phone": "(718) 555-0198"
+                },
+                {
+                  "name": "Venice",
+                  "address": "1214 Abbot Kinney Boulevard, Venice, CA 90291",
+                  "phone": "(310) 555-0173"
+                }
+              ]
+            },
+            "backToTop": { "label": "Back to top", "target": { "kind": "page", "pageId": "menu", "fragment": "top" } },
+            "legalNote": "Copyright 2026 Verdant Kitchen. All rights reserved."
+          }
+        }
+      ]
     }
   ]
 }

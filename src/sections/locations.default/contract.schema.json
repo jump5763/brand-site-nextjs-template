@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://codeforma.local/sections/locations.default",
+  "title": "Store Locations",
+  "type": "object",
+  "required": ["title", "stores"],
+  "additionalProperties": false,
+  "properties": {
+    "eyebrow": { "type": "string", "minLength": 1, "description": "Small uppercase kicker above the heading." },
+    "title": { "type": "string", "minLength": 1, "description": "Section h2." },
+    "description": { "type": "string", "minLength": 1, "description": "Short introduction under the heading." },
+    "mapNote": { "type": "string", "minLength": 1, "description": "Optional line under the map, for example parking or delivery information." },
+    "stores": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["name", "address", "mapQuery", "hours"],
+        "additionalProperties": false,
+        "properties": {
+          "name": { "type": "string", "minLength": 1, "description": "Store card h3." },
+          "address": { "type": "string", "minLength": 1, "description": "Single line street address." },
+          "phone": { "type": "string", "minLength": 1, "description": "Store phone number as display text." },
+          "hours": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 3,
+            "items": {
+              "type": "object",
+              "required": ["label", "value"],
+              "additionalProperties": false,
+              "properties": {
+                "label": { "type": "string", "minLength": 1 },
+                "value": { "type": "string", "minLength": 1 }
+              }
+            }
+          },
+          "mapQuery": { "type": "string", "minLength": 1, "description": "Place query passed to the Google map embed." },
+          "mapZoom": { "type": "integer", "minimum": 10, "maximum": 19, "description": "Optional map zoom level." },
+          "directions": { "$ref": "https://codeforma.local/site-schema/core#/$defs/siteAction", "description": "Optional external directions link." }
+        }
+      }
+    }
+  }
+}
