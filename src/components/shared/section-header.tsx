@@ -1,7 +1,6 @@
 import { createElement } from "react";
 import { cn } from "@/lib/utils";
 import { Body, type BodySize } from "@/components/ui/typography/Body";
-import { Eyebrow } from "./eyebrow";
 
 export type SectionHeaderProps = {
   headingId: string;
@@ -38,7 +37,7 @@ export function SectionHeader({
         className,
       )}
     >
-      {eyebrow ? <Eyebrow className="text-primary">{eyebrow}</Eyebrow> : null}
+      {eyebrow ? <p className="t-eyebrow font-body text-primary">{eyebrow}</p> : null}
       {createElement(
         headingTags[headingLevel - 1],
         {
